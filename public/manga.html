@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Manga — My List</title>
+  <title>Nekotaku — Manga</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="/styles.css">
 </head>
@@ -13,7 +13,6 @@
       <a href="/">Home</a>
       <a href="/anime.html">Anime</a>
       <a href="/manga.html" class="active">Manga</a>
-      <a href="/favourites.html">Favourites</a>
     </nav>
   </header>
 
@@ -21,12 +20,13 @@
     <div style="display:flex; justify-content:space-between; align-items:center;">
       <h2>Manga</h2>
       <div>
+        <button class="btn" onclick="pages.promptAddYear('manga')">Add Year Section</button>
         <button class="btn" onclick="pages.promptAddManga()">Add Manga</button>
         <button class="btn ghost" onclick="location.reload()">Refresh</button>
       </div>
     </div>
 
-    <div id="manga-root" style="margin-top:12px;"></div>
+    <div id="manga-year-sections" style="margin-top:12px;"></div>
   </div>
 
   <script src="/app.js"></script>

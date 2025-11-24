@@ -13,7 +13,6 @@
       <a href="/" class="active">Home</a>
       <a href="/anime.html">Anime</a>
       <a href="/manga.html">Manga</a>
-      <a href="/favourites.html">Favourites</a>
     </nav>
   </header>
 
@@ -32,16 +31,20 @@
         <div style="margin-top:8px;">
           <button class="btn" onclick="location.href='/anime.html'">Manage Anime</button>
           <button class="btn" onclick="location.href='/manga.html'">Manage Manga</button>
-          <button class="btn ghost" onclick="location.href='/favourites.html'">Edit Favourites</button>
+          <button class="btn ghost" onclick="pages.promptEditTop('anime')">Edit Top 10 Anime</button>
+          <button class="btn ghost" onclick="pages.promptEditTop('manga')">Edit Top 10 Manga</button>
         </div>
 
-        <div style="margin-top:12px;" class="small">Tips: Use 'Add Anime' to fetch poster automatically (server uses Jikan API).</div>
+        <div style="margin-top:12px;" class="small">Tips: Use 'Add Anime' to fetch poster automatically (server uses Jikan API). Posters are saved locally under <code>/public/posters/</code>.</div>
       </div>
     </div>
 
     <div style="margin-top:18px;" class="card">
-      <h3>My quick list</h3>
-      <div class="small">You can click the buttons above to add and update entries. Data persists in <code>db.json</code> on the server (perfect for a Render web service).</div>
+      <h3>Top 10 Anime</h3>
+      <div id="top-anime-root" class="top-list"></div>
+
+      <h3 style="margin-top:18px;">Top 10 Manga</h3>
+      <div id="top-manga-root" class="top-list"></div>
     </div>
   </div>
 

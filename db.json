@@ -4,22 +4,61 @@
       "id": "1764016262784",
       "title": "Gintama'",
       "originalTitle": "Gintama",
-      "poster": "https://cdn.myanimelist.net/images/anime/4/50361l.jpg",
-      "seasons": 8,
+      "mal_id": null,
+      "poster": "/posters/1764016262784/poster.jpg",
       "episodes_watched": 357,
       "total_episodes": 357,
       "finished": true,
       "year": 2011,
+      "yearSection": "2025",
       "addedAt": "2025-11-24T20:31:02.784Z"
+    },
+    {
+      "id": "1764020367162",
+      "title": "Gintama'",
+      "originalTitle": "Gintama",
+      "mal_id": 9969,
+      "poster": "/posters/9969/poster.jpg",
+      "episodes_watched": 307,
+      "total_episodes": 307,
+      "finished": false,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-24T21:39:27.162Z"
+    },
+    {
+      "id": "1764020427445",
+      "title": "Naruto",
+      "originalTitle": "naruto",
+      "mal_id": 20,
+      "poster": "/posters/20/poster.jpg",
+      "episodes_watched": 720,
+      "total_episodes": 720,
+      "finished": false,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-24T21:40:27.445Z"
     }
   ],
   "manga": [],
-  "topAnime": [],
+  "topAnime": [
+    {
+      "title": "ef",
+      "reason": null,
+      "poster": "https://cdn.myanimelist.net/images/anime/1675/131993l.jpg"
+    }
+  ],
   "topManga": [],
   "homeNotes": [
     {
       "id": 1,
       "text": "Add your 'about me' paragraphs from the Home page UI by clicking the 'Add note' button."
     }
-  ]
+  ],
+  "yearSections": {
+    "anime": [
+      "2021"
+    ],
+    "manga": []
+  }
 }

@@ -1,4 +1,4 @@
-/* styles.css - simple clean look */
+/* styles.css - updated */
 :root {
   --bg: #0f1724;
   --card: #0b1220;
@@ -28,7 +28,9 @@ header { display:flex; gap:16px; align-items:center; padding:16px 24px; backgrou
 .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:18px; margin-top:18px; }
 
 .card-poster { position:relative; border-radius:10px; overflow:hidden; min-height:260px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#061826,#03111b); }
-.card-poster img { width:100%; height:100%; object-fit:cover; display:block; }
+.card-poster img { width:100%; height:100%; object-fit:cover; display:block; transition: filter .2s ease; }
+.card-poster img.bw { filter: grayscale(100%); opacity:0.7; }
+
 .badge { position:absolute; left:10px; top:10px; background:rgba(0,0,0,0.6); padding:6px 8px; border-radius:999px; font-weight:600; color: #fff; font-size:12px; border:1px solid rgba(255,255,255,0.04); }
 .card-info { padding:10px; }
 .small { font-size:13px; color:var(--muted); }
@@ -42,9 +44,25 @@ header { display:flex; gap:16px; align-items:center; padding:16px 24px; backgrou
 .top-item img { width:64px; height:90px; object-fit:cover; border-radius:6px; }
 .top-item .meta { flex:1; }
 
+/* Year sections */
+.year-section { margin-top:18px; }
+.year-head { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.year-gallery { display:grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap:14px; margin-top:12px; }
+
+/* modal styles */
+.modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.65); z-index:2000; padding:20px; }
+.modal.hidden { display:none; }
+.modal-content { background:#071226; padding:16px; border-radius:12px; width:100%; max-width:860px; color:#e6eef8; position:relative; }
+.modal-close { position:absolute; right:12px; top:12px; background:transparent; border:0; color:#fff; font-size:18px; cursor:pointer; }
+.season-grid { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
+.season-card { width:160px; background:rgba(255,255,255,0.02); padding:8px; border-radius:8px; }
+.season-card img { width:100%; height:220px; object-fit:cover; border-radius:6px; }
+.season-meta { margin-top:8px; font-size:13px; color:var(--muted); }
+
 /* small responsive */
 @media (max-width:700px) {
   .nav { display:none; }
   header { padding:10px; }
   .container { padding:14px; }
+  .season-card img { height:160px; }
 }

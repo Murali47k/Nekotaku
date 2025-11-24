@@ -1,0 +1,12 @@
+{
+  "anime": [],
+  "manga": [],
+  "topAnime": [],
+  "topManga": [],
+  "homeNotes": [
+    {
+      "id": 1,
+      "text": "Add your 'about me' paragraphs from the Home page UI by clicking the 'Add note' button."
+    }
+  ]
+}

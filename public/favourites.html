@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Favourites — Top 10</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">My MAL-ish List</div>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/anime.html">Anime</a>
+      <a href="/manga.html">Manga</a>
+      <a href="/favourites.html" class="active">Favourites</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h2>My Top 10</h2>
+      <div>
+        <button class="btn" onclick="pages.promptEditTop('anime')">Edit Top 10 Anime</button>
+        <button class="btn" onclick="pages.promptEditTop('manga')">Edit Top 10 Manga</button>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:20px; margin-top:12px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:300px;">
+        <h3>Top 10 Anime</h3>
+        <div id="top-anime-root" class="top-list"></div>
+      </div>
+      <div style="flex:1; min-width:300px;">
+        <h3>Top 10 Manga</h3>
+        <div id="top-manga-root" class="top-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+  <script>pages.initFavs();</script>
+</body>
+</html>

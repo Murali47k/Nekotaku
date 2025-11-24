@@ -1,5 +1,18 @@
 {
-  "anime": [],
+  "anime": [
+    {
+      "id": "1764016262784",
+      "title": "Gintama'",
+      "originalTitle": "Gintama",
+      "poster": "https://cdn.myanimelist.net/images/anime/4/50361l.jpg",
+      "seasons": 8,
+      "episodes_watched": 357,
+      "total_episodes": 357,
+      "finished": true,
+      "year": 2011,
+      "addedAt": "2025-11-24T20:31:02.784Z"
+    }
+  ],
   "manga": [],
   "topAnime": [],
   "topManga": [],

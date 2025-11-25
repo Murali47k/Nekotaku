@@ -201,13 +201,17 @@ async function initAnimePage() {
   const years = await api.getYears('anime');
   const list = await api.getAnime();
 
-  // Get unique year sections from yearSections + existing items
+  // Get unique year sections - prioritize API years, then add any from items not in API
   const sectionsSet = new Set();
+  
+  // Add all year sections from API first
   if (Array.isArray(years) && years.length > 0) {
-    years.forEach(y => sectionsSet.add(String(y)));
+    years.forEach(y => sectionsSet.add(String(y).trim()));
   }
+  
+  // Add year sections from items that aren't already in the set
   list.forEach(item => {
-    const section = item.yearSection || (item.year ? String(item.year) : null) || 'Ungrouped';
+    const section = String(item.yearSection || (item.year ? String(item.year) : null) || 'Ungrouped').trim();
     sectionsSet.add(section);
   });
   
@@ -241,7 +245,10 @@ async function initAnimePage() {
     const gallery = document.createElement('div');
     gallery.className = 'year-gallery';
 
-    const items = list.filter(a => (a.yearSection || (a.year ? String(a.year) : null) || 'Ungrouped') === yearLabel);
+    const items = list.filter(a => {
+      const itemSection = String(a.yearSection || (a.year ? String(a.year) : null) || 'Ungrouped').trim();
+      return itemSection === yearLabel;
+    });
 
     items.forEach(item => {
       const card = document.createElement('div');
@@ -325,13 +332,17 @@ async function initMangaPage() {
   const years = await api.getYears('manga');
   const list = await api.getManga();
   
-  // Get unique year sections
+  // Get unique year sections - prioritize API years, then add any from items not in API
   const sectionsSet = new Set();
+  
+  // Add all year sections from API first
   if (Array.isArray(years) && years.length > 0) {
-    years.forEach(y => sectionsSet.add(String(y)));
+    years.forEach(y => sectionsSet.add(String(y).trim()));
   }
+  
+  // Add year sections from items that aren't already in the set
   list.forEach(item => {
-    const section = item.yearSection || (item.year ? String(item.year) : null) || 'Ungrouped';
+    const section = String(item.yearSection || (item.year ? String(item.year) : null) || 'Ungrouped').trim();
     sectionsSet.add(section);
   });
   
@@ -363,7 +374,10 @@ async function initMangaPage() {
     const gallery = document.createElement('div');
     gallery.className = 'year-gallery';
 
-    const items = list.filter(m => (m.yearSection || (m.year ? String(m.year) : null) || 'Ungrouped') === yearLabel);
+    const items = list.filter(m => {
+      const itemSection = String(m.yearSection || (m.year ? String(m.year) : null) || 'Ungrouped').trim();
+      return itemSection === yearLabel;
+    });
 
     items.forEach(item => {
       const card = document.createElement('div');

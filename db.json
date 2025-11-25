@@ -1,20 +1,32 @@
 {
   "anime": [
     {
-      "id": "1764077324098",
+      "id": "1764078383067",
       "title": "Gintama'",
       "originalTitle": "Gintama",
       "mal_id": 9969,
       "poster": "/posters/anime/9969.jpg",
-      "episodes_watched": 370,
-      "total_episodes": 370,
+      "episodes_watched": 340,
+      "total_episodes": 340,
       "finished": true,
       "year": "2021",
       "yearSection": "2021",
-      "addedAt": "2025-11-25T13:28:44.098Z"
+      "addedAt": "2025-11-25T13:46:23.067Z"
     }
   ],
-  "manga": [],
+  "manga": [
+    {
+      "id": "1764078457933",
+      "title": "One Punch-Man",
+      "originalTitle": "One Punch man",
+      "cover": "/posters/manga/44347.jpg",
+      "chapters_read": 274,
+      "finished": false,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-25T13:47:37.933Z"
+    }
+  ],
   "topAnime": [
     {
       "title": "Gintama",
@@ -25,7 +37,20 @@
       "poster": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg"
     }
   ],
-  "topManga": [],
+  "topManga": [
+    {
+      "title": "Space Brothers",
+      "poster": "https://cdn.myanimelist.net/images/manga/3/166256l.jpg"
+    },
+    {
+      "title": "Kokou no Hito",
+      "poster": "https://cdn.myanimelist.net/images/manga/1/324690l.jpg"
+    },
+    {
+      "title": "20th Century Boys",
+      "poster": "https://cdn.myanimelist.net/images/manga/5/260006l.jpg"
+    }
+  ],
   "homeNotes": [
     {
       "id": 1,

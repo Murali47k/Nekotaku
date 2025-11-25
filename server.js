@@ -1,4 +1,4 @@
-// server.js
+// app.js - Client-side JavaScript
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -63,6 +63,26 @@ async function downloadImageToPath(url, filepath) {
   }
 }
 
+// Helper: delete poster file
+function deletePosterFile(posterPath) {
+  if (!posterPath) return;
+  try {
+    const fullPath = path.join(__dirname, 'public', posterPath);
+    if (fs.existsSync(fullPath)) {
+      fs.unlinkSync(fullPath);
+      // Try to remove parent directory if empty
+      const dir = path.dirname(fullPath);
+      try {
+        if (fs.readdirSync(dir).length === 0) {
+          fs.rmdirSync(dir);
+        }
+      } catch (e) {}
+    }
+  } catch (e) {
+    console.warn('delete poster failed', e);
+  }
+}
+
 // Jikan search helper (get poster url, title, year)
 async function fetchPosterForAnime(title) {
   try {
@@ -81,6 +101,24 @@ async function fetchPosterForAnime(title) {
     console.warn('Jikan anime fetch failed', e);
   }
   return { poster: null, titleFetched: title, year: null, mal_id: null };
+}
+
+async function fetchPosterForManga(title) {
+  try {
+    const url = `https://api.jikan.moe/v4/manga?q=${encodeURIComponent(title)}&limit=1`;
+    const res = await fetch(url);
+    const json = await res.json();
+    if (json && json.data && json.data.length > 0) {
+      const item = json.data[0];
+      const img = (item.images && item.images.jpg && (item.images.jpg.large_image_url || item.images.jpg.image_url)) || null;
+      const mal_id = item.mal_id || null;
+      const titleClean = item.title || title;
+      return { poster: img, titleFetched: titleClean, mal_id };
+    }
+  } catch (e) {
+    console.warn('Jikan manga fetch failed', e);
+  }
+  return { poster: null, titleFetched: title, mal_id: null };
 }
 
 // --- API routes ---
@@ -131,10 +169,14 @@ app.delete('/api/years/:type/:yearLabel', (req, res) => {
   if (db.yearSections[type]) {
     db.yearSections[type] = db.yearSections[type].filter(y => String(y) !== String(yearLabel));
   }
-  // remove items assigned to that yearSection
+  // remove items assigned to that yearSection and delete their posters
   if (type === 'anime') {
+    const itemsToDelete = (db.anime || []).filter(a => String(a.yearSection || a.year || 'Ungrouped') === String(yearLabel));
+    itemsToDelete.forEach(item => deletePosterFile(item.poster));
     db.anime = (db.anime || []).filter(a => String(a.yearSection || a.year || 'Ungrouped') !== String(yearLabel));
   } else {
+    const itemsToDelete = (db.manga || []).filter(m => String(m.yearSection || m.year || 'Ungrouped') === String(yearLabel));
+    itemsToDelete.forEach(item => deletePosterFile(item.cover));
     db.manga = (db.manga || []).filter(m => String(m.yearSection || m.year || 'Ungrouped') !== String(yearLabel));
   }
   writeDB(db);
@@ -147,7 +189,7 @@ app.get('/api/anime', (req, res) => {
   res.json(db.anime || []);
 });
 
-// Add anime (no seasons)
+// Add anime
 app.post('/api/anime', async (req, res) => {
   try {
     const { title, episodes_watched = 0, total_episodes = null, year = null, yearSection = null } = req.body;
@@ -160,7 +202,7 @@ app.post('/api/anime', async (req, res) => {
     let posterLocal = null;
     if (fetched.poster) {
       const malId = fetched.mal_id || Date.now();
-      const localPath = path.join(POSTERS_DIR, String(malId), 'poster.jpg');
+      const localPath = path.join(POSTERS_DIR, 'anime', String(malId) + '.jpg');
       const saved = await downloadImageToPath(fetched.poster, localPath);
       posterLocal = saved || null;
     }
@@ -189,7 +231,7 @@ app.post('/api/anime', async (req, res) => {
   }
 });
 
-// Update anime (patch fields like episodes_watched, total_episodes, finished, year, yearSection)
+// Update anime
 app.patch('/api/anime/:id', (req, res) => {
   const id = req.params.id;
   const db = readDB();
@@ -213,12 +255,16 @@ app.delete('/api/anime/:id', (req, res) => {
   const id = req.params.id;
   const db = readDB();
   db.anime = db.anime || [];
+  const item = db.anime.find(a => a.id === id);
+  if (item) {
+    deletePosterFile(item.poster);
+  }
   db.anime = db.anime.filter(a => a.id !== id);
   writeDB(db);
   res.json({ ok: true });
 });
 
-// Manga endpoints (unchanged except yearSection kept)
+// Manga endpoints
 app.get('/api/manga', (req, res) => {
   const db = readDB();
   res.json(db.manga || []);
@@ -228,20 +274,18 @@ app.post('/api/manga', async (req, res) => {
   if (!title) return res.status(400).json({ error: 'title required' });
   const db = readDB();
   try {
-    const j = await fetch(`https://api.jikan.moe/v4/manga?q=${encodeURIComponent(title)}&limit=1`);
-    const jjson = await j.json();
-    const found = (jjson && jjson.data && jjson.data[0]) ? jjson.data[0] : null;
-    const coverUrl = (found && found.images && found.images.jpg && (found.images.jpg.large_image_url || found.images.jpg.image_url)) || null;
+    const fetched = await fetchPosterForManga(title);
     let coverLocal = null;
-    if (coverUrl) {
-      const localPath = path.join(POSTERS_DIR, 'manga-' + Date.now(), 'cover.jpg');
-      coverLocal = await downloadImageToPath(coverUrl, localPath);
+    if (fetched.poster) {
+      const malId = fetched.mal_id || Date.now();
+      const localPath = path.join(POSTERS_DIR, 'manga', String(malId) + '.jpg');
+      coverLocal = await downloadImageToPath(fetched.poster, localPath);
     }
     const item = {
       id: Date.now().toString(),
-      title: (found && found.title) || title,
+      title: fetched.titleFetched || title,
       originalTitle: title,
-      cover: coverLocal || coverUrl || null,
+      cover: coverLocal || fetched.poster || null,
       chapters_read: Number(chapters_read) || 0,
       finished: false,
       year: year || null,
@@ -275,6 +319,10 @@ app.delete('/api/manga/:id', (req, res) => {
   const id = req.params.id;
   const db = readDB();
   db.manga = db.manga || [];
+  const item = db.manga.find(m => m.id === id);
+  if (item) {
+    deletePosterFile(item.cover);
+  }
   db.manga = db.manga.filter(m => m.id !== id);
   writeDB(db);
   res.json({ ok: true });

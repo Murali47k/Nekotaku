@@ -20,7 +20,7 @@ header { display:flex; gap:16px; align-items:center; padding:16px 24px; backgrou
 .home-section { display:flex; gap:24px; flex-wrap:wrap; }
 .card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:16px; border-radius:12px; box-shadow: 0 6px 18px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.03); }
 
-.controls { display:flex; gap:12px; margin-top:8px; }
+.controls { display:flex; gap:12px; margin-top:8px; flex-wrap: wrap; }
 
 .btn { background:transparent; border:1px solid rgba(255,255,255,0.06); padding:8px 12px; color:var(--accent); border-radius:8px; cursor:pointer; }
 .btn.ghost { color:var(--muted); border-style:dashed; }
@@ -30,6 +30,12 @@ header { display:flex; gap:16px; align-items:center; padding:16px 24px; backgrou
 .card-poster { position:relative; border-radius:10px; overflow:hidden; min-height:260px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#061826,#03111b); }
 .card-poster img { width:100%; height:100%; object-fit:cover; display:block; transition: filter .2s ease; }
 .card-poster img.bw { filter: grayscale(100%); opacity:0.7; }
+
+/* Watching border - white highlight */
+.card-poster.watching-border {
+  border: 3px solid rgba(255,255,255,0.8);
+  box-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
 
 .badge { position:absolute; left:10px; top:10px; background:rgba(0,0,0,0.6); padding:6px 8px; border-radius:999px; font-weight:600; color: #fff; font-size:12px; border:1px solid rgba(255,255,255,0.04); }
 .card-info { padding:10px; }
@@ -46,18 +52,25 @@ header { display:flex; gap:16px; align-items:center; padding:16px 24px; backgrou
 
 /* Year sections */
 .year-section { margin-top:18px; }
-.year-head { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.year-head { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap: wrap; }
 .year-gallery { display:grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap:14px; margin-top:12px; }
 
 /* modal styles */
 .modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.65); z-index:2000; padding:20px; }
 .modal.hidden { display:none; }
-.modal-content { background:#071226; padding:16px; border-radius:12px; width:100%; max-width:860px; color:#e6eef8; position:relative; }
-.modal-close { position:absolute; right:12px; top:12px; background:transparent; border:0; color:#fff; font-size:18px; cursor:pointer; }
+.modal-content { background:#071226; padding:20px; border-radius:12px; width:100%; max-width:860px; color:#e6eef8; position:relative; max-height:90vh; overflow-y:auto; }
+.modal-close { position:absolute; right:12px; top:12px; background:transparent; border:0; color:#fff; font-size:24px; cursor:pointer; width:32px; height:32px; display:flex; align-items:center; justify-content:center; }
+.modal-close:hover { background:rgba(255,255,255,0.1); border-radius:6px; }
+
 .season-grid { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
 .season-card { width:160px; background:rgba(255,255,255,0.02); padding:8px; border-radius:8px; }
 .season-card img { width:100%; height:220px; object-fit:cover; border-radius:6px; }
 .season-meta { margin-top:8px; font-size:13px; color:var(--muted); }
+
+/* Top edit item styles */
+.top-edit-item input {
+  font-family: inherit;
+}
 
 /* small responsive */
 @media (max-width:700px) {
@@ -65,4 +78,5 @@ header { display:flex; gap:16px; align-items:center; padding:16px 24px; backgrou
   header { padding:10px; }
   .container { padding:14px; }
   .season-card img { height:160px; }
+  .year-head { flex-direction: column; align-items: flex-start; }
 }

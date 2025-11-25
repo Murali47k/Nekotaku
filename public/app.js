@@ -59,13 +59,11 @@ async function initHome() {
       const meta = document.createElement('div');
       meta.className = 'meta';
       const h = document.createElement('div'); h.style.fontWeight = 700; h.textContent = `${idx+1}. ${it.title}`;
-      const p = document.createElement('div'); p.className = 'small'; p.textContent = it.reason || '';
-      meta.appendChild(h); meta.appendChild(p);
+      meta.appendChild(h);
       div.appendChild(img); div.appendChild(meta);
       animeRoot.appendChild(div);
     });
     
-
     (topsM || []).forEach((it, idx) => {
       const div = document.createElement('div');
       div.className = 'top-item';
@@ -74,8 +72,7 @@ async function initHome() {
       const meta = document.createElement('div');
       meta.className = 'meta';
       const h = document.createElement('div'); h.style.fontWeight = 700; h.textContent = `${idx+1}. ${it.title}`;
-      const p = document.createElement('div'); p.className = 'small'; p.textContent = it.reason || '';
-      meta.appendChild(h); meta.appendChild(p);
+      meta.appendChild(h);
       div.appendChild(img); div.appendChild(meta);
       mangaRoot.appendChild(div);
     });
@@ -93,22 +90,90 @@ async function promptAddHomeNote() {
 /* ---------- TOP lists editing ---------- */
 async function promptEditTop(type='anime') {
   const current = (type === 'anime') ? await api.getTopAnime() : await api.getTopManga();
+  
+  // Create modal
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.innerHTML = `
+    <div class="modal-content" style="max-width:600px;">
+      <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+      <h2>Edit Top 10 ${type === 'anime' ? 'Anime' : 'Manga'}</h2>
+      <div id="top-list-container" style="margin-top:16px;"></div>
+      <div style="margin-top:16px; display:flex; gap:12px;">
+        <button class="btn" onclick="pages.addTopItem()">Add Item</button>
+        <button class="btn" onclick="pages.saveTopList('${type}')">Save</button>
+        <button class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const container = document.getElementById('top-list-container');
+  window.currentTopList = [...current];
+  
+  renderTopList(container);
+}
+
+function renderTopList(container) {
+  container.innerHTML = '';
+  const list = window.currentTopList || [];
+  
+  list.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'top-edit-item';
+    div.innerHTML = `
+      <div style="display:flex; align-items:center; gap:12px; padding:12px; background:rgba(255,255,255,0.02); border-radius:8px; margin-bottom:8px;">
+        <span style="font-weight:700; min-width:30px;">#${idx + 1}</span>
+        <input type="text" value="${escapeHtml(item.title)}" placeholder="Title" style="flex:1; padding:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#fff;" data-idx="${idx}">
+        <button class="btn ghost" onclick="pages.removeTopItem(${idx})">Remove</button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+async function addTopItem() {
+  if (!window.currentTopList) window.currentTopList = [];
+  if (window.currentTopList.length >= 10) {
+    alert('Maximum 10 items allowed');
+    return;
+  }
+  window.currentTopList.push({ title: '', poster: null });
+  const container = document.getElementById('top-list-container');
+  renderTopList(container);
+}
+
+function removeTopItem(idx) {
+  window.currentTopList.splice(idx, 1);
+  const container = document.getElementById('top-list-container');
+  renderTopList(container);
+}
+
+async function saveTopList(type) {
+  const inputs = document.querySelectorAll('#top-list-container input');
   const newList = [];
-  for (let i = 0; i < 10; i++) {
-    const cur = current[i] ? current[i].title : '';
-    const title = prompt(`Top ${type} #${i+1} title (leave blank to skip):`, cur || '');
+  
+  for (let input of inputs) {
+    const title = input.value.trim();
     if (!title) continue;
-    const reason = prompt(`Why you like "${title}"? (short):`, (current[i] && current[i].reason) || '');
-    // attempt quick poster via search
+    
+    // Fetch poster
     let poster = null;
     try {
-      const s = await api.searchAnime(title);
-      if (s && s.data && s.data.length > 0) poster = (s.data[0].images && s.data[0].images.jpg && (s.data[0].images.jpg.large_image_url || s.data[0].images.jpg.image_url)) || null;
+      const searchFunc = type === 'anime' ? api.searchAnime : api.searchManga;
+      const s = await searchFunc(title);
+      if (s && s.data && s.data.length > 0) {
+        poster = (s.data[0].images && s.data[0].images.jpg && (s.data[0].images.jpg.large_image_url || s.data[0].images.jpg.image_url)) || null;
+      }
     } catch (e) {}
-    newList.push({ title, reason, poster });
+    
+    newList.push({ title, poster });
   }
+  
   if (type === 'anime') await api.setTopAnime(newList);
   else await api.setTopManga(newList);
+  
+  document.querySelector('.modal').remove();
   initHome();
 }
 
@@ -133,11 +198,20 @@ async function initAnimePage() {
   if (!container) return;
   container.innerHTML = '';
 
-  const years = await api.getYears('anime'); // user-defined sections
+  const years = await api.getYears('anime');
   const list = await api.getAnime();
 
-  // ensure unique year labels (defensive; server already ensures unique)
-  const sections = Array.isArray(years) && years.length ? [...new Set(years)] : ['Ungrouped'];
+  // Get unique year sections from yearSections + existing items
+  const sectionsSet = new Set();
+  if (Array.isArray(years) && years.length > 0) {
+    years.forEach(y => sectionsSet.add(String(y)));
+  }
+  list.forEach(item => {
+    const section = item.yearSection || (item.year ? String(item.year) : null) || 'Ungrouped';
+    sectionsSet.add(section);
+  });
+  
+  const sections = Array.from(sectionsSet);
 
   for (const yearLabel of sections) {
     const sec = document.createElement('div');
@@ -147,7 +221,6 @@ async function initAnimePage() {
     const h = document.createElement('h3'); h.textContent = yearLabel;
 
     const actionWrap = document.createElement('div');
-    // Add anime button and Delete year button
     const addBtn = document.createElement('button');
     addBtn.className = 'btn';
     addBtn.textContent = `Add anime to ${yearLabel}`;
@@ -175,9 +248,10 @@ async function initAnimePage() {
       card.className = 'card';
 
       const poster = item.poster || '/placeholders/no.png';
-      const posterHtml = `<div class="card-poster"><img src="${poster}" alt="${escapeHtml(item.title)}"></div>`;
+      const isFinished = item.finished;
+      const posterClass = isFinished ? '' : 'watching-border';
+      const posterHtml = `<div class="card-poster ${posterClass}"><img src="${poster}" alt="${escapeHtml(item.title)}"></div>`;
 
-      // episodes and toggles
       const epsWatched = item.episodes_watched || 0;
       const epsTotal = item.total_episodes !== null ? item.total_episodes : 'Unknown';
 
@@ -188,7 +262,7 @@ async function initAnimePage() {
           <div class="small">Episodes: <span id="ep_${item.id}">${epsWatched}</span> / ${epsTotal}</div>
           <div style="margin-top:8px;" class="controls">
             <button class="btn" onclick="pages.editEpisodes('${item.id}', ${epsWatched}, ${item.total_episodes !== null ? item.total_episodes : 'null'})">Update episodes</button>
-            <button class="btn ghost" onclick="pages.toggleFinished('${item.id}')">${item.finished ? 'Mark as watching' : 'Mark finished'}</button>
+            <button class="btn ghost" onclick="pages.toggleFinished('${item.id}')">${isFinished ? 'Mark as watching' : 'Mark finished'}</button>
             <button class="btn ghost" onclick="pages.deleteAnimeConfirm('${item.id}')">Delete</button>
           </div>
         </div>
@@ -202,11 +276,11 @@ async function initAnimePage() {
 }
 
 async function promptAddAnime(targetYearSection = null) {
-  const title = prompt('Anime title (not season title):');
+  const title = prompt('Anime title:');
   if (!title) return;
   const eps = prompt('Episodes watched (optional):', '0');
   const total = prompt('Total episodes (optional):', '');
-  const year = prompt('What year did you watch it? (label, e.g. 2025) — leave blank for Ungrouped:', targetYearSection || '');
+  const year = prompt('What year did you watch it? (label, e.g. 2025) – leave blank for Ungrouped:', targetYearSection || '');
   const payload = {
     title,
     episodes_watched: Number(eps) || 0,
@@ -223,7 +297,6 @@ async function editEpisodes(id, current, total) {
   const n = Number(v);
   if (isNaN(n)) return alert('Invalid number');
   await api.patchAnime(id, { episodes_watched: n, finished: (total !== null && n >= total) });
-  // update count in DOM quickly
   const span = document.getElementById(`ep_${id}`);
   if (span) span.textContent = n;
   initAnimePage();
@@ -251,7 +324,18 @@ async function initMangaPage() {
 
   const years = await api.getYears('manga');
   const list = await api.getManga();
-  const sections = Array.isArray(years) && years.length ? [...new Set(years)] : ['Ungrouped'];
+  
+  // Get unique year sections
+  const sectionsSet = new Set();
+  if (Array.isArray(years) && years.length > 0) {
+    years.forEach(y => sectionsSet.add(String(y)));
+  }
+  list.forEach(item => {
+    const section = item.yearSection || (item.year ? String(item.year) : null) || 'Ungrouped';
+    sectionsSet.add(section);
+  });
+  
+  const sections = Array.from(sectionsSet);
 
   for (const yearLabel of sections) {
     const sec = document.createElement('div');
@@ -285,14 +369,17 @@ async function initMangaPage() {
       const card = document.createElement('div');
       card.className = 'card';
       const poster = item.cover || '/placeholders/no.png';
+      const isFinished = item.finished;
+      const posterClass = isFinished ? '' : 'watching-border';
+      
       card.innerHTML = `
-        <div class="card-poster"><img src="${poster}" alt="${escapeHtml(item.title)}"></div>
+        <div class="card-poster ${posterClass}"><img src="${poster}" alt="${escapeHtml(item.title)}"></div>
         <div class="card-info">
           <div class="title">${escapeHtml(item.title)}</div>
           <div class="small">Chapters read: ${item.chapters_read || 0}</div>
           <div style="margin-top:8px;" class="controls">
             <button class="btn" onclick="pages.promptUpdateManga('${item.id}','${item.chapters_read || 0}')">Update chapters</button>
-            <button class="btn ghost" onclick="pages.toggleMangaFinished('${item.id}')">${item.finished ? 'Mark reading' : 'Mark finished'}</button>
+            <button class="btn ghost" onclick="pages.toggleMangaFinished('${item.id}')">${isFinished ? 'Mark reading' : 'Mark finished'}</button>
             <button class="btn ghost" onclick="pages.deleteMangaConfirm('${item.id}')">Delete</button>
           </div>
         </div>
@@ -309,7 +396,7 @@ async function promptAddManga(targetYearSection = null) {
   const title = prompt('Manga title:');
   if (!title) return;
   const chapters = prompt('Chapters read (optional):', '0');
-  const year = prompt('What year did you read it? (label, e.g. 2025) — leave blank for Ungrouped:', targetYearSection || '');
+  const year = prompt('What year did you read it? (label, e.g. 2025) – leave blank for Ungrouped:', targetYearSection || '');
   const item = await api.addManga({ title, chapters_read: Number(chapters) || 0, year: year || null, yearSection: year || targetYearSection || null });
   initMangaPage();
 }
@@ -344,6 +431,9 @@ window.pages = {
   initHome,
   promptAddHomeNote,
   promptEditTop,
+  addTopItem,
+  removeTopItem,
+  saveTopList,
   initAnimePage,
   promptAddAnime,
   editEpisodes,

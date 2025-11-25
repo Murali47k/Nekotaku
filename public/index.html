@@ -5,6 +5,24 @@
   <title>Nekotaku – Home</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Custom style for responsive side-by-side lists */
+    .top-lists-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* Default to single column on small screens */
+      gap: 36px;
+    }
+    @media (min-width: 768px) {
+      .top-lists-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
+      }
+    }
+    /* Ensure H3 titles don't have excessive top margin inside the grid columns */
+    .top-list-col h3 {
+      margin-top: 0; 
+      margin-bottom: 12px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -37,12 +55,18 @@
       </div>
     </div>
 
+    <!-- This card now uses a responsive grid layout -->
     <div style="margin-top:18px;" class="card">
-      <h3>Top Animes</h3>
-      <div id="top-anime-root" class="top-list"></div>
-
-      <h3 style="margin-top:18px;">Top Mangas</h3>
-      <div id="top-manga-root" class="top-list"></div>
+      <div class="top-lists-grid">
+        <div class="top-list-col">
+          <h3>Top Animes</h3>
+          <div id="top-anime-root" class="top-list"></div>
+        </div>
+        <div class="top-list-col">
+          <h3>Top Mangas</h3>
+          <div id="top-manga-root" class="top-list"></div>
+        </div>
+      </div>
     </div>
   </div>
 

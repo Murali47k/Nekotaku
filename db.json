@@ -1,17 +1,30 @@
 {
   "anime": [
     {
-      "id": "1764078383067",
+      "id": "1764082609571",
       "title": "Gintama'",
       "originalTitle": "Gintama",
       "mal_id": 9969,
       "poster": "/posters/anime/9969.jpg",
-      "episodes_watched": 340,
-      "total_episodes": 340,
-      "finished": true,
+      "episodes_watched": 370,
+      "total_episodes": 370,
+      "finished": false,
       "year": "2021",
       "yearSection": "2021",
-      "addedAt": "2025-11-25T13:46:23.067Z"
+      "addedAt": "2025-11-25T14:56:49.571Z"
+    },
+    {
+      "id": "1764082894626",
+      "title": "Boku no Hero Academia",
+      "originalTitle": "My hero academia",
+      "mal_id": 31964,
+      "poster": "/posters/anime/31964.jpg",
+      "episodes_watched": 80,
+      "total_episodes": 80,
+      "finished": false,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-25T15:01:34.626Z"
     }
   ],
   "manga": [
@@ -21,10 +34,21 @@
       "originalTitle": "One Punch man",
       "cover": "/posters/manga/44347.jpg",
       "chapters_read": 274,
-      "finished": false,
+      "finished": true,
       "year": "2024",
       "yearSection": "2024",
       "addedAt": "2025-11-25T13:47:37.933Z"
+    },
+    {
+      "id": "1764082942290",
+      "title": "Kokou no Hito",
+      "originalTitle": "Kokou no hito",
+      "cover": "/posters/manga/7375.jpg",
+      "chapters_read": 210,
+      "finished": false,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-25T15:02:22.290Z"
     }
   ],
   "topAnime": [
@@ -54,11 +78,7 @@
   "homeNotes": [
     {
       "id": 1,
-      "text": "Add your 'about me' paragraphs from the Home page UI by clicking the 'Add note' button."
-    },
-    {
-      "id": 1764077461021,
-      "text": "hi hello"
+      "text": "Hi , I am Murali . This is my anime and manga catalogue"
     }
   ],
   "yearSections": {

@@ -115,6 +115,11 @@ async function promptEditTop(type='anime') {
   window.currentTopType = type;
   
   renderTopList(container, type);
+  
+  // Add click outside handler after a small delay to avoid immediate closure
+  setTimeout(() => {
+    document.addEventListener('click', window.handleTopListOutsideClick);
+  }, 100);
 }
 
 function renderTopList(container, type) {
@@ -126,26 +131,148 @@ function renderTopList(container, type) {
     const div = document.createElement('div');
     div.className = 'top-edit-item';
     
-    // Create dropdown options from available items
-    const optionsHtml = available.map(availItem => {
-      const posterPath = type === 'anime' ? availItem.poster : availItem.cover;
-      const selected = item.title === availItem.title ? 'selected' : '';
-      return `<option value="${escapeHtml(availItem.title)}" data-poster="${escapeHtml(posterPath || '')}" ${selected}>${escapeHtml(availItem.title)}</option>`;
-    }).join('');
-    
     div.innerHTML = `
       <div style="display:flex; align-items:center; gap:12px; padding:12px; background:rgba(255,255,255,0.02); border-radius:8px; margin-bottom:8px;">
         <span style="font-weight:700; min-width:30px;">#${idx + 1}</span>
-        <select data-idx="${idx}" style="flex:1; padding:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#fff;" onchange="pages.updateTopItem(${idx}, this)">
-          <option value="">Select ${type === 'anime' ? 'anime' : 'manga'}...</option>
-          ${optionsHtml}
-        </select>
+        <div style="flex:1; position:relative;">
+          <input 
+            type="text" 
+            class="searchable-select-input" 
+            data-idx="${idx}"
+            value="${escapeHtml(item.title)}" 
+            placeholder="Type to search ${type === 'anime' ? 'anime' : 'manga'}..."
+            autocomplete="off"
+            style="width:100%; padding:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#fff;"
+          >
+          <div 
+            id="dropdown-${idx}" 
+            class="searchable-dropdown" 
+            style="display:none; position:absolute; top:100%; left:0; right:0; max-height:200px; overflow-y:auto; background:rgba(20,20,30,0.98); border:1px solid rgba(255,255,255,0.1); border-radius:6px; margin-top:4px; z-index:1000; box-shadow:0 4px 12px rgba(0,0,0,0.3);"
+          ></div>
+        </div>
         <button class="btn ghost" onclick="pages.removeTopItem(${idx})">Remove</button>
       </div>
     `;
     container.appendChild(div);
+    
+    // Attach event listeners to the input
+    const input = div.querySelector('.searchable-select-input');
+    input.addEventListener('focus', () => showDropdownForInput(idx, type));
+    input.addEventListener('input', (e) => filterDropdownForInput(idx, e.target.value, type));
   });
 }
+
+function showDropdownForInput(idx, type) {
+  // Hide all other dropdowns
+  document.querySelectorAll('.searchable-dropdown').forEach(dd => {
+    dd.style.display = 'none';
+  });
+  
+  const dropdown = document.getElementById(`dropdown-${idx}`);
+  const available = window.availableItems || [];
+  
+  if (!dropdown) return;
+  
+  dropdown.innerHTML = '';
+  
+  if (available.length === 0) {
+    const noItems = document.createElement('div');
+    noItems.style.cssText = 'padding:8px 12px; color:var(--muted); font-style:italic;';
+    noItems.textContent = `No ${type} available`;
+    dropdown.appendChild(noItems);
+  } else {
+    available.forEach(availItem => {
+      const posterPath = type === 'anime' ? availItem.poster : availItem.cover;
+      const option = document.createElement('div');
+      option.className = 'dropdown-option';
+      option.style.cssText = 'padding:8px 12px; cursor:pointer; color:#e6eef8; transition:background 0.2s;';
+      option.textContent = availItem.title;
+      option.dataset.title = availItem.title;
+      option.dataset.poster = posterPath || '';
+      
+      option.addEventListener('mouseenter', () => {
+        option.style.background = 'rgba(255,255,255,0.1)';
+      });
+      option.addEventListener('mouseleave', () => {
+        option.style.background = 'transparent';
+      });
+      option.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectDropdownItem(idx, availItem.title, posterPath);
+      });
+      
+      dropdown.appendChild(option);
+    });
+  }
+  
+  dropdown.style.display = 'block';
+}
+
+function filterDropdownForInput(idx, searchText, type) {
+  const dropdown = document.getElementById(`dropdown-${idx}`);
+  const available = window.availableItems || [];
+  
+  if (!dropdown) return;
+  
+  dropdown.innerHTML = '';
+  
+  const filtered = available.filter(item => 
+    item.title.toLowerCase().includes(searchText.toLowerCase())
+  );
+  
+  if (filtered.length === 0) {
+    const noResults = document.createElement('div');
+    noResults.style.cssText = 'padding:8px 12px; color:var(--muted); font-style:italic;';
+    noResults.textContent = 'No results found';
+    dropdown.appendChild(noResults);
+  } else {
+    filtered.forEach(availItem => {
+      const posterPath = type === 'anime' ? availItem.poster : availItem.cover;
+      const option = document.createElement('div');
+      option.className = 'dropdown-option';
+      option.style.cssText = 'padding:8px 12px; cursor:pointer; color:#e6eef8; transition:background 0.2s;';
+      option.textContent = availItem.title;
+      option.dataset.title = availItem.title;
+      option.dataset.poster = posterPath || '';
+      
+      option.addEventListener('mouseenter', () => {
+        option.style.background = 'rgba(255,255,255,0.1)';
+      });
+      option.addEventListener('mouseleave', () => {
+        option.style.background = 'transparent';
+      });
+      option.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectDropdownItem(idx, availItem.title, posterPath);
+      });
+      
+      dropdown.appendChild(option);
+    });
+  }
+  
+  dropdown.style.display = 'block';
+}
+
+function selectDropdownItem(idx, title, poster) {
+  const input = document.querySelector(`.searchable-select-input[data-idx="${idx}"]`);
+  const dropdown = document.getElementById(`dropdown-${idx}`);
+  
+  if (input) input.value = title;
+  if (dropdown) dropdown.style.display = 'none';
+  
+  if (window.currentTopList && window.currentTopList[idx]) {
+    window.currentTopList[idx] = { title, poster };
+  }
+}
+
+// Handle clicks outside dropdown
+window.handleTopListOutsideClick = function(e) {
+  if (!e.target.closest('.searchable-select-input') && !e.target.closest('.searchable-dropdown')) {
+    document.querySelectorAll('.searchable-dropdown').forEach(dd => {
+      dd.style.display = 'none';
+    });
+  }
+};
 
 async function addTopItem(type) {
   if (!window.currentTopList) window.currentTopList = [];
@@ -158,16 +285,6 @@ async function addTopItem(type) {
   renderTopList(container, type);
 }
 
-function updateTopItem(idx, selectElement) {
-  const selectedOption = selectElement.options[selectElement.selectedIndex];
-  const title = selectedOption.value;
-  const poster = selectedOption.getAttribute('data-poster');
-  
-  if (window.currentTopList && window.currentTopList[idx]) {
-    window.currentTopList[idx] = { title, poster };
-  }
-}
-
 function removeTopItem(idx) {
   window.currentTopList.splice(idx, 1);
   const container = document.getElementById('top-list-container');
@@ -176,21 +293,26 @@ function removeTopItem(idx) {
 }
 
 async function saveTopList(type) {
-  const selects = document.querySelectorAll('#top-list-container select');
+  const inputs = document.querySelectorAll('.searchable-select-input');
   const newList = [];
   
-  for (let select of selects) {
-    const selectedOption = select.options[select.selectedIndex];
-    const title = selectedOption.value;
-    const poster = selectedOption.getAttribute('data-poster');
+  for (let input of inputs) {
+    const idx = input.getAttribute('data-idx');
+    const title = input.value.trim();
     
     if (!title) continue;
+    
+    // Get the poster from currentTopList
+    const poster = window.currentTopList[idx]?.poster || null;
     
     newList.push({ title, poster });
   }
   
   if (type === 'anime') await api.setTopAnime(newList);
   else await api.setTopManga(newList);
+  
+  // Clean up event listener
+  document.removeEventListener('click', window.handleTopListOutsideClick);
   
   document.querySelector('.modal').remove();
   initHome();

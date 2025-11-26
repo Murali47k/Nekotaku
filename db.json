@@ -521,19 +521,6 @@
       "addedAt": "2025-11-26T05:30:27.473Z"
     },
     {
-      "id": "1764135098131",
-      "title": "Gintama'",
-      "originalTitle": "Gintama",
-      "mal_id": 9969,
-      "poster": "/posters/anime/9969.jpg",
-      "episodes_watched": 369,
-      "total_episodes": 369,
-      "finished": true,
-      "year": "2022",
-      "yearSection": "2022",
-      "addedAt": "2025-11-26T05:31:38.131Z"
-    },
-    {
       "id": "1764135149734",
       "title": "Ryman's Club",
       "originalTitle": "Ryman's club",
@@ -922,6 +909,32 @@
       "year": "2025",
       "yearSection": "2025",
       "addedAt": "2025-11-26T06:03:27.997Z"
+    },
+    {
+      "id": "1764137867443",
+      "title": "3-nen Z-gumi Ginpachi-sensei",
+      "originalTitle": "3-Nen Z-Gumi Ginpachi-sensei",
+      "mal_id": 54757,
+      "poster": "/posters/anime/54757.jpg",
+      "episodes_watched": 4,
+      "total_episodes": 12,
+      "finished": false,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T06:17:47.443Z"
+    },
+    {
+      "id": "1764138010337",
+      "title": "Gintama'",
+      "originalTitle": "Gintama",
+      "mal_id": 9969,
+      "poster": "/posters/anime/9969.jpg",
+      "episodes_watched": 369,
+      "total_episodes": 369,
+      "finished": false,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:20:10.337Z"
     }
   ],
   "manga": [

@@ -42,6 +42,17 @@ async function initHome() {
     });
   }
 
+  // Load counts
+  const [animeList, mangaList] = await Promise.all([
+    api.getAnime(),
+    api.getManga()
+  ]);
+  
+  const animeCountEl = document.getElementById('anime-count');
+  const mangaCountEl = document.getElementById('manga-count');
+  if (animeCountEl) animeCountEl.textContent = animeList.length;
+  if (mangaCountEl) mangaCountEl.textContent = mangaList.length;
+
   // load Top 10 lists
   const animeRoot = document.getElementById('top-anime-root');
   const mangaRoot = document.getElementById('top-manga-root');

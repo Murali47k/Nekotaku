@@ -1,4 +1,4 @@
-// public/app.js
+//public/app.js
 const api = {
   getAnime: () => fetch('/api/anime').then(r => r.json()),
   addAnime: (payload) => fetch('/api/anime', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload)}).then(r => r.json()),
@@ -161,7 +161,7 @@ function renderTopList(container, type) {
             style="display:none; position:absolute; top:100%; left:0; right:0; max-height:200px; overflow-y:auto; background:rgba(20,20,30,0.98); border:1px solid rgba(255,255,255,0.1); border-radius:6px; margin-top:4px; z-index:1000; box-shadow:0 4px 12px rgba(0,0,0,0.3);"
           ></div>
         </div>
-        <button class="btn ghost" onclick="pages.removeTopItem(${idx})">Remove</button>
+        <button class="btn ghost" onclick="pages.removeTopItemConfirm(${idx})">Remove</button>
       </div>
     `;
     container.appendChild(div);
@@ -296,6 +296,18 @@ async function addTopItem(type) {
   renderTopList(container, type);
 }
 
+// NEW: Confirmation wrapper for removing Top List item
+function removeTopItemConfirm(idx) {
+    showConfirmModal(
+        'Confirm Removal',
+        `Are you sure you want to remove item #${idx + 1} from the Top 10 list?`,
+        () => {
+            removeTopItem(idx);
+        }
+    );
+}
+
+// Original removal logic (now called from the confirmation modal)
 function removeTopItem(idx) {
   window.currentTopList.splice(idx, 1);
   const container = document.getElementById('top-list-container');
@@ -329,23 +341,57 @@ async function saveTopList(type) {
   initHome();
 }
 
-/* ---------- YEAR sections (user-created) ---------- */
-async function promptAddYear(type) {
-  const label = prompt('Enter a label for this year section (e.g. 2025):');
-  if (!label) return;
-  await api.addYear(type, label);
-  if (type === 'anime') initAnimePage();
-  else initMangaPage();
-}
-async function promptDeleteYear(type, label) {
-  // Replaced confirm() with a message in console as confirmation dialog is not available
-  console.log(`Attempting to delete section "${label}". Confirmation is required on the backend/server.`);
-  
-  // NOTE: Since confirm() is forbidden, we proceed with the delete, assuming the user is aware.
-  // In a real app, this would be a proper modal confirmation.
-  await api.deleteYear(type, label);
-  if (type === 'anime') initAnimePage();
-  else initMangaPage();
+/* ---------- GENERAL UTILITIES ---------- */
+
+// NEW: Generic confirmation modal function
+function showConfirmModal(title, message, onConfirm) {
+    // Remove any existing modals first
+    document.querySelector('.modal')?.remove();
+
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+
+    // Tailwind-like styling for buttons and modal for consistency
+    const buttonStyle = `
+        padding: 8px 16px; 
+        border-radius: 6px; 
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s, border-color 0.2s;
+    `;
+
+    modal.innerHTML = `
+        <div class="modal-content" style="max-width:350px;">
+            <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+            <h2 style="margin-bottom:12px; color:var(--text-color);">${title}</h2>
+            <p style="color:var(--muted); margin-bottom: 24px;">${message}</p>
+            <div style="display:flex; justify-content:flex-end; gap:12px;">
+                <button 
+                    type="button" 
+                    class="btn ghost" 
+                    onclick="this.closest('.modal').remove()"
+                    style="${buttonStyle} background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#e6eef8;"
+                >
+                    Cancel
+                </button>
+                <button 
+                    type="button" 
+                    class="btn" 
+                    id="confirm-action-btn"
+                    style="${buttonStyle} background:#e74c3c; color:white; border:1px solid #c0392b;"
+                >
+                    Confirm
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    document.getElementById('confirm-action-btn').addEventListener('click', () => {
+        onConfirm();
+        modal.remove();
+    });
 }
 
 // Helper to create and show a modal form
@@ -439,6 +485,30 @@ function showEntryModal(type, targetYearSection, onSubmit) {
     });
 }
 
+
+/* ---------- YEAR sections (user-created) ---------- */
+async function promptAddYear(type) {
+  const label = prompt('Enter a label for this year section (e.g. 2025):');
+  if (!label) return;
+  await api.addYear(type, label);
+  if (type === 'anime') initAnimePage();
+  else initMangaPage();
+}
+
+// MODIFIED: Uses custom confirmation modal
+async function promptDeleteYear(type, label) {
+    showConfirmModal(
+        'Confirm Section Deletion',
+        `Are you sure you want to remove the year section "${label}"? This action cannot be undone and the grouping will be removed.`,
+        async () => {
+            await api.deleteYear(type, label);
+            if (type === 'anime') initAnimePage();
+            else initMangaPage();
+        }
+    );
+}
+
+
 /* ---------- ANIME page (no seasons) ---------- */
 async function initAnimePage() {
   const container = document.getElementById('year-sections');
@@ -488,6 +558,7 @@ async function initAnimePage() {
     delBtn.onclick = () => promptDeleteYear('anime', yearLabel);
 
     actionWrap.appendChild(addBtn);
+    // Only show delete button for user-defined years (those in the API list and not 'Ungrouped')
     if (yearLabel !== 'Ungrouped' && years.includes(yearLabel)) {
        actionWrap.appendChild(delBtn);
     }
@@ -570,11 +641,16 @@ async function toggleFinished(id) {
   initAnimePage();
 }
 
+// MODIFIED: Uses custom confirmation modal
 async function deleteAnimeConfirm(id) {
-  // Replaced confirm() with a message in console as confirmation dialog is not available
-  console.log('Delete action triggered. If this was a real application, a confirmation modal would appear here.');
-  await api.deleteAnime(id);
-  initAnimePage();
+    showConfirmModal(
+        'Confirm Anime Deletion',
+        'Are you sure you want to permanently delete this anime entry? This action cannot be undone.',
+        async () => {
+            await api.deleteAnime(id);
+            initAnimePage();
+        }
+    );
 }
 
 /* ---------- MANGA page ---------- */
@@ -696,11 +772,17 @@ async function toggleMangaFinished(id) {
   await api.patchManga(id, { finished: !m.finished });
   initMangaPage();
 }
+
+// MODIFIED: Uses custom confirmation modal
 async function deleteMangaConfirm(id) {
-  // Replaced confirm() with a message in console as confirmation dialog is not available
-  console.log('Delete action triggered. If this was a real application, a confirmation modal would appear here.');
-  await api.deleteManga(id);
-  initMangaPage();
+    showConfirmModal(
+        'Confirm Manga Deletion',
+        'Are you sure you want to permanently delete this manga entry? This action cannot be undone.',
+        async () => {
+            await api.deleteManga(id);
+            initMangaPage();
+        }
+    );
 }
 
 /* ---------- Utilities & exports ---------- */
@@ -714,7 +796,7 @@ window.pages = {
   promptAddHomeNote,
   promptEditTop,
   addTopItem,
-  removeTopItem,
+  removeTopItemConfirm, // Exporting the confirmation wrapper for Top List removal
   saveTopList,
   initAnimePage,
   promptAddAnime,

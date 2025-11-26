@@ -90,6 +90,7 @@ async function promptAddHomeNote() {
 /* ---------- TOP lists editing ---------- */
 async function promptEditTop(type='anime') {
   const current = (type === 'anime') ? await api.getTopAnime() : await api.getTopManga();
+  const allItems = (type === 'anime') ? await api.getAnime() : await api.getManga();
   
   // Create modal
   const modal = document.createElement('div');
@@ -100,7 +101,7 @@ async function promptEditTop(type='anime') {
       <h2>Edit Top 10 ${type === 'anime' ? 'Anime' : 'Manga'}</h2>
       <div id="top-list-container" style="margin-top:16px;"></div>
       <div style="margin-top:16px; display:flex; gap:12px;">
-        <button class="btn" onclick="pages.addTopItem()">Add Item</button>
+        <button class="btn" onclick="pages.addTopItem('${type}')">Add Item</button>
         <button class="btn" onclick="pages.saveTopList('${type}')">Save</button>
         <button class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
       </div>
@@ -110,21 +111,35 @@ async function promptEditTop(type='anime') {
 
   const container = document.getElementById('top-list-container');
   window.currentTopList = [...current];
+  window.availableItems = allItems;
+  window.currentTopType = type;
   
-  renderTopList(container);
+  renderTopList(container, type);
 }
 
-function renderTopList(container) {
+function renderTopList(container, type) {
   container.innerHTML = '';
   const list = window.currentTopList || [];
+  const available = window.availableItems || [];
   
   list.forEach((item, idx) => {
     const div = document.createElement('div');
     div.className = 'top-edit-item';
+    
+    // Create dropdown options from available items
+    const optionsHtml = available.map(availItem => {
+      const posterPath = type === 'anime' ? availItem.poster : availItem.cover;
+      const selected = item.title === availItem.title ? 'selected' : '';
+      return `<option value="${escapeHtml(availItem.title)}" data-poster="${escapeHtml(posterPath || '')}" ${selected}>${escapeHtml(availItem.title)}</option>`;
+    }).join('');
+    
     div.innerHTML = `
       <div style="display:flex; align-items:center; gap:12px; padding:12px; background:rgba(255,255,255,0.02); border-radius:8px; margin-bottom:8px;">
         <span style="font-weight:700; min-width:30px;">#${idx + 1}</span>
-        <input type="text" value="${escapeHtml(item.title)}" placeholder="Title" style="flex:1; padding:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#fff;" data-idx="${idx}">
+        <select data-idx="${idx}" style="flex:1; padding:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#fff;" onchange="pages.updateTopItem(${idx}, this)">
+          <option value="">Select ${type === 'anime' ? 'anime' : 'manga'}...</option>
+          ${optionsHtml}
+        </select>
         <button class="btn ghost" onclick="pages.removeTopItem(${idx})">Remove</button>
       </div>
     `;
@@ -132,43 +147,44 @@ function renderTopList(container) {
   });
 }
 
-async function addTopItem() {
+async function addTopItem(type) {
   if (!window.currentTopList) window.currentTopList = [];
   if (window.currentTopList.length >= 10) {
-    // Replaced alert with console message as per instructions
     console.error('Maximum 10 items allowed in Top 10 list.');
     return;
   }
   window.currentTopList.push({ title: '', poster: null });
   const container = document.getElementById('top-list-container');
-  renderTopList(container);
+  renderTopList(container, type);
+}
+
+function updateTopItem(idx, selectElement) {
+  const selectedOption = selectElement.options[selectElement.selectedIndex];
+  const title = selectedOption.value;
+  const poster = selectedOption.getAttribute('data-poster');
+  
+  if (window.currentTopList && window.currentTopList[idx]) {
+    window.currentTopList[idx] = { title, poster };
+  }
 }
 
 function removeTopItem(idx) {
   window.currentTopList.splice(idx, 1);
   const container = document.getElementById('top-list-container');
-  renderTopList(container);
+  const type = window.currentTopType;
+  renderTopList(container, type);
 }
 
 async function saveTopList(type) {
-  const inputs = document.querySelectorAll('#top-list-container input');
+  const selects = document.querySelectorAll('#top-list-container select');
   const newList = [];
   
-  for (let input of inputs) {
-    const title = input.value.trim();
-    if (!title) continue;
+  for (let select of selects) {
+    const selectedOption = select.options[select.selectedIndex];
+    const title = selectedOption.value;
+    const poster = selectedOption.getAttribute('data-poster');
     
-    // Fetch poster
-    let poster = null;
-    try {
-      const searchFunc = type === 'anime' ? api.searchAnime : api.searchManga;
-      const s = await searchFunc(title);
-      if (s && s.data && s.data.length > 0) {
-        poster = (s.data[0].images && s.data[0].images.jpg && (s.data[0].images.jpg.large_image_url || s.data[0].images.jpg.image_url)) || null;
-      }
-    } catch (e) {
-      console.error('Error fetching poster:', e);
-    }
+    if (!title) continue;
     
     newList.push({ title, poster });
   }

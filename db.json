@@ -25,6 +25,32 @@
       "year": "2021",
       "yearSection": "2021",
       "addedAt": "2025-11-25T15:01:34.626Z"
+    },
+    {
+      "id": "1764129923134",
+      "title": "Shokugeki no Souma",
+      "originalTitle": "Food wars",
+      "mal_id": 28171,
+      "poster": "/posters/anime/28171.jpg",
+      "episodes_watched": 32,
+      "total_episodes": 89,
+      "finished": true,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T04:05:23.134Z"
+    },
+    {
+      "id": "1764130072737",
+      "title": "Bleach",
+      "originalTitle": "Bleach",
+      "mal_id": 269,
+      "poster": "/posters/anime/269.jpg",
+      "episodes_watched": 25,
+      "total_episodes": 370,
+      "finished": false,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T04:07:52.737Z"
     }
   ],
   "manga": [
@@ -38,30 +64,45 @@
       "year": "2024",
       "yearSection": "2024",
       "addedAt": "2025-11-25T13:47:37.933Z"
+    },
+    {
+      "id": "1764129998705",
+      "title": "Blue Lock",
+      "originalTitle": "Blue Lock",
+      "cover": "/posters/manga/114745.jpg",
+      "chapters_read": 203,
+      "finished": false,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T04:06:38.706Z"
     }
   ],
   "topAnime": [
     {
-      "title": "Gintama",
-      "poster": "https://cdn.myanimelist.net/images/anime/4/50361l.jpg"
+      "title": "Shokugeki no Souma",
+      "poster": "/posters/anime/28171.jpg"
     },
     {
-      "title": "Haikyuu!",
-      "poster": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg"
+      "title": "Gintama'",
+      "poster": "/posters/anime/9969.jpg"
+    },
+    {
+      "title": "Bleach",
+      "poster": "/posters/anime/269.jpg"
+    },
+    {
+      "title": "Boku no Hero Academia",
+      "poster": "/posters/anime/31964.jpg"
     }
   ],
   "topManga": [
     {
-      "title": "Space Brothers",
-      "poster": "https://cdn.myanimelist.net/images/manga/3/166256l.jpg"
+      "title": "One Punch-Man",
+      "poster": "/posters/manga/44347.jpg"
     },
     {
-      "title": "Kokou no Hito",
-      "poster": "https://cdn.myanimelist.net/images/manga/1/324690l.jpg"
-    },
-    {
-      "title": "20th Century Boys",
-      "poster": "https://cdn.myanimelist.net/images/manga/5/260006l.jpg"
+      "title": "Blue Lock",
+      "poster": "/posters/manga/114745.jpg"
     }
   ],
   "homeNotes": [
@@ -72,8 +113,11 @@
   ],
   "yearSections": {
     "anime": [
-      "2021"
+      "2021",
+      "2025"
     ],
-    "manga": []
+    "manga": [
+      "2025"
+    ]
   }
 }

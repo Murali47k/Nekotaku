@@ -1285,7 +1285,7 @@
       "originalTitle": "The horizon",
       "cover": "/posters/manga/125036.jpg",
       "chapters_read": 21,
-      "finished": false,
+      "finished": true,
       "year": "2022",
       "yearSection": "2022",
       "addedAt": "2025-11-26T07:04:46.107Z"
@@ -1296,10 +1296,383 @@
       "originalTitle": "watashitachi no shiawase na jikan",
       "cover": "/posters/manga/11734.jpg",
       "chapters_read": 1,
-      "finished": false,
+      "finished": true,
       "year": "2022",
       "yearSection": "2022",
       "addedAt": "2025-11-26T07:05:22.915Z"
+    },
+    {
+      "id": "1764141005393",
+      "title": "Berserk",
+      "originalTitle": "Berserk",
+      "cover": "/posters/manga/2.jpg",
+      "chapters_read": 380,
+      "finished": false,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:10:05.393Z"
+    },
+    {
+      "id": "1764141056689",
+      "title": "Kokou no Hito",
+      "originalTitle": "Kokou no hito",
+      "cover": "/posters/manga/7375.jpg",
+      "chapters_read": 170,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:10:56.689Z"
+    },
+    {
+      "id": "1764141075024",
+      "title": "Sayonara Eri",
+      "originalTitle": "Sayonara eri",
+      "cover": "/posters/manga/145863.jpg",
+      "chapters_read": 1,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:11:15.024Z"
+    },
+    {
+      "id": "1764141118747",
+      "title": "Beck",
+      "originalTitle": "Beck",
+      "cover": "/posters/manga/145.jpg",
+      "chapters_read": 103,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:11:58.747Z"
+    },
+    {
+      "id": "1764141292726",
+      "title": "Vagabond",
+      "originalTitle": "vagabond",
+      "cover": "/posters/manga/656.jpg",
+      "chapters_read": 327,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:14:52.726Z"
+    },
+    {
+      "id": "1764141355085",
+      "title": "Takopii no Genzai",
+      "originalTitle": "Takopi",
+      "cover": "/posters/manga/142600.jpg",
+      "chapters_read": 16,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:15:55.085Z"
+    },
+    {
+      "id": "1764141394713",
+      "title": "Slam Dunk",
+      "originalTitle": "Slam dunk",
+      "cover": "/posters/manga/51.jpg",
+      "chapters_read": 276,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:16:34.713Z"
+    },
+    {
+      "id": "1764141421036",
+      "title": "Hajime no Ippo",
+      "originalTitle": "Hajime no ippo",
+      "cover": "/posters/manga/7.jpg",
+      "chapters_read": 1500,
+      "finished": false,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:17:01.036Z"
+    },
+    {
+      "id": "1764141455127",
+      "title": "Ore to Akuma no Blues",
+      "originalTitle": "Me and the devils blue",
+      "cover": "/posters/manga/1211.jpg",
+      "chapters_read": 31,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:17:35.128Z"
+    },
+    {
+      "id": "1764141495223",
+      "title": "Billy Bat",
+      "originalTitle": "billy bat",
+      "cover": "/posters/manga/11054.jpg",
+      "chapters_read": 165,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:18:15.223Z"
+    },
+    {
+      "id": "1764141523536",
+      "title": "Hideout",
+      "originalTitle": "Hideout",
+      "cover": "/posters/manga/28361.jpg",
+      "chapters_read": 9,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:18:43.536Z"
+    },
+    {
+      "id": "1764141602279",
+      "title": "Koi wa Ameagari no You ni",
+      "originalTitle": "After the rain",
+      "cover": "/posters/manga/88600.jpg",
+      "chapters_read": 79,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:20:02.279Z"
+    },
+    {
+      "id": "1764141639761",
+      "title": "Be Blues! Ao ni Nare",
+      "originalTitle": "Be Blues",
+      "cover": "/posters/manga/59519.jpg",
+      "chapters_read": 489,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:20:39.761Z"
+    },
+    {
+      "id": "1764141694309",
+      "title": "21st Century Boys",
+      "originalTitle": "21st Century Boys",
+      "cover": "/posters/manga/743.jpg",
+      "chapters_read": 16,
+      "finished": true,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:21:34.309Z"
+    },{
+      "id": "1764141694319",
+      "title": "Pokemon : Festival of champions",
+      "originalTitle": "Pokemon : Festival of champions",
+      "cover": "/posters/manga/foc_pokemon.jpg",
+      "chapters_read": 16,
+      "finished": false,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:21:34.309Z"
+    },
+    {
+      "id": "1764141715952",
+      "title": "Rurouni Kenshin: Tokuhitsuban",
+      "originalTitle": "ruronin kenshin",
+      "cover": "/posters/manga/37303.jpg",
+      "chapters_read": 52,
+      "finished": false,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:21:55.952Z"
+    },
+    {
+      "id": "1764141880928",
+      "title": "The Boxer",
+      "originalTitle": "The Boxer",
+      "cover": "/posters/manga/141120.jpg",
+      "chapters_read": 133,
+      "finished": false,
+      "year": "2023",
+      "yearSection": "2023",
+      "addedAt": "2025-11-26T07:24:40.928Z"
+    },
+    {
+      "id": "1764141929446",
+      "title": "Bleach",
+      "originalTitle": "Bleach",
+      "cover": "/posters/manga/12.jpg",
+      "chapters_read": 480,
+      "finished": true,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:25:29.446Z"
+    },
+    {
+      "id": "1764141977981",
+      "title": "Jujutsu Kaisen",
+      "originalTitle": "Jujutsu kaisen",
+      "cover": "/posters/manga/113138.jpg",
+      "chapters_read": 271,
+      "finished": true,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:26:17.981Z"
+    },
+    {
+      "id": "1764142022305",
+      "title": "Tokyo Ghoul",
+      "originalTitle": "Tokyo ghoul",
+      "cover": "/posters/manga/74847.jpg",
+      "chapters_read": 143,
+      "finished": true,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:27:02.305Z"
+    },
+    {
+      "id": "1764142083145",
+      "title": "Ashita no Joe",
+      "originalTitle": "Ashita no joe",
+      "cover": "/posters/manga/1303.jpg",
+      "chapters_read": 171,
+      "finished": true,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:28:03.145Z"
+    },
+    {
+      "id": "1764142134251",
+      "title": "Diamond no Ace Act II",
+      "originalTitle": "Ace of diamond act 2",
+      "cover": "/posters/manga/92559.jpg",
+      "chapters_read": 319,
+      "finished": true,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:28:54.251Z"
+    },
+    {
+      "id": "1764142164383",
+      "title": "Uchuu Kyoudai",
+      "originalTitle": "Space brothers",
+      "cover": "/posters/manga/14483.jpg",
+      "chapters_read": 423,
+      "finished": false,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:29:24.383Z"
+    },
+    {
+      "id": "1764142211564",
+      "title": "Inuyashiki",
+      "originalTitle": "Inuyashiki",
+      "cover": "/posters/manga/64465.jpg",
+      "chapters_read": 85,
+      "finished": true,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:30:11.564Z"
+    },
+    {
+      "id": "1764142258422",
+      "title": "Dragon Ball",
+      "originalTitle": "Dragon ball",
+      "cover": "/posters/manga/42.jpg",
+      "chapters_read": 519,
+      "finished": true,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:30:58.422Z"
+    },
+    {
+      "id": "1764142297577",
+      "title": "Boku no Hero Academia",
+      "originalTitle": "My hero academia",
+      "cover": "/posters/manga/75989.jpg",
+      "chapters_read": 430,
+      "finished": true,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:31:37.577Z"
+    },
+    {
+      "id": "1764142324300",
+      "title": "Raise wa Tanin ga Ii",
+      "originalTitle": "yakuza fiance",
+      "cover": "/posters/manga/109229.jpg",
+      "chapters_read": 10,
+      "finished": false,
+      "year": "2024",
+      "yearSection": "2024",
+      "addedAt": "2025-11-26T07:32:04.300Z"
+    },
+    {
+      "id": "1764142355121",
+      "title": "Tokyo Ghoul:re",
+      "originalTitle": "tokyo ghoul : re",
+      "cover": "/posters/manga/81117.jpg",
+      "chapters_read": 179,
+      "finished": true,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T07:32:35.121Z"
+    },
+    {
+      "id": "1764142389426",
+      "title": "GTO",
+      "originalTitle": "Great teacher onizuka",
+      "cover": "/posters/manga/336.jpg",
+      "chapters_read": 200,
+      "finished": true,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T07:33:09.426Z"
+    },
+    {
+      "id": "1764142431416",
+      "title": "Fire Punch",
+      "originalTitle": "Fire Punch",
+      "cover": "/posters/manga/98270.jpg",
+      "chapters_read": 83,
+      "finished": true,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T07:33:51.416Z"
+    },
+    {
+      "id": "1764142487938",
+      "title": "Chihayafuru",
+      "originalTitle": "Chihayafuru",
+      "cover": "/posters/manga/13245.jpg",
+      "chapters_read": 247,
+      "finished": true,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T07:34:47.938Z"
+    },
+    {
+      "id": "1764142509439",
+      "title": "Ao no Hako",
+      "originalTitle": "Blue box",
+      "cover": "/posters/manga/135545.jpg",
+      "chapters_read": 120,
+      "finished": false,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T07:35:09.439Z"
+    },
+    {
+      "id": "1764142530742",
+      "title": "Dorohedoro",
+      "originalTitle": "Dorohedoro",
+      "cover": "/posters/manga/1133.jpg",
+      "chapters_read": 16,
+      "finished": false,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T07:35:30.742Z"
+    },
+    {
+      "id": "1764142570674",
+      "title": "Usogui to Kakerou Tachiainin",
+      "originalTitle": "usougi",
+      "cover": "/posters/manga/140835.jpg",
+      "chapters_read": 539,
+      "finished": true,
+      "year": "2025",
+      "yearSection": "2025",
+      "addedAt": "2025-11-26T07:36:10.674Z"
     }
   ],
   "topAnime": [
@@ -1344,7 +1717,48 @@
       "poster": "/posters/anime/13601.jpg"
     }
   ],
-  "topManga": [],
+  "topManga": [
+    {
+      "title": "Uchuu Kyoudai",
+      "poster": "/posters/manga/14483.jpg"
+    },
+    {
+      "title": "Kokou no Hito",
+      "poster": "/posters/manga/7375.jpg"
+    },
+    {
+      "title": "Vagabond",
+      "poster": "/posters/manga/656.jpg"
+    },
+    {
+      "title": "20th Century Boys",
+      "poster": "/posters/manga/3.jpg"
+    },
+    {
+      "title": "Pokemon : Festival of champions",
+      "poster": "/posters/manga/foc_pokemon.jpg"
+    },
+    {
+      "title": "One Piece",
+      "poster": "/posters/manga/13.jpg"
+    },
+    {
+      "title": "Ao Ashi",
+      "poster": "/posters/manga/102256.jpg"
+    },
+    {
+      "title": "Hajime no Ippo",
+      "poster": "/posters/manga/7.jpg"
+    },
+    {
+      "title": "Berserk",
+      "poster": "/posters/manga/2.jpg"
+    },
+    {
+      "title": "Slam Dunk",
+      "poster": "/posters/manga/51.jpg"
+    }
+  ],
   "homeNotes": [
     {
       "id": 1,
@@ -1365,7 +1779,10 @@
     "manga": [
       "2020",
       "2021",
-      "2022"
+      "2022",
+      "2023",
+      "2024",
+      "2025"
     ]
   }
 }

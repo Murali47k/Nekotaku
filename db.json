@@ -939,18 +939,411 @@
   ],
   "manga": [
     {
-      "id": "1764132083886",
+      "id": "1764138776030",
+      "title": "Pocket Monsters Special",
+      "originalTitle": "Pokemon adventures black and white",
+      "cover": "/posters/manga/928.jpg",
+      "chapters_read": 595,
+      "finished": false,
+      "year": "2020",
+      "yearSection": "2020",
+      "addedAt": "2025-11-26T06:32:56.030Z"
+    },
+    {
+      "id": "1764138794680",
+      "title": "Naruto",
+      "originalTitle": "Naruto",
+      "cover": "/posters/manga/11.jpg",
+      "chapters_read": 700,
+      "finished": true,
+      "year": "2020",
+      "yearSection": "2020",
+      "addedAt": "2025-11-26T06:33:14.680Z"
+    },
+    {
+      "id": "1764138820272",
+      "title": "5-toubun no Hanayome",
+      "originalTitle": "Quintessential Quintaplets",
+      "cover": "/posters/manga/103851.jpg",
+      "chapters_read": 122,
+      "finished": true,
+      "year": "2020",
+      "yearSection": "2020",
+      "addedAt": "2025-11-26T06:33:40.272Z"
+    },
+    {
+      "id": "1764138844751",
+      "title": "Kanojo, Okarishimasu",
+      "originalTitle": "Rent a Girlfriend",
+      "cover": "/posters/manga/108407.jpg",
+      "chapters_read": 200,
+      "finished": false,
+      "year": "2020",
+      "yearSection": "2020",
+      "addedAt": "2025-11-26T06:34:04.751Z"
+    },
+    {
+      "id": "1764138888883",
+      "title": "Mob Psycho 100",
+      "originalTitle": "Mob Psycho 100",
+      "cover": "/posters/manga/60783.jpg",
+      "chapters_read": 101,
+      "finished": true,
+      "year": "2020",
+      "yearSection": "2020",
+      "addedAt": "2025-11-26T06:34:48.883Z"
+    },
+    {
+      "id": "1764138939774",
+      "title": "Blue Lock",
+      "originalTitle": "Blue Lock",
+      "cover": "/posters/manga/114745.jpg",
+      "chapters_read": 316,
+      "finished": false,
+      "year": "2020",
+      "yearSection": "2020",
+      "addedAt": "2025-11-26T06:35:39.774Z"
+    },
+    {
+      "id": "1764139043507",
+      "title": "Bakuman.",
+      "originalTitle": "Bakuman",
+      "cover": "/posters/manga/9711.jpg",
+      "chapters_read": 176,
+      "finished": true,
+      "year": "2020",
+      "yearSection": "2020",
+      "addedAt": "2025-11-26T06:37:23.507Z"
+    },
+    {
+      "id": "1764139076153",
+      "title": "Kaijuu 8-gou",
+      "originalTitle": "Kaiju no 8",
+      "cover": "/posters/manga/127907.jpg",
+      "chapters_read": 129,
+      "finished": true,
+      "year": "2020",
+      "yearSection": "2020",
+      "addedAt": "2025-11-26T06:37:56.153Z"
+    },
+    {
+      "id": "1764139154714",
+      "title": "Haikyuu!!",
+      "originalTitle": "Haikyuu!",
+      "cover": "/posters/manga/30987.jpg",
+      "chapters_read": 402,
+      "finished": true,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:39:14.714Z"
+    },
+    {
+      "id": "1764139198729",
+      "title": "Beastars",
+      "originalTitle": "Beastars",
+      "cover": "/posters/manga/103701.jpg",
+      "chapters_read": 196,
+      "finished": true,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:39:58.730Z"
+    },
+    {
+      "id": "1764139223113",
+      "title": "Komi-san wa, Comyushou desu.",
+      "originalTitle": "Komi Cant Communicate",
+      "cover": "/posters/manga/99007.jpg",
+      "chapters_read": 374,
+      "finished": false,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:40:23.113Z"
+    },
+    {
+      "id": "1764139245231",
+      "title": "One Punch-Man",
+      "originalTitle": "One punch man",
+      "cover": "/posters/manga/44347.jpg",
+      "chapters_read": 181,
+      "finished": false,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:40:45.231Z"
+    },
+    {
+      "id": "1764139301044",
+      "title": "Vinland Saga",
+      "originalTitle": "Vinland Saga",
+      "cover": "/posters/manga/642.jpg",
+      "chapters_read": 220,
+      "finished": true,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:41:41.044Z"
+    },
+    {
+      "id": "1764139362691",
+      "title": "Planetes",
+      "originalTitle": "Planetes",
+      "cover": "/posters/manga/481.jpg",
+      "chapters_read": 26,
+      "finished": true,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:42:42.691Z"
+    },
+    {
+      "id": "1764139419112",
+      "title": "Horimiya",
+      "originalTitle": "Horimiya",
+      "cover": "/posters/manga/42451.jpg",
+      "chapters_read": 122,
+      "finished": true,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:43:39.112Z"
+    },
+    {
+      "id": "1764139500413",
+      "title": "Kingdom",
+      "originalTitle": "kingdom",
+      "cover": "/posters/manga/16765.jpg",
+      "chapters_read": 833,
+      "finished": false,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:45:00.413Z"
+    },
+    {
+      "id": "1764139573412",
+      "title": "Chainsaw Man",
+      "originalTitle": "chainsaw man part 1",
+      "cover": "/posters/manga/116778.jpg",
+      "chapters_read": 97,
+      "finished": true,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:46:13.412Z"
+    },
+    {
+      "id": "1764139653913",
+      "title": "20th Century Boys",
+      "originalTitle": "20th Century boys",
+      "cover": "/posters/manga/3.jpg",
+      "chapters_read": 249,
+      "finished": true,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2025-11-26T06:47:33.913Z"
+    },
+    {
+      "id": "1764139695593",
+      "title": "Nisekoi",
+      "originalTitle": "Nisekoi",
+      "cover": "/posters/manga/31499.jpg",
+      "chapters_read": 229,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:48:15.593Z"
+    },
+    {
+      "id": "1764139743820",
+      "title": "Eyeshield 21",
+      "originalTitle": "Eyesheild 21",
+      "cover": "/posters/manga/43.jpg",
+      "chapters_read": 333,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:49:03.820Z"
+    },
+    {
+      "id": "1764139811948",
+      "title": "Mikkakan no Koufuku",
+      "originalTitle": "Three days of happiness",
+      "cover": "/posters/manga/126479.jpg",
+      "chapters_read": 16,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:50:11.948Z"
+    },
+    {
+      "id": "1764139844680",
+      "title": "Spy x Family",
+      "originalTitle": "spy x family",
+      "cover": "/posters/manga/119161.jpg",
+      "chapters_read": 120,
+      "finished": false,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:50:44.680Z"
+    },
+    {
+      "id": "1764140087472",
+      "title": "Monster",
+      "originalTitle": "Monster",
+      "cover": "/posters/manga/1.jpg",
+      "chapters_read": 162,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:54:47.472Z"
+    },
+    {
+      "id": "1764140124895",
+      "title": "Kimetsu no Yaiba",
+      "originalTitle": "Demon Slayer",
+      "cover": "/posters/manga/96792.jpg",
+      "chapters_read": 205,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:55:24.895Z"
+    },
+    {
+      "id": "1764140173388",
+      "title": "Real",
+      "originalTitle": "REAL",
+      "cover": "/posters/manga/657.jpg",
+      "chapters_read": 96,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:56:13.388Z"
+    },
+    {
+      "id": "1764140228788",
+      "title": "Oyasumi Punpun",
+      "originalTitle": "Oyasumi pun pun",
+      "cover": "/posters/manga/4632.jpg",
+      "chapters_read": 146,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:57:08.788Z"
+    },
+    {
+      "id": "1764140260219",
+      "title": "One Piece",
+      "originalTitle": "One piece",
+      "cover": "/posters/manga/13.jpg",
+      "chapters_read": 1127,
+      "finished": false,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:57:40.219Z"
+    },
+    {
+      "id": "1764140363136",
+      "title": "Shingeki no Kyojin",
+      "originalTitle": "Attack on Titan",
+      "cover": "/posters/manga/23390.jpg",
+      "chapters_read": 139,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T06:59:23.136Z"
+    },
+    {
+      "id": "1764140431968",
+      "title": "Sun-Ken Rock",
+      "originalTitle": "Sun ken rock",
+      "cover": "/posters/manga/8848.jpg",
+      "chapters_read": 171,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T07:00:31.968Z"
+    },
+    {
+      "id": "1764140555548",
+      "title": "Pluto",
+      "originalTitle": "pluto",
+      "cover": "/posters/manga/745.jpg",
+      "chapters_read": 65,
+      "finished": true,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T07:02:35.548Z"
+    },
+    {
+      "id": "1764140602647",
       "title": "Ao Ashi",
       "originalTitle": "Ao Ashi",
       "cover": "/posters/manga/102256.jpg",
-      "chapters_read": 300,
+      "chapters_read": 410,
       "finished": true,
-      "year": "2018",
-      "yearSection": "2018",
-      "addedAt": "2025-11-26T04:41:23.886Z"
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T07:03:22.647Z"
+    },
+    {
+      "id": "1764140686107",
+      "title": "The Horizon",
+      "originalTitle": "The horizon",
+      "cover": "/posters/manga/125036.jpg",
+      "chapters_read": 21,
+      "finished": false,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T07:04:46.107Z"
+    },
+    {
+      "id": "1764140722915",
+      "title": "Watashitachi no Shiawase na Jikan",
+      "originalTitle": "watashitachi no shiawase na jikan",
+      "cover": "/posters/manga/11734.jpg",
+      "chapters_read": 1,
+      "finished": false,
+      "year": "2022",
+      "yearSection": "2022",
+      "addedAt": "2025-11-26T07:05:22.915Z"
     }
   ],
-  "topAnime": [],
+  "topAnime": [
+    {
+      "title": "Gintama'",
+      "poster": "/posters/anime/9969.jpg"
+    },
+    {
+      "title": "Haikyuu!!",
+      "poster": "/posters/anime/20583.jpg"
+    },
+    {
+      "title": "Shingeki no Kyojin",
+      "poster": "/posters/anime/16498.jpg"
+    },
+    {
+      "title": "Vinland Saga",
+      "poster": "/posters/anime/37521.jpg"
+    },
+    {
+      "title": "Chi. Chikyuu no Undou ni Tsuite",
+      "poster": "/posters/anime/52215.jpg"
+    },
+    {
+      "title": "Chihayafuru",
+      "poster": "/posters/anime/10800.jpg"
+    },
+    {
+      "title": "Ginga Eiyuu Densetsu: Die Neue These - Kaikou",
+      "poster": "/posters/anime/31433.jpg"
+    },
+    {
+      "title": "Shokugeki no Souma",
+      "poster": "/posters/anime/28171.jpg"
+    },
+    {
+      "title": "Fruits Basket 2nd Season",
+      "poster": "/posters/anime/40417.jpg"
+    },
+    {
+      "title": "Psycho-Pass",
+      "poster": "/posters/anime/13601.jpg"
+    }
+  ],
   "topManga": [],
   "homeNotes": [
     {
@@ -970,7 +1363,9 @@
       "2025"
     ],
     "manga": [
-      "2018"
+      "2020",
+      "2021",
+      "2022"
     ]
   }
 }

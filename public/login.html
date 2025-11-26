@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0f1724, #1e293b);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 40px;
+      width: 350px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      animation: fadeIn 0.9s ease;
+    }
+    @keyframes fadeIn { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+
+    h2 {
+      text-align: center;
+      color: #7dd3fc;
+      margin-bottom: 25px;
+    }
+    label {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      border: 1px solid #334155;
+      background: rgba(255,255,255,0.08);
+      color: #f1f5f9;
+    }
+    input:focus {
+      outline: none;
+      border-color: #7dd3fc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #7dd3fc;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #38bdf8;
+    }
+    .error {
+      text-align: center;
+      color: #f87171;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Login</h2>
+    <label>Password</label>
+    <input id="password" type="password" placeholder="Enter password" />
+    <button onclick="login()">Login</button>
+    <p id="error" class="error">Incorrect Password</p>
+  </div>
+
+  <script>
+    const CORRECT_PASSWORD = "Suj1thr@neko"; // hardcoded password
+
+    function login() {
+      const pwd = document.getElementById("password").value;
+      const errorBox = document.getElementById("error");
+
+      if (pwd === CORRECT_PASSWORD) {
+        window.location.href = "index.html";
+      } else {
+        errorBox.style.display = "block";
+        setTimeout(() => errorBox.style.display = "none", 2000);
+      }
+    }
+  </script>
+</body>
+</html>

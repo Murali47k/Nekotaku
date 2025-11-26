@@ -5,14 +5,58 @@
   <title>Nekotaku — Manga</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="/styles.css">
+  <style>
+  /* Logo styling */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Custom style for responsive side-by-side lists */
+    .top-lists-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* Default to single column on small screens */
+      gap: 36px;
+    }
+    @media (min-width: 768px) {
+      .top-lists-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
+      }
+    }
+    /* Ensure H3 titles don't have excessive top margin inside the grid columns */
+    .top-list-col h3 {
+      margin-top: 0; 
+      margin-bottom: 12px;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">Nekotaku</div>
+    <div class="logo">
+      <img src="/placeholders/logo.png" alt="Nekotaku Logo" class="logo-img">
+      <span class="logo-text">Nekotaku</span>
+    </div>
     <nav class="nav">
-      <a href="/">Home</a>
+      <a href="/" class="active">Home</a>
       <a href="/anime.html">Anime</a>
-      <a href="/manga.html" class="active">Manga</a>
+      <a href="/manga.html">Manga</a>
     </nav>
   </header>
 

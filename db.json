@@ -38,43 +38,19 @@
       "year": "2021",
       "yearSection": "2021",
       "addedAt": "2025-11-26T04:05:23.134Z"
-    },
-    {
-      "id": "1764130072737",
-      "title": "Bleach",
-      "originalTitle": "Bleach",
-      "mal_id": 269,
-      "poster": "/posters/anime/269.jpg",
-      "episodes_watched": 25,
-      "total_episodes": 370,
-      "finished": false,
-      "year": "2025",
-      "yearSection": "2025",
-      "addedAt": "2025-11-26T04:07:52.737Z"
     }
   ],
   "manga": [
     {
-      "id": "1764078457933",
-      "title": "One Punch-Man",
-      "originalTitle": "One Punch man",
-      "cover": "/posters/manga/44347.jpg",
-      "chapters_read": 274,
+      "id": "1764132083886",
+      "title": "Ao Ashi",
+      "originalTitle": "Ao Ashi",
+      "cover": "/posters/manga/102256.jpg",
+      "chapters_read": 300,
       "finished": true,
-      "year": "2024",
-      "yearSection": "2024",
-      "addedAt": "2025-11-25T13:47:37.933Z"
-    },
-    {
-      "id": "1764129998705",
-      "title": "Blue Lock",
-      "originalTitle": "Blue Lock",
-      "cover": "/posters/manga/114745.jpg",
-      "chapters_read": 203,
-      "finished": false,
-      "year": "2025",
-      "yearSection": "2025",
-      "addedAt": "2025-11-26T04:06:38.706Z"
+      "year": "2018",
+      "yearSection": "2018",
+      "addedAt": "2025-11-26T04:41:23.886Z"
     }
   ],
   "topAnime": [
@@ -87,22 +63,14 @@
       "poster": "/posters/anime/9969.jpg"
     },
     {
-      "title": "Bleach",
-      "poster": "/posters/anime/269.jpg"
-    },
-    {
       "title": "Shokugeki no Souma",
       "poster": "/posters/anime/28171.jpg"
     }
   ],
   "topManga": [
     {
-      "title": "One Punch-Man",
-      "poster": "/posters/manga/44347.jpg"
-    },
-    {
-      "title": "Blue Lock",
-      "poster": "/posters/manga/114745.jpg"
+      "title": "Ao Ashi",
+      "poster": "/posters/manga/102256.jpg"
     }
   ],
   "homeNotes": [
@@ -113,11 +81,10 @@
   ],
   "yearSections": {
     "anime": [
-      "2021",
-      "2025"
+      "2021"
     ],
     "manga": [
-      "2025"
+      "2018"
     ]
   }
 }

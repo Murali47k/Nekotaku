@@ -582,8 +582,35 @@ async function initAnimePage() {
 
       const poster = item.poster || '/placeholders/no.png';
       const isFinished = item.finished;
-      const posterClass = isFinished ? '' : 'watching-border';
-      const posterHtml = `<div class="card-poster ${posterClass}"><img src="${poster}" alt="${escapeHtml(item.title)}"></div>`;
+      // const posterClass = isFinished ? '' : 'watching-border'; // OLD: border class
+
+      // NEW: Indicator HTML
+      const watchingDot = isFinished ? '' : '<div class="watching-dot"></div>'; 
+      // NOTE: The CSS for .watching-dot needs to be added to your stylesheet (e.g., style.css)
+      /* .watching-dot {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 12px;
+        height: 12px;
+        background-color: #e74c3c; // Red color
+        border-radius: 50%;
+        border: 2px solid var(--card); // Optional: border to make it pop on the poster
+        z-index: 10;
+      }
+      .card-poster {
+        position: relative; // Needed for absolute positioning of the dot
+        // ... existing styles for card-poster ...
+      }
+      */
+      
+      const posterHtml = `
+        <div class="card-poster" style="position: relative;">
+          <img src="${poster}" alt="${escapeHtml(item.title)}">
+          ${watchingDot}
+        </div>
+      `;
+      // --- END NEW HTML ---
 
       const epsWatched = item.episodes_watched || 0;
       const epsTotal = item.total_episodes !== null ? item.total_episodes : 'Unknown';
@@ -721,10 +748,21 @@ async function initMangaPage() {
       card.className = 'card';
       const poster = item.cover || '/placeholders/no.png';
       const isFinished = item.finished;
-      const posterClass = isFinished ? '' : 'watching-border';
+      // const posterClass = isFinished ? '' : 'watching-border'; // OLD: border class
+
+      // NEW: Indicator HTML
+      const watchingDot = isFinished ? '' : '<div class="watching-dot"></div>';
+      
+      const posterHtml = `
+        <div class="card-poster" style="position: relative;">
+          <img src="${poster}" alt="${escapeHtml(item.title)}">
+          ${watchingDot}
+        </div>
+      `;
+      // --- END NEW HTML ---
       
       card.innerHTML = `
-        <div class="card-poster ${posterClass}"><img src="${poster}" alt="${escapeHtml(item.title)}"></div>
+        ${posterHtml}
         <div class="card-info">
           <div class="title">${escapeHtml(item.title)}</div>
           <div class="small">Chapters read: ${item.chapters_read || 0}</div>

@@ -5,37 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <style>
+    /* Define the new color palette */
+    :root {
+      --bg: rgb(0, 0, 10);
+      --bg-secondary: rgb(0, 5, 45);
+      --card: rgba(0, 36, 85, 0.4);
+      --accent: rgb(255, 56, 56); /* Bright Red */
+      --accent-dark: rgb(220, 0, 0); /* Darker Red */
+      --muted: #9aa8bd;
+      --glass: rgba(255,255,255,0.03);
+    }
+
     * {
       box-sizing: border-box;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0f1724, #1e293b);
+      /* Apply new background gradient */
+      background: linear-gradient(135deg, var(--bg), var(--bg-secondary));
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .card {
-      background: rgba(255, 255, 255, 0.06);
+      /* Apply new card colors */
+      background: var(--card);
       padding: 40px;
       width: 350px;
       border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      box-shadow: 0 0 30px rgba(0,0,0,0.5); /* Slightly darker shadow for contrast */
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid var(--glass);
       animation: fadeIn 0.9s ease;
     }
     @keyframes fadeIn { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
 
     h2 {
       text-align: center;
-      color: #7dd3fc;
+      /* Use bright red accent */
+      color: white;
       margin-bottom: 25px;
     }
     label {
-      color: #cbd5e1;
+      /* Use muted text color */
+      color: var(--muted);
       font-size: 14px;
     }
     input {
@@ -44,30 +59,35 @@
       margin-top: 6px;
       margin-bottom: 18px;
       border-radius: 10px;
-      border: 1px solid #334155;
-      background: rgba(255,255,255,0.08);
-      color: #f1f5f9;
+      /* Use secondary background for border/background details */
+      border: 1px solid var(--bg-secondary);
+      background: var(--glass);
+      color: #f1f5f9; /* Keep text light */
     }
     input:focus {
       outline: none;
-      border-color: #7dd3fc;
+      /* Accent color on focus */
+      border-color: var(--accent);
     }
     button {
       width: 100%;
       padding: 12px;
-      background: #7dd3fc;
+      /* Use bright red accent for button */
+      background: var(--accent);
+      color: white; /* Ensure text is readable */
       border: none;
       border-radius: 10px;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.2s;
+      transition: background 0.2s;
     }
     button:hover {
-      background: #38bdf8;
+      /* Darker red on hover */
+      background: var(--accent-dark);
     }
     .error {
       text-align: center;
-      color: #f87171;
+      color: var(--accent); /* Use accent color for errors */
       font-size: 14px;
       display: none;
     }
@@ -90,6 +110,7 @@
       const errorBox = document.getElementById("error");
 
       if (pwd === CORRECT_PASSWORD) {
+        // You'll need to create an index.html file for this redirect to work.
         window.location.href = "index.html";
       } else {
         errorBox.style.display = "block";

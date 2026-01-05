@@ -1117,6 +1117,32 @@
       "year": "Movies",
       "yearSection": "Movies",
       "addedAt": "2025-12-08T16:07:57.532Z"
+    },
+    {
+      "id": "1767632855056",
+      "title": "Hyakuemu.",
+      "originalTitle": "Hyakuemu",
+      "mal_id": 58919,
+      "poster": "/posters/anime/58919.jpg",
+      "episodes_watched": 1,
+      "total_episodes": 1,
+      "finished": true,
+      "year": "Movies",
+      "yearSection": "Movies",
+      "addedAt": "2026-01-05T17:07:35.056Z"
+    },
+    {
+      "id": "1767632928652",
+      "title": "Black Clover",
+      "originalTitle": "Black Clover",
+      "mal_id": 34572,
+      "poster": "/posters/anime/34572.jpg",
+      "episodes_watched": 87,
+      "total_episodes": null,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-01-05T17:08:48.652Z"
     }
   ],
   "manga": [
@@ -1980,7 +2006,8 @@
       "2023",
       "2024",
       "2025",
-      "Movies"
+      "Movies",
+      "2026"
     ],
     "manga": [
       "2020",

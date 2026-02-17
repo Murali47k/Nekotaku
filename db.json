@@ -916,9 +916,9 @@
       "originalTitle": "3-Nen Z-Gumi Ginpachi-sensei",
       "mal_id": 54757,
       "poster": "/posters/anime/54757.jpg",
-      "episodes_watched": 9,
+      "episodes_watched": 12,
       "total_episodes": 12,
-      "finished": false,
+      "finished": true,
       "year": "2025",
       "yearSection": "2025",
       "addedAt": "2025-11-26T06:17:47.443Z"
@@ -1143,6 +1143,19 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-01-05T17:08:48.652Z"
+    },
+    {
+      "id": "1771303579968",
+      "title": "Kimi ni Todoke",
+      "originalTitle": "kimi ni tadoke",
+      "mal_id": 6045,
+      "poster": "/posters/anime/6045.jpg",
+      "episodes_watched": 6,
+      "total_episodes": 42,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-02-17T04:46:19.968Z"
     }
   ],
   "manga": [
@@ -1900,10 +1913,32 @@
       "originalTitle": "Look back",
       "cover": "/posters/manga/138673.jpg",
       "chapters_read": 1,
-      "finished": false,
+      "finished": true,
       "year": "2025",
       "yearSection": "2025",
       "addedAt": "2025-12-08T15:55:08.617Z"
+    },
+    {
+      "id": "1771303640301",
+      "title": "Gokushufudou",
+      "originalTitle": "The way of the househusband",
+      "cover": "/posters/manga/112922.jpg",
+      "chapters_read": 135,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-02-17T04:47:20.301Z"
+    },
+    {
+      "id": "1771303668086",
+      "title": "Homunculus",
+      "originalTitle": "Hommunculus",
+      "cover": "/posters/manga/936.jpg",
+      "chapters_read": 4,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-02-17T04:47:48.086Z"
     }
   ],
   "topAnime": [
@@ -2015,7 +2050,8 @@
       "2022",
       "2023",
       "2024",
-      "2025"
+      "2025",
+      "2026"
     ]
   }
 }

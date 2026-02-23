@@ -1931,14 +1931,25 @@
     },
     {
       "id": "1771303668086",
-      "title": "Homunculus",
-      "originalTitle": "Hommunculus",
-      "cover": "/posters/manga/936.jpg",
-      "chapters_read": 4,
-      "finished": false,
+      "title": "Maus",
+      "originalTitle": "Maus",
+      "cover": "/posters/manga/maus.jpeg",
+      "chapters_read": 12,
+      "finished": true,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-02-17T04:47:48.086Z"
+    },
+    {
+      "id": "1771825739174",
+      "title": "Homunculus",
+      "originalTitle": "Homunculus",
+      "cover": "/posters/manga/936.jpg",
+      "chapters_read": 166,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-02-23T05:48:59.174Z"
     }
   ],
   "topAnime": [

@@ -1,4 +1,26 @@
 {
+  "books": [
+    {
+      "id": "1772961407202",
+      "title": "1984",
+      "pages_read": 302,
+      "finished": true,
+      "cover": "/posters/books/go1984.jpg",
+      "year": 2026,
+      "yearSection": "2026",
+      "addedAt": "2026-03-08T09:16:47.202Z"
+    },
+    {
+      "id": "1772961407982",
+      "title": "Maus",
+      "pages_read": 296,
+      "finished": true,
+      "cover": "/posters/books/maus.jpeg",
+      "year": 2026,
+      "yearSection": "2026",
+      "addedAt": "2026-03-08T09:16:47.202Z"
+    }
+  ],
   "anime": [
     {
       "id": "1764132418348",
@@ -2125,17 +2147,6 @@
       "addedAt": "2026-02-17T04:47:20.301Z"
     },
     {
-      "id": "1771303668086",
-      "title": "Maus",
-      "originalTitle": "Maus",
-      "cover": "/posters/manga/maus.jpeg",
-      "chapters_read": 12,
-      "finished": true,
-      "year": "2026",
-      "yearSection": "2026",
-      "addedAt": "2026-02-17T04:47:48.086Z"
-    },
-    {
       "id": "1771825739174",
       "title": "Homunculus",
       "originalTitle": "Homunculus",
@@ -2151,7 +2162,7 @@
       "title": "Meitantei Conan",
       "originalTitle": "Detective Conan",
       "cover": "/posters/manga/1061.jpg",
-      "chapters_read": 25,
+      "chapters_read": 466,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
@@ -2245,7 +2256,7 @@
   "homeNotes": [
     {
       "id": 1,
-      "text": "Hi , I am Murali . This is my anime and manga catalogue"
+      "text": "Hi , I am Murali . This is my catalogue of anime , manga and books, I have watched and read though out the years"
     }
   ],
   "yearSections": {
@@ -2268,6 +2279,9 @@
       "2023",
       "2024",
       "2025",
+      "2026"
+    ],
+    "books": [
       "2026"
     ]
   }

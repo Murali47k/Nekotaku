@@ -32,10 +32,11 @@ function readDB() {
     return {
       anime: [],
       manga: [],
+      books: [],
       topAnime: [],
       topManga: [],
       homeNotes: [],
-      yearSections: { anime: [], manga: [] }
+      yearSections: { anime: [], manga: [] ,books:[] }
     };
   }
 }
@@ -49,6 +50,7 @@ if (!fs.existsSync(DB_FILE)) {
   writeDB({
     anime: [],
     manga: [],
+    books : [],
     topAnime: [],
     topManga: [],
     homeNotes: [
@@ -57,7 +59,7 @@ if (!fs.existsSync(DB_FILE)) {
         text: "Add your 'about me' paragraphs from the Home page UI by clicking the 'Add note' button."
       }
     ],
-    yearSections: { anime: [], manga: [] }
+    yearSections: { anime: [], manga: [] , books:[] }
   });
 }
 
@@ -188,6 +190,7 @@ app.post('/api/years/:type', (req, res) => {
 });
 
 app.delete('/api/years/:type/:yearLabel', (req, res) => {
+
   const type = req.params.type;
   const yearLabel = req.params.yearLabel;
   const db = readDB();
@@ -197,21 +200,45 @@ app.delete('/api/years/:type/:yearLabel', (req, res) => {
   );
 
   if (type === "anime") {
+
     const toDelete = db.anime.filter(a =>
       String(a.yearSection || a.year || "Ungrouped") === String(yearLabel)
     );
+
     toDelete.forEach(a => deletePosterFile(a.poster));
+
     db.anime = db.anime.filter(
       a => String(a.yearSection || a.year || "Ungrouped") !== String(yearLabel)
     );
-  } else {
+
+  }
+
+  else if (type === "manga") {
+
     const toDelete = db.manga.filter(m =>
       String(m.yearSection || m.year || "Ungrouped") === String(yearLabel)
     );
+
     toDelete.forEach(m => deletePosterFile(m.cover));
+
     db.manga = db.manga.filter(
       m => String(m.yearSection || m.year || "Ungrouped") !== String(yearLabel)
     );
+
+  }
+
+  else if (type === "books") {
+
+    const toDelete = db.books.filter(b =>
+      String(b.yearSection || "Ungrouped") === String(yearLabel)
+    );
+
+    toDelete.forEach(b => deletePosterFile(b.cover));
+
+    db.books = db.books.filter(
+      b => String(b.yearSection || "Ungrouped") !== String(yearLabel)
+    );
+
   }
 
   writeDB(db);
@@ -343,6 +370,76 @@ app.delete('/api/manga/:id', (req, res) => {
   if (item) deletePosterFile(item.cover);
   db.manga = db.manga.filter(m => m.id !== id);
   writeDB(db);
+  res.json({ ok: true });
+});
+
+// BOOK ROUTES
+
+app.get('/api/books', (req, res) => {
+  res.json(readDB().books);
+});
+
+
+app.post('/api/books', async (req, res) => {
+
+  const { title, pages_read = 0, year = null, yearSection = null } = req.body;
+
+  if (!title) {
+    return res.status(400).json({ error: "title required" });
+  }
+
+  const db = readDB();
+
+  const item = {
+    id: Date.now().toString(),
+    title,
+    pages_read: Number(pages_read),
+    finished: false,
+    year,
+    yearSection,
+    addedAt: new Date().toISOString()
+  };
+
+  db.books.push(item);
+
+  writeDB(db);
+
+  res.json(item);
+});
+
+
+app.patch('/api/books/:id', (req, res) => {
+
+  const id = req.params.id;
+
+  const db = readDB();
+
+  const idx = db.books.findIndex(b => b.id === id);
+
+  if (idx === -1) {
+    return res.status(404).json({ error: "not found" });
+  }
+
+  const item = db.books[idx];
+
+  Object.assign(item, req.body);
+
+  writeDB(db);
+
+  res.json(item);
+});
+
+
+app.delete('/api/books/:id', (req, res) => {
+
+  const id = req.params.id;
+
+  const db = readDB();
+
+  db.books = db.books.filter(b => b.id !== id);
+
+  writeDB(db);
+
   res.json({ ok: true });
 });
 

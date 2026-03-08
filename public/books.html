@@ -2,11 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Nekotaku — Anime</title>
+  <title>Nekotaku — Books</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="/styles.css">
   <style>
-    /* Logo styling */
+  /* Logo styling */
     .logo {
       display: flex;
       align-items: center;
@@ -63,15 +63,15 @@
 
   <div class="container">
     <div style="display:flex; justify-content:space-between; align-items:center;">
-      <h2>Anime</h2>
+      <h2>Books</h2>
       <div>
-        <button class="btn" onclick="pages.promptAddYear('anime')">Add Year Section</button>
-        <button class="btn" onclick="pages.promptAddAnime()">Add Anime</button>
+        <button class="btn" onclick="pages.promptAddYear('books')">Add Year Section</button>
+        <button class="btn" onclick="pages.promptAddBook()">Add Book</button>
         <button class="btn ghost" onclick="location.reload()">Refresh</button>
       </div>
     </div>
 
-    <div id="year-sections" style="margin-top:12px;"></div>
+    <div id="books-year-sections" style="margin-top:12px;"></div>
   </div>
 
   <script src="/app.js"></script>

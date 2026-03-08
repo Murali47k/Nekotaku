@@ -23,7 +23,26 @@ const api = {
   deleteYear: (type, yearLabel) => fetch(`/api/years/${type}/${encodeURIComponent(yearLabel)}`, { method: 'DELETE' }).then(r => r.json()),
 
   searchAnime: (q) => fetch('/api/search/anime?q=' + encodeURIComponent(q)).then(r=>r.json()),
-  searchManga: (q) => fetch('/api/search/manga?q=' + encodeURIComponent(q)).then(r=>r.json())
+  searchManga: (q) => fetch('/api/search/manga?q=' + encodeURIComponent(q)).then(r=>r.json()),
+
+  /* ---------- BOOKS API ---------- */
+
+  getBooks: () => fetch('/api/books').then(r => r.json()),
+  addBook: (payload) => fetch('/api/books', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  }).then(r => r.json()),
+
+  patchBook: (id, patch) => fetch('/api/books/' + id, {
+    method: 'PATCH',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(patch)
+  }).then(r => r.json()),
+
+  deleteBook: (id) => fetch('/api/books/' + id, {
+    method: 'DELETE'
+  }).then(r => r.json()),
 };
 
 /* ---------- HOME ---------- */
@@ -43,15 +62,18 @@ async function initHome() {
   }
 
   // Load counts
-  const [animeList, mangaList] = await Promise.all([
+  const [animeList, mangaList ,bookList] = await Promise.all([
     api.getAnime(),
-    api.getManga()
+    api.getManga(),
+    api.getBooks()
   ]);
   
   const animeCountEl = document.getElementById('anime-count');
   const mangaCountEl = document.getElementById('manga-count');
+  const bookCountEl = document.getElementById('books-count');
   if (animeCountEl) animeCountEl.textContent = animeList.length;
   if (mangaCountEl) mangaCountEl.textContent = mangaList.length;
+  if (bookCountEl) bookCountEl.textContent = bookList.length;
 
   // load Top 10 lists
   const animeRoot = document.getElementById('top-anime-root');
@@ -823,6 +845,181 @@ async function deleteMangaConfirm(id) {
     );
 }
 
+/* ---------- BOOKS page ---------- */
+
+async function initBooksPage() {
+
+  const container = document.getElementById('books-year-sections');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  const [years, list] = await Promise.all([
+    api.getYears('books'),
+    api.getBooks()
+  ]);
+
+  const sectionsSet = new Set();
+
+  if (Array.isArray(years)) {
+    years.forEach(y => sectionsSet.add(String(y).trim()));
+  }
+
+  list.forEach(item => {
+    const section = String(item.yearSection || 'Ungrouped').trim();
+    sectionsSet.add(section);
+  });
+
+  const sections = Array.from(sectionsSet).sort().reverse();
+
+  for (const yearLabel of sections) {
+
+    const sec = document.createElement('div');
+    sec.className = 'year-section card';
+
+    const head = document.createElement('div');
+    head.className = 'year-head';
+
+    const h = document.createElement('h3');
+    h.textContent = yearLabel;
+
+    const actionWrap = document.createElement('div');
+
+    const addBtn = document.createElement('button');
+    addBtn.className = 'btn';
+    addBtn.textContent = `Add book to ${yearLabel}`;
+    addBtn.onclick = () => promptAddBook(yearLabel);
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'btn ghost';
+    delBtn.textContent = 'Remove Year';
+    delBtn.onclick = () => promptDeleteYear('books', yearLabel);
+
+    actionWrap.appendChild(addBtn);
+
+    if (yearLabel !== 'Ungrouped' && years.includes(yearLabel)) {
+      actionWrap.appendChild(delBtn);
+    }
+
+    head.appendChild(h);
+    head.appendChild(actionWrap);
+
+    sec.appendChild(head);
+
+    const gallery = document.createElement('div');
+    gallery.className = 'year-gallery';
+
+    const items = list.filter(b => {
+      const itemSection = String(b.yearSection || 'Ungrouped').trim();
+      return itemSection === yearLabel;
+    });
+
+    items.forEach(item => {
+
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const cover = item.cover || '/placeholders/no.png';
+
+      const readingDot = item.finished ? '' : '<div class="watching-dot"></div>';
+
+      card.innerHTML = `
+        <div class="card-poster" style="position:relative;">
+          <img src="${cover}" alt="${escapeHtml(item.title)}">
+          ${readingDot}
+        </div>
+
+        <div class="card-info">
+          <div class="title">${escapeHtml(item.title)}</div>
+
+          <div class="small">
+            Pages read: ${item.pages_read || 0}
+          </div>
+
+          <div style="margin-top:8px;" class="controls">
+            <button class="btn"
+              onclick="pages.promptUpdateBook('${item.id}','${item.pages_read || 0}')">
+              Update pages
+            </button>
+
+            <button class="btn ghost"
+              onclick="pages.toggleBookFinished('${item.id}')">
+              ${item.finished ? 'Mark reading' : 'Mark finished'}
+            </button>
+
+            <button class="btn ghost"
+              onclick="pages.deleteBookConfirm('${item.id}')">
+              Delete
+            </button>
+          </div>
+        </div>
+      `;
+
+      gallery.appendChild(card);
+    });
+
+    sec.appendChild(gallery);
+    container.appendChild(sec);
+  }
+}
+
+async function promptAddBook(targetYearSection = null) {
+
+  const title = prompt("Book title:");
+  if (!title) return;
+
+  const pages = Number(prompt("Pages read:", "0"));
+
+  const year = prompt("Year section (example 2025):", targetYearSection || "");
+
+  const payload = {
+    title,
+    pages_read: pages || 0,
+    yearSection: year || targetYearSection || null
+  };
+
+  await api.addBook(payload);
+
+  initBooksPage();
+}
+
+async function promptUpdateBook(id, current) {
+
+  const v = prompt("Enter pages read:", current || 0);
+  const n = Number(v);
+
+  if (isNaN(n)) return;
+
+  await api.patchBook(id, { pages_read: n });
+
+  initBooksPage();
+}
+
+async function toggleBookFinished(id) {
+
+  const list = await api.getBooks();
+
+  const b = list.find(x => x.id === id);
+
+  if (!b) return;
+
+  await api.patchBook(id, { finished: !b.finished });
+
+  initBooksPage();
+}
+
+async function deleteBookConfirm(id) {
+
+  showConfirmModal(
+    "Confirm Book Deletion",
+    "Are you sure you want to delete this book?",
+    async () => {
+      await api.deleteBook(id);
+      initBooksPage();
+    }
+  );
+}
+
 /* ---------- Utilities & exports ---------- */
 function escapeHtml(s) {
   if (!s) return '';
@@ -847,11 +1044,17 @@ window.pages = {
   toggleMangaFinished,
   deleteMangaConfirm,
   promptAddYear,
-  promptDeleteYear
+  promptDeleteYear,
+  initBooksPage,
+  promptAddBook,
+  promptUpdateBook,
+  toggleBookFinished,
+  deleteBookConfirm,
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('home-notes')) pages.initHome();
   if (document.getElementById('year-sections')) pages.initAnimePage();
   if (document.getElementById('manga-year-sections')) pages.initMangaPage();
+  if (document.getElementById('books-year-sections')) pages.initBooksPage();
 });

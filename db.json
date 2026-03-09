@@ -2162,11 +2162,33 @@
       "title": "Meitantei Conan",
       "originalTitle": "Detective Conan",
       "cover": "/posters/manga/1061.jpg",
-      "chapters_read": 491,
+      "chapters_read": 501,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-02-24T12:16:12.308Z"
+    },
+    {
+      "id": "1773039647203",
+      "title": "17-21: Fujimoto Tatsuki Tanpenshuu",
+      "originalTitle": "tatsuki fujimoto 17-21",
+      "cover": "/posters/manga/141214.jpg",
+      "chapters_read": 4,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-03-09T07:00:47.203Z"
+    },
+    {
+      "id": "1773039678642",
+      "title": "22-26: Fujimoto Tatsuki Tanpenshuu",
+      "originalTitle": "tatsuki fujimoto 22-26",
+      "cover": "/posters/manga/141294.jpg",
+      "chapters_read": 4,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-03-09T07:01:18.642Z"
     }
   ],
   "topAnime": [

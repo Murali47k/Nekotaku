@@ -33,7 +33,7 @@
     {
       "id": "1774505349706",
       "title": "Project Hail Mary",
-      "pages_read": 8,
+      "pages_read": 45,
       "finished": false,
       "cover": "/posters/books/project_hail_mary.jpeg",
       "year": null,
@@ -2226,7 +2226,7 @@
       "title": "Major",
       "originalTitle": "Major",
       "cover": "/posters/manga/10978.jpg",
-      "chapters_read": 434,
+      "chapters_read": 744,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
@@ -2271,8 +2271,8 @@
       "poster": "/posters/anime/40417.jpg"
     },
     {
-      "title": "Psycho-Pass",
-      "poster": "/posters/anime/13601.jpg"
+      "title": "Bakuman.",
+      "poster": "/posters/anime/7674.jpg"
     }
   ],
   "topManga": [
@@ -2285,16 +2285,16 @@
       "poster": "/posters/manga/7375.jpg"
     },
     {
-      "title": "Vagabond",
-      "poster": "/posters/manga/656.jpg"
-    },
-    {
       "title": "20th Century Boys",
       "poster": "/posters/manga/3.jpg"
     },
     {
-      "title": "Pokemon : Festival of champions",
-      "poster": "/posters/manga/foc_pokemon.jpg"
+      "title": "Vagabond",
+      "poster": "/posters/manga/656.jpg"
+    },
+    {
+      "title": "REAL",
+      "poster": "/posters/manga/657.jpg"
     },
     {
       "title": "One Piece",
@@ -2313,8 +2313,8 @@
       "poster": "/posters/manga/2.jpg"
     },
     {
-      "title": "Slam Dunk",
-      "poster": "/posters/manga/51.jpg"
+      "title": "Pokemon : Festival of champions",
+      "poster": "/posters/manga/foc_pokemon.jpg"
     }
   ],
   "homeNotes": [

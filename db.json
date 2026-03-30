@@ -33,7 +33,7 @@
     {
       "id": "1774505349706",
       "title": "Project Hail Mary",
-      "pages_read": 45,
+      "pages_read": 141,
       "finished": false,
       "cover": "/posters/books/project_hail_mary.jpeg",
       "year": null,
@@ -940,19 +940,6 @@
       "addedAt": "2025-11-26T06:02:44.677Z"
     },
     {
-      "id": "1764137007997",
-      "title": "Major Movie: Yuujou no Winning Shot",
-      "originalTitle": "Major",
-      "mal_id": 5029,
-      "poster": "/posters/anime/5029.jpg",
-      "episodes_watched": 6,
-      "total_episodes": 154,
-      "finished": false,
-      "year": "2025",
-      "yearSection": "2025",
-      "addedAt": "2025-11-26T06:03:27.997Z"
-    },
-    {
       "id": "1764137867443",
       "title": "3-nen Z-gumi Ginpachi-sensei",
       "originalTitle": "3-Nen Z-Gumi Ginpachi-sensei",
@@ -1179,7 +1166,7 @@
       "originalTitle": "Black Clover",
       "mal_id": 34572,
       "poster": "/posters/anime/34572.jpg",
-      "episodes_watched": 137,
+      "episodes_watched": 151,
       "total_episodes": null,
       "finished": false,
       "year": "2026",
@@ -2226,8 +2213,8 @@
       "title": "Major",
       "originalTitle": "Major",
       "cover": "/posters/manga/10978.jpg",
-      "chapters_read": 744,
-      "finished": false,
+      "chapters_read": 747,
+      "finished": true,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-03-23T08:30:59.099Z"

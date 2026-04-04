@@ -33,8 +33,8 @@
     {
       "id": "1774505349706",
       "title": "Project Hail Mary",
-      "pages_read": 141,
-      "finished": false,
+      "pages_read": 523,
+      "finished": true,
       "cover": "/posters/books/project_hail_mary.jpeg",
       "year": null,
       "yearSection": "2026",
@@ -974,8 +974,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T15:57:09.152Z"
     },
     {
@@ -987,8 +987,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T15:57:34.644Z"
     },
     {
@@ -1000,8 +1000,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T15:58:10.086Z"
     },
     {
@@ -1013,8 +1013,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T15:59:02.627Z"
     },
     {
@@ -1026,8 +1026,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T15:59:34.546Z"
     },
     {
@@ -1039,8 +1039,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T16:00:26.536Z"
     },
     {
@@ -1052,8 +1052,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T16:00:55.857Z"
     },
     {
@@ -1065,8 +1065,8 @@
       "episodes_watched": 1,
       "total_episodes": null,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T16:01:20.602Z"
     },
     {
@@ -1078,8 +1078,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T16:01:55.251Z"
     },
     {
@@ -1091,8 +1091,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T16:02:24.138Z"
     },
     {
@@ -1104,8 +1104,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T16:02:47.989Z"
     },
     {
@@ -1117,8 +1117,8 @@
       "episodes_watched": 2,
       "total_episodes": 2,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T16:04:55.399Z"
     },
     {
@@ -1130,8 +1130,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T16:05:24.171Z"
     },
     {
@@ -1143,8 +1143,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2025-12-08T16:07:57.532Z"
     },
     {
@@ -1156,8 +1156,8 @@
       "episodes_watched": 1,
       "total_episodes": 1,
       "finished": true,
-      "year": "Movies",
-      "yearSection": "Movies",
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
       "addedAt": "2026-01-05T17:07:35.056Z"
     },
     {
@@ -1166,7 +1166,7 @@
       "originalTitle": "Black Clover",
       "mal_id": 34572,
       "poster": "/posters/anime/34572.jpg",
-      "episodes_watched": 151,
+      "episodes_watched": 156,
       "total_episodes": null,
       "finished": false,
       "year": "2026",
@@ -2213,7 +2213,7 @@
       "title": "Dorohedoro",
       "originalTitle": "Dorehedoro",
       "cover": "/posters/manga/1133.jpg",
-      "chapters_read": 16,
+      "chapters_read": 29,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
@@ -2230,12 +2230,12 @@
       "poster": "/posters/anime/20583.jpg"
     },
     {
-      "title": "Shingeki no Kyojin",
-      "poster": "/posters/anime/16498.jpg"
-    },
-    {
       "title": "Vinland Saga",
       "poster": "/posters/anime/37521.jpg"
+    },
+    {
+      "title": "Shingeki no Kyojin",
+      "poster": "/posters/anime/16498.jpg"
     },
     {
       "title": "Chi. Chikyuu no Undou ni Tsuite",
@@ -2320,7 +2320,7 @@
       "2023",
       "2024",
       "2025",
-      "Movies",
+      "(0-0) Movies",
       "2026"
     ],
     "manga": [

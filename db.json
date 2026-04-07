@@ -1184,19 +1184,6 @@
       "addedAt": "2026-01-05T17:08:48.652Z"
     },
     {
-      "id": "1771303579968",
-      "title": "Kimi ni Todoke",
-      "originalTitle": "kimi ni tadoke",
-      "mal_id": 6045,
-      "poster": "/posters/anime/6045.jpg",
-      "episodes_watched": 6,
-      "total_episodes": 42,
-      "finished": false,
-      "year": "2026",
-      "yearSection": "2026",
-      "addedAt": "2026-02-17T04:46:19.968Z"
-    },
-    {
       "id": "1771858588082",
       "title": "Crayon Shin-chan",
       "originalTitle": "Shin-chan",
@@ -2239,6 +2226,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-04-07T09:41:40.669Z"
+    },
+    {
+      "id": "1775576913729",
+      "title": "Kimi ni Todoke",
+      "originalTitle": "Kimi ni tadoke",
+      "cover": "/posters/manga/3378.jpg",
+      "chapters_read": 10,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-04-07T15:48:33.729Z"
     }
   ],
   "topAnime": [

@@ -2213,11 +2213,22 @@
       "title": "Dorohedoro",
       "originalTitle": "Dorehedoro",
       "cover": "/posters/manga/1133.jpg",
-      "chapters_read": 29,
-      "finished": false,
+      "chapters_read": 167,
+      "finished": true,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-03-31T15:47:22.629Z"
+    },
+    {
+      "id": "1775554900669",
+      "title": "Adolf ni Tsugu",
+      "originalTitle": "Message to adolf",
+      "cover": "/posters/manga/1695.jpg",
+      "chapters_read": 36,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-04-07T09:41:40.669Z"
     }
   ],
   "topAnime": [

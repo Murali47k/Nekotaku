@@ -1036,7 +1036,7 @@ async function initYoutubePage() {
 
   const container = document.getElementById('youtube-root');
   if (!container) return;
-
+  container.classList.add('youtube-page');
   container.innerHTML = '';
 
   const list = await api.getYoutube();

@@ -1158,6 +1158,19 @@
       "addedAt": "2025-12-08T16:07:57.532Z"
     },
     {
+      "id": "17652187987987",
+      "title": "Summit of the Gods",
+      "originalTitle": "Les Cinq Sens",
+      "mal_id": 527432,
+      "poster": "/posters/anime/summit.jpg",
+      "episodes_watched": 1,
+      "total_episodes": 1,
+      "finished": true,
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
+      "addedAt": "2025-11-08T16:07:57.532Z"
+    },
+    {
       "id": "1767632855056",
       "title": "Hyakuemu.",
       "originalTitle": "Hyakuemu",
@@ -2232,7 +2245,7 @@
       "title": "Kimi ni Todoke",
       "originalTitle": "Kimi ni tadoke",
       "cover": "/posters/manga/3378.jpg",
-      "chapters_read": 10,
+      "chapters_read": 50,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
@@ -2355,22 +2368,63 @@
       "2026"
     ]
   },
-  "youtube":[
+  "youtube": [
     {
       "id": 1,
-      "title": "Anime Review : Vinland Saga",
-      "year" : "2020",
-      "type": "video",
-      "poster":"/posters/anime/10040.jpg",
-      "url": "https://www.youtube.com/watch?v=Zt9n2s8mXj0"
+      "title": "Tip2Tip : China",
+      "year": "2026",
+      "type": "series",
+      "poster": "/posters/youtube/tip2tipchina.jpg",
+      "url": "https://www.youtube.com/watch?v=_41P6UrwQKY&list=PLLGT0cEMIAze5tmNSlEvUKo-cQ0YrIs2j"
     },
     {
       "id": 2,
-      "title": "Anime Review : Pokemon",
-      "year" : "2022",
+      "title": "Jelly : Golf Games",
+      "year": "2017-2024",
       "type": "series",
-      "poster":"/posters/anime/10040.jpg",
-      "url": "https://www.youtube.com/watch?v=Zt9n2s8mXj0"
-    }
+      "poster": "/posters/youtube/jellygolfgames.jpg",
+      "url": "https://www.youtube.com/watch?v=z9i8fg2Gxg0&list=PL4RAbPVxU8upneoGNoh3LrdMWbG6IMOF0"
+    },
+    {
+      "id": 3,
+      "title": "Jelly : Gmod Prop Hunt",
+      "year": "2017-2024",
+      "type": "series",
+      "poster": "/posters/youtube/jellygmodprophunt.jpg",
+      "url": "https://www.youtube.com/watch?v=hx2ndvI0Z8o&list=PL4RAbPVxU8urjWguiCLYJSTWF_F83_QWo"
+    },
+    {
+      "id": 4,
+      "title": "1000 Players Simulate Civilization: Rich & Poor",
+      "year": "2025",
+      "type": "video",
+      "poster": "/posters/youtube/ish.jpg",
+      "url": "https://www.youtube.com/watch?v=ef568d0CrRY&t=6404s"
+    },
+    {
+      "id": 5,
+      "title": "Pokemon X & Y 2v2 Cagelocke",
+      "year": "2020",
+      "type": "series",
+      "poster": "/posters/youtube/2v2cagelocke.jpg",
+      "url": "https://www.youtube.com/watch?v=I2wZPYIIb_w&list=PLlVg09SIm13nXK3iJExqRQN247RVPRdLR"
+    },
+    {
+      "id": 6,
+      "title": "Ash Ketchum's End!",
+      "year": "2021",
+      "type": "video",
+      "poster": "/posters/youtube/ash.jpg",
+      "url": "https://www.youtube.com/watch?v=EuVZQsiyZTU"
+    },
+    {
+      "id": 7,
+      "title": "Ahead of us",
+      "year": "2024",
+      "type": "video",
+      "poster": "/posters/youtube/aheadofus.jpg",
+      "url": "https://www.youtube.com/watch?v=JBeEpW8l-Mg"
+    },
+    {}
   ]
 }

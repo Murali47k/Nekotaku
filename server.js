@@ -35,8 +35,9 @@ function readDB() {
       books: [],
       topAnime: [],
       topManga: [],
+      youtube: [],
       homeNotes: [],
-      yearSections: { anime: [], manga: [] ,books:[] }
+      yearSections: { anime: [], manga: [] ,books:[] },
     };
   }
 }
@@ -53,6 +54,7 @@ if (!fs.existsSync(DB_FILE)) {
     books : [],
     topAnime: [],
     topManga: [],
+    youtube: [],
     homeNotes: [
       {
         id: 1,
@@ -464,6 +466,12 @@ app.post('/api/top/manga', (req, res) => {
   db.topManga = Array.isArray(req.body.list) ? req.body.list.slice(0, 10) : [];
   writeDB(db);
   res.json(db.topManga);
+});
+
+// Youtube
+app.get('/api/youtube', (req, res) => {
+  const db = readDB();
+  res.json(db.youtube || []);
 });
 
 // SEARCH

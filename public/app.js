@@ -1054,6 +1054,14 @@ async function initYoutubePage() {
     const gallery = document.createElement('div');
     gallery.className = 'year-gallery';
 
+    if (items.length === 0) {
+      const empty = document.createElement('div');
+      empty.style.opacity = '0.6';
+      empty.style.padding = '12px';
+      empty.textContent = 'No items yet';
+      gallery.appendChild(empty);
+    }
+
     items.forEach(item => {
 
       const card = document.createElement('div');
@@ -1145,4 +1153,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('manga-year-sections')) pages.initMangaPage();
   if (document.getElementById('books-year-sections')) pages.initBooksPage();
   if (document.getElementById('youtube-root')) pages.initYoutubePage();
+  console.log("Youtube init running");
 });

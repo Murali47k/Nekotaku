@@ -2360,6 +2360,15 @@
       "id": 1,
       "title": "Anime Review : Vinland Saga",
       "year" : "2020",
+      "type": "video",
+      "poster":"/posters/anime/10040.jpg",
+      "url": "https://www.youtube.com/watch?v=Zt9n2s8mXj0"
+    },
+    {
+      "id": 2,
+      "title": "Anime Review : Pokemon",
+      "year" : "2022",
+      "type": "series",
       "poster":"/posters/anime/10040.jpg",
       "url": "https://www.youtube.com/watch?v=Zt9n2s8mXj0"
     }

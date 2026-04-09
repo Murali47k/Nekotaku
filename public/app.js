@@ -43,6 +43,17 @@ const api = {
   deleteBook: (id) => fetch('/api/books/' + id, {
     method: 'DELETE'
   }).then(r => r.json()),
+
+  getYoutube: () => fetch('/api/youtube').then(r => r.json()),
+  addYoutube: (payload) => fetch('/api/youtube', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  }).then(r => r.json()),
+
+  deleteYoutube: (id) => fetch('/api/youtube/' + id, {
+    method: 'DELETE'
+  }).then(r => r.json()),
 };
 
 /* ---------- HOME ---------- */
@@ -1020,6 +1031,80 @@ async function deleteBookConfirm(id) {
   );
 }
 
+/* ---------- Youtube page ---------- */
+async function initYoutubePage() {
+
+  const container = document.getElementById('youtube-root');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  const list = await api.getYoutube();
+
+  const series = list.filter(v => v.type === 'series');
+  const videos = list.filter(v => v.type === 'video');
+
+  function createSection(title, items) {
+    const section = document.createElement('div');
+    section.className = 'year-section card';
+
+    const h = document.createElement('h3');
+    h.textContent = title;
+
+    const gallery = document.createElement('div');
+    gallery.className = 'year-gallery';
+
+    items.forEach(item => {
+
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const poster = item.poster || '/placeholders/no.png';
+
+      card.innerHTML = `
+        <div class="card-poster">
+          <img src="${poster}" alt="${escapeHtml(item.title)}">
+        </div>
+
+        <div class="card-info">
+          <div class="title">${escapeHtml(item.title)}</div>
+
+          <div class="small">
+            Year: ${item.year || 'Unknown'}
+          </div>
+
+          <div style="margin-top:8px;" class="controls">
+            <a href="${item.url}" target="_blank">
+              <button class="btn">Watch</button>
+            </a>
+
+            <button class="btn ghost"
+              onclick="pages.deleteYoutube('${item.id}')">
+              Delete
+            </button>
+          </div>
+        </div>
+      `;
+
+      gallery.appendChild(card);
+    });
+
+    section.appendChild(h);
+    section.appendChild(gallery);
+
+    return section;
+  }
+
+  container.appendChild(createSection('Series', series));
+  container.appendChild(createSection('Videos', videos));
+}
+
+async function deleteYoutube(id) {
+  await api.deleteYoutube(id);
+  initYoutubePage();
+}
+
+
 /* ---------- Utilities & exports ---------- */
 function escapeHtml(s) {
   if (!s) return '';
@@ -1050,6 +1135,8 @@ window.pages = {
   promptUpdateBook,
   toggleBookFinished,
   deleteBookConfirm,
+  initYoutubePage,
+  deleteYoutube,
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1057,4 +1144,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('year-sections')) pages.initAnimePage();
   if (document.getElementById('manga-year-sections')) pages.initMangaPage();
   if (document.getElementById('books-year-sections')) pages.initBooksPage();
+  if (document.getElementById('youtube-root')) pages.initYoutubePage();
 });

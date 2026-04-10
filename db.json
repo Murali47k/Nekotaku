@@ -2502,6 +2502,20 @@
       "type": "series",
       "poster": "/posters/youtube/tgigguk.jpg",
       "url": "https://www.youtube.com/watch?v=NPA26WLzQ7Y&list=PLcr_t_FA4FB9Aon0wactr3KpLZ2y93PPY"
+    },{
+      "id" : 18,
+      "title": "The Scandal That Killed Italian Football Forever",
+      "year": "2025",
+      "type": "video",
+      "poster": "/posters/youtube/calciapoli.jpg",
+      "url": "https://www.youtube.com/watch?v=Y_rcW0AiNXo"
+    },{
+      "id" : 18,
+      "title": "The Player Who Traded A Life Of Suffering For ONE Single Trophy",
+      "year": "2024",
+      "type": "video",
+      "poster": "/posters/youtube/reus.jpg",
+      "url": "https://www.youtube.com/watch?v=J-hRedCrfSU"
     }
   ]
 }

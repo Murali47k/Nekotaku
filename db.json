@@ -2245,7 +2245,7 @@
       "title": "Kimi ni Todoke",
       "originalTitle": "Kimi ni tadoke",
       "cover": "/posters/manga/3378.jpg",
-      "chapters_read": 50,
+      "chapters_read": 70,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
@@ -2425,6 +2425,69 @@
       "poster": "/posters/youtube/aheadofus.jpg",
       "url": "https://www.youtube.com/watch?v=JBeEpW8l-Mg"
     },
-    {}
+    {
+      "id": 8,
+      "title": "Rating the dumbest deaths in history",
+      "year": "2021",
+      "type": "video",
+      "poster": "/posters/youtube/Dumbwaytodie.jpg",
+      "url": "https://www.youtube.com/watch?v=AJcDqagy9HQ"
+    },
+    {
+      "id": 9,
+      "title": "Once In A Lifetime: Argentina",
+      "year": "2024",
+      "type": "series",
+      "poster": "/posters/youtube/copa90.jpg",
+      "url": "https://www.youtube.com/watch?v=unnUFi94bfc"
+    },
+    {
+      "id": 10,
+      "title": "Pokemon Insurgence",
+      "year": "2018",
+      "type": "series",
+      "poster": "/posters/youtube/pi-mandjtv.jpg",
+      "url": "https://www.youtube.com/watch?v=WjEOxtOXXwg&list=PLAF4vERAnCkPS9waXwR6SnFRACR8nvKvn"
+    },
+    {
+      "id": 11,
+      "title": "Sidemen : Charity Matches",
+      "year": "2018-26",
+      "type": "series",
+      "poster": "/posters/youtube/sidemen-cm.jpg",
+      "url": "https://www.youtube.com/watch?v=ElXPnACEDEs&list=PLutZMULbsijqy2bF-Hnc2RtYzYHXHPMyT"
+    },
+    {
+      "id": 12,
+      "title": "Sidemen : Among Us",
+      "year": "2023-26",
+      "type": "series",
+      "poster": "/posters/youtube/sidemen-au.jpg",
+      "url": "https://www.youtube.com/show/VLPLhjLcvbbPVrVOY5w5Pl7KuSe5fGroQJJD?sbp=KgtJRGg1MFp2dXQwd0AB"
+    },
+    {
+      "id": 13,
+      "title": "How Imaginary Numbers Were Invented",
+      "year": "2022",
+      "type": "video",
+      "poster": "/posters/youtube/veri.jpg",
+      "url": "https://www.youtube.com/watch?v=cUzklzVXJwo&t=1206s"
+    },
+    {
+      "id": 14,
+      "title": "I Gave My Goldfish $50,000 to Trade Stocks",
+      "year": "2021",
+      "type": "video",
+      "poster": "/posters/youtube/mr.jpg",
+      "url": "https://www.youtube.com/watch?v=USKD3vPD6ZA"
+    },
+    {
+      "id": 15,
+      "title": "That Night in Abu Dhabi ",
+      "year": "2022",
+      "type": "video",
+      "poster": "/posters/youtube/mf1.jpg",
+      "url": "https://www.youtube.com/watch?v=Z3zUcAwOs1A"
+    }
   ]
 }

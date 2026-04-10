@@ -2488,6 +2488,20 @@
       "type": "video",
       "poster": "/posters/youtube/mf1.jpg",
       "url": "https://www.youtube.com/watch?v=Z3zUcAwOs1A"
+    },{
+      "id": 16,
+      "title": "Trash Taste Podcast",
+      "year": "2020-26",
+      "type": "series",
+      "poster": "/posters/youtube/trash-taste.jpg",
+      "url": "https://www.youtube.com/watch?v=qJN8G-HhLO8&list=PLegJJ3LA_8oG_Ij90JCl0r4AUL4jG64zB"
+    },{
+      "id": 17,
+      "title": "Best of Anime",
+      "year": "2017-26",
+      "type": "series",
+      "poster": "/posters/youtube/tgigguk.jpg",
+      "url": "https://www.youtube.com/watch?v=NPA26WLzQ7Y&list=PLcr_t_FA4FB9Aon0wactr3KpLZ2y93PPY"
     }
   ]
 }

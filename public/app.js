@@ -1102,9 +1102,9 @@ async function initYoutubePage() {
 
     return section;
   }
-
-  container.appendChild(createSection('Series', series));
+  
   container.appendChild(createSection('Videos', videos));
+  container.appendChild(createSection('Series', series));
 }
 
 async function deleteYoutube(id) {

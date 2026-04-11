@@ -49,6 +49,16 @@
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-04-07T10:53:17.858Z"
+    },
+    {
+      "id": "1775905219006",
+      "title": "Romeo , Juliet & Godzilla",
+      "pages_read": 50,
+      "cover": "/posters/books/rjg.png",
+      "finished": true,
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-04-11T11:00:19.006Z"
     }
   ],
   "anime": [
@@ -2488,43 +2498,49 @@
       "type": "video",
       "poster": "/posters/youtube/mf1.jpg",
       "url": "https://www.youtube.com/watch?v=Z3zUcAwOs1A"
-    },{
+    },
+    {
       "id": 16,
       "title": "Trash Taste Podcast",
       "year": "2020-26",
       "type": "series",
       "poster": "/posters/youtube/trash-taste.jpg",
       "url": "https://www.youtube.com/watch?v=qJN8G-HhLO8&list=PLegJJ3LA_8oG_Ij90JCl0r4AUL4jG64zB"
-    },{
+    },
+    {
       "id": 17,
       "title": "Best of Anime",
       "year": "2017-26",
       "type": "series",
       "poster": "/posters/youtube/tgigguk.jpg",
       "url": "https://www.youtube.com/watch?v=NPA26WLzQ7Y&list=PLcr_t_FA4FB9Aon0wactr3KpLZ2y93PPY"
-    },{
-      "id" : 18,
+    },
+    {
+      "id": 18,
       "title": "The Scandal That Killed Italian Football Forever",
       "year": "2025",
       "type": "video",
       "poster": "/posters/youtube/calciapoli.jpg",
       "url": "https://www.youtube.com/watch?v=Y_rcW0AiNXo"
-    },{
-      "id" : 18,
+    },
+    {
+      "id": 18,
       "title": "The Player Who Traded A Life Of Suffering For ONE Single Trophy",
       "year": "2024",
       "type": "video",
       "poster": "/posters/youtube/reus.jpg",
       "url": "https://www.youtube.com/watch?v=J-hRedCrfSU"
-    },{
-      "id" : 19,
+    },
+    {
+      "id": 19,
       "title": "Presenting my Billion Dollar Plan...",
       "year": "2025",
       "type": "video",
       "poster": "/posters/youtube/pewds.jpg",
       "url": "https://www.youtube.com/watch?v=pgeTa1PV_40&t=121s"
-    },{
-      "id" : 20,
+    },
+    {
+      "id": 20,
       "title": "This Bear is an actual soldier",
       "year": "2024",
       "type": "video",

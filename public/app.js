@@ -44,11 +44,19 @@ const api = {
     method: 'DELETE'
   }).then(r => r.json()),
 
+  /* ---------- Youtube API ---------- */
+
   getYoutube: () => fetch('/api/youtube').then(r => r.json()),
+
   addYoutube: (payload) => fetch('/api/youtube', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify(payload)
+  }).then(r => r.json()),
+
+  addYoutubeChannel: (formData) => fetch('/api/youtube/channel', {
+    method: 'POST',
+    body: formData
   }).then(r => r.json()),
 
   deleteYoutube: (id) => fetch('/api/youtube/' + id, {
@@ -1033,18 +1041,59 @@ async function deleteBookConfirm(id) {
 
 /* ---------- Youtube page ---------- */
 async function initYoutubePage() {
-
   const container = document.getElementById('youtube-root');
   if (!container) return;
+
   container.classList.add('youtube-page');
   container.innerHTML = '';
 
   const list = await api.getYoutube();
+  const query = (window.youtubeSearch || '').trim().toLowerCase();
 
-  const series = list.filter(v => v.type === 'series');
-  const videos = list.filter(v => v.type === 'video');
+  const filtered = list.filter(item => {
+    const title = (item.title || '').toLowerCase();
+    const type = (item.type || '').toLowerCase();
+    return !query || title.includes(query) || type.includes(query);
+  });
 
-  function createSection(title, items) {
+  const channels = filtered.filter(v => v.type === 'channel');
+  const series = filtered.filter(v => v.type === 'series');
+  const videos = filtered.filter(v => v.type === 'video');
+
+  function createChannelCard(item) {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const logo = item.poster || '/placeholders/no.png';
+    const channelUrl = item.url || '#';
+
+    card.innerHTML = `
+      <div class="card-poster" style="display:flex; align-items:center; justify-content:center;">
+        <a href="${channelUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-block;">
+          <img src="${logo}" alt="${escapeHtml(item.title)}" style="width:110px; height:110px; border-radius:999px; object-fit:cover; border:2px solid rgba(255,255,255,0.12);">
+        </a>
+      </div>
+
+      <div class="card-info">
+        <div class="title">${escapeHtml(item.title)}</div>
+
+        <div class="small">
+          YouTube Channel
+        </div>
+
+        <div style="margin-top:8px;" class="controls">
+          <a href="${channelUrl}" target="_blank" rel="noopener noreferrer">
+            <button class="btn">Open Channel</button>
+          </a>
+
+          <button class="btn ghost" onclick="pages.deleteYoutube('${item.id}')">Delete</button>
+        </div>
+      </div>
+    `;
+    return card;
+  }
+
+  function createSection(title, items, mode) {
     const section = document.createElement('div');
     section.className = 'year-section card';
 
@@ -1063,10 +1112,13 @@ async function initYoutubePage() {
     }
 
     items.forEach(item => {
+      if (mode === 'channel') {
+        gallery.appendChild(createChannelCard(item));
+        return;
+      }
 
       const card = document.createElement('div');
       card.className = 'card';
-
       const poster = item.poster || '/placeholders/no.png';
 
       card.innerHTML = `
@@ -1082,34 +1134,103 @@ async function initYoutubePage() {
           </div>
 
           <div style="margin-top:8px;" class="controls">
-            <a href="${item.url}" target="_blank">
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer">
               <button class="btn">Watch</button>
             </a>
 
-            <button class="btn ghost"
-              onclick="pages.deleteYoutube('${item.id}')">
-              Delete
-            </button>
+            <button class="btn ghost" onclick="pages.deleteYoutube('${item.id}')">Delete</button>
           </div>
         </div>
       `;
-
       gallery.appendChild(card);
     });
 
     section.appendChild(h);
     section.appendChild(gallery);
-
     return section;
   }
-  
-  container.appendChild(createSection('Videos', videos));
-  container.appendChild(createSection('Series', series));
+
+  container.appendChild(createSection('Channels', channels, 'channel'));
+  container.appendChild(createSection('Videos', videos, 'video'));
+  container.appendChild(createSection('Series', series, 'series'));
+}
+
+function searchYoutube(value) {
+  window.youtubeSearch = value || '';
+  initYoutubePage();
 }
 
 async function deleteYoutube(id) {
   await api.deleteYoutube(id);
   initYoutubePage();
+}
+
+async function promptAddYoutubeChannel() {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+
+  modal.innerHTML = `
+    <div class="modal-content" style="max-width:520px;">
+      <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+      <h2>Add YouTube Channel</h2>
+
+      <form id="add-youtube-channel-form" style="margin-top:16px;">
+        <div style="margin-bottom:16px;">
+          <label style="display:block; margin-bottom:6px;">Channel Name</label>
+          <input type="text" id="channel-name" required
+            style="width:100%; padding:10px 12px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); color:#e6eef8;">
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="display:block; margin-bottom:6px;">Channel URL</label>
+          <input type="url" id="channel-url" required placeholder="https://www.youtube.com/@channelname"
+            style="width:100%; padding:10px 12px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); color:#e6eef8;">
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="display:block; margin-bottom:6px;">Logo Image</label>
+          <input type="file" id="channel-logo-file" accept="image/*"
+            style="width:100%; padding:10px 0; color:#e6eef8;">
+          <div style="margin:8px 0; opacity:0.7;">Or paste an image URL</div>
+          <input type="text" id="channel-logo-url" placeholder="https://..."
+            style="width:100%; padding:10px 12px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); color:#e6eef8;">
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:24px;">
+          <button type="button" class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
+          <button type="submit" class="btn">Save Channel</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  document.getElementById('add-youtube-channel-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('channel-name').value.trim();
+    const url = document.getElementById('channel-url').value.trim();
+    const fileInput = document.getElementById('channel-logo-file');
+    const logoUrl = document.getElementById('channel-logo-url').value.trim();
+
+    const formData = new FormData();
+    formData.append('title', name);
+    formData.append('url', url);
+    formData.append('type', 'channel');
+
+    if (fileInput.files && fileInput.files[0]) {
+      formData.append('logo', fileInput.files[0]);
+    } else if (logoUrl) {
+      formData.append('poster', logoUrl);
+    } else {
+      formData.append('poster', '/placeholders/no.png');
+    }
+
+    await api.addYoutubeChannel(formData);
+    modal.remove();
+    initYoutubePage();
+  });
 }
 
 
@@ -1144,6 +1265,8 @@ window.pages = {
   toggleBookFinished,
   deleteBookConfirm,
   initYoutubePage,
+  searchYoutube,
+  promptAddYoutubeChannel,
   deleteYoutube,
 };
 
@@ -1153,5 +1276,4 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('manga-year-sections')) pages.initMangaPage();
   if (document.getElementById('books-year-sections')) pages.initBooksPage();
   if (document.getElementById('youtube-root')) pages.initYoutubePage();
-  console.log("Youtube init running");
 });

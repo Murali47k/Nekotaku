@@ -63,8 +63,19 @@
   </header>
 
   <div class="container">
-    <div style="display:flex; justify-content:space-between; align-items:center;">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
       <h2>Youtube</h2>
+
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <input
+          id="youtube-search"
+          type="text"
+          placeholder="Search channels..."
+          style="padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); color:inherit; min-width:220px;"
+          oninput="pages.searchYoutube(this.value)"
+        >
+        <button class="btn" onclick="pages.promptAddYoutubeChannel()">Add Channel</button>
+      </div>
     </div>
 
     <div id="youtube-root" style="margin-top:12px;"></div>

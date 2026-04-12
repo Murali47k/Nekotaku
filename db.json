@@ -2524,7 +2524,7 @@
       "url": "https://www.youtube.com/watch?v=Y_rcW0AiNXo"
     },
     {
-      "id": 18,
+      "id": 19,
       "title": "The Player Who Traded A Life Of Suffering For ONE Single Trophy",
       "year": "2024",
       "type": "video",
@@ -2532,7 +2532,7 @@
       "url": "https://www.youtube.com/watch?v=J-hRedCrfSU"
     },
     {
-      "id": 19,
+      "id": 20,
       "title": "Presenting my Billion Dollar Plan...",
       "year": "2025",
       "type": "video",
@@ -2540,12 +2540,26 @@
       "url": "https://www.youtube.com/watch?v=pgeTa1PV_40&t=121s"
     },
     {
-      "id": 20,
+      "id": 21,
       "title": "This Bear is an actual soldier",
       "year": "2024",
       "type": "video",
       "poster": "/posters/youtube/bear.jpg",
       "url": "https://www.youtube.com/shorts/YGiBq0h8f8Q"
+    }
+  ],
+  "channels": [
+    {
+      "id": 1,
+      "name": "Sidemen",
+      "url": "https://www.youtube.com/user/SDMN/videos",
+      "poster": "/posters/youtube/bear.jpg"
+    },
+    {
+      "id": 1775995635826,
+      "name": "Jelly",
+      "url": "https://www.youtube.com/@Jelly/videos",
+      "poster": "/placeholders/no.png"
     }
   ]
 }

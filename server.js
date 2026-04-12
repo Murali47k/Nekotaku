@@ -474,6 +474,31 @@ app.get('/api/youtube', (req, res) => {
   res.json(db.youtube || []);
 });
 
+app.get('/api/channels', (req, res) => {
+  const db = readDB();
+  res.json(db.channels || []);
+});
+
+app.post('/api/channels', (req, res) => {
+  const db = readDB();
+
+  const { name, url, poster } = req.body;
+
+  const newChannel = {
+    id: Date.now(),
+    name,
+    url,
+    poster: poster || '/placeholders/no.png'
+  };
+
+  db.channels = db.channels || [];
+  db.channels.push(newChannel);
+
+  writeDB(db);
+
+  res.json(newChannel);
+});
+
 // SEARCH
 app.get('/api/search/anime', async (req, res) => {
   const q = req.query.q;

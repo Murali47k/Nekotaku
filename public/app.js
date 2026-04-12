@@ -54,10 +54,15 @@ const api = {
     body: JSON.stringify(payload)
   }).then(r => r.json()),
 
-  addYoutubeChannel: (formData) => fetch('/api/youtube/channel', {
+  addYoutubeChannel: (payload) => fetch('/api/channels', {
     method: 'POST',
-    body: formData
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
   }).then(r => r.json()),
+
+  getYoutubeChannels: () => fetch('/api/channels').then(r => r.json()),
 
   deleteYoutube: (id) => fetch('/api/youtube/' + id, {
     method: 'DELETE'
@@ -1041,24 +1046,36 @@ async function deleteBookConfirm(id) {
 
 /* ---------- Youtube page ---------- */
 async function initYoutubePage() {
+
   const container = document.getElementById('youtube-root');
   if (!container) return;
 
   container.classList.add('youtube-page');
   container.innerHTML = '';
 
-  const list = await api.getYoutube();
+  // 🔥 Fetch BOTH datasets
+  const [youtubeList, channelList] = await Promise.all([
+    api.getYoutube(),
+    api.getYoutubeChannels()
+  ]);
+
   const query = (window.youtubeSearch || '').trim().toLowerCase();
 
-  const filtered = list.filter(item => {
+  // 🔍 Filter separately
+  const filteredVideos = youtubeList.filter(item => {
     const title = (item.title || '').toLowerCase();
     const type = (item.type || '').toLowerCase();
     return !query || title.includes(query) || type.includes(query);
   });
 
-  const channels = filtered.filter(v => v.type === 'channel');
-  const series = filtered.filter(v => v.type === 'series');
-  const videos = filtered.filter(v => v.type === 'video');
+  const filteredChannels = channelList.filter(item => {
+    const title = (item.name || '').toLowerCase();
+    return !query || title.includes(query);
+  });
+
+  const series = filteredVideos.filter(v => v.type === 'series');
+  const videos = filteredVideos.filter(v => v.type === 'video');
+  const channels = filteredChannels; // already separate now
 
   function createChannelCard(item) {
     const card = document.createElement('div');
@@ -1069,24 +1086,26 @@ async function initYoutubePage() {
 
     card.innerHTML = `
       <div class="card-poster" style="display:flex; align-items:center; justify-content:center;">
-        <a href="${channelUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-block;">
-          <img src="${logo}" alt="${escapeHtml(item.title)}" style="width:110px; height:110px; border-radius:999px; object-fit:cover; border:2px solid rgba(255,255,255,0.12);">
+        <a href="${channelUrl}" target="_blank" rel="noopener noreferrer">
+          <img src="${logo}" alt="${escapeHtml(item.name)}"
+            style="width:110px; height:110px; border-radius:999px; object-fit:cover;">
         </a>
       </div>
 
       <div class="card-info">
-        <div class="title">${escapeHtml(item.title)}</div>
+        <div class="title">${escapeHtml(item.name)}</div>
 
-        <div class="small">
-          YouTube Channel
-        </div>
+        <div class="small">YouTube Channel</div>
 
         <div style="margin-top:8px;" class="controls">
-          <a href="${channelUrl}" target="_blank" rel="noopener noreferrer">
+          <a href="${channelUrl}" target="_blank">
             <button class="btn">Open Channel</button>
           </a>
 
-          <button class="btn ghost" onclick="pages.deleteYoutube('${item.id}')">Delete</button>
+          <button class="btn ghost"
+            onclick="pages.deleteYoutubeChannel('${item.id}')">
+            Delete
+          </button>
         </div>
       </div>
     `;
@@ -1094,6 +1113,7 @@ async function initYoutubePage() {
   }
 
   function createSection(title, items, mode) {
+
     const section = document.createElement('div');
     section.className = 'year-section card';
 
@@ -1112,6 +1132,7 @@ async function initYoutubePage() {
     }
 
     items.forEach(item => {
+
       if (mode === 'channel') {
         gallery.appendChild(createChannelCard(item));
         return;
@@ -1119,6 +1140,7 @@ async function initYoutubePage() {
 
       const card = document.createElement('div');
       card.className = 'card';
+
       const poster = item.poster || '/placeholders/no.png';
 
       card.innerHTML = `
@@ -1134,19 +1156,24 @@ async function initYoutubePage() {
           </div>
 
           <div style="margin-top:8px;" class="controls">
-            <a href="${item.url}" target="_blank" rel="noopener noreferrer">
+            <a href="${item.url}" target="_blank">
               <button class="btn">Watch</button>
             </a>
 
-            <button class="btn ghost" onclick="pages.deleteYoutube('${item.id}')">Delete</button>
+            <button class="btn ghost"
+              onclick="pages.deleteYoutube('${item.id}')">
+              Delete
+            </button>
           </div>
         </div>
       `;
+
       gallery.appendChild(card);
     });
 
     section.appendChild(h);
     section.appendChild(gallery);
+
     return section;
   }
 
@@ -1165,6 +1192,11 @@ async function deleteYoutube(id) {
   initYoutubePage();
 }
 
+async function deleteYoutubeChannel(id) {
+  await fetch('/api/channels/' + id, { method: 'DELETE' });
+  initYoutubePage();
+}
+
 async function promptAddYoutubeChannel() {
   const modal = document.createElement('div');
   modal.className = 'modal';
@@ -1175,30 +1207,31 @@ async function promptAddYoutubeChannel() {
       <h2>Add YouTube Channel</h2>
 
       <form id="add-youtube-channel-form" style="margin-top:16px;">
+
         <div style="margin-bottom:16px;">
-          <label style="display:block; margin-bottom:6px;">Channel Name</label>
+          <label>Channel Name</label>
           <input type="text" id="channel-name" required
-            style="width:100%; padding:10px 12px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); color:#e6eef8;">
+            style="width:100%; padding:10px;">
         </div>
 
         <div style="margin-bottom:16px;">
-          <label style="display:block; margin-bottom:6px;">Channel URL</label>
-          <input type="url" id="channel-url" required placeholder="https://www.youtube.com/@channelname"
-            style="width:100%; padding:10px 12px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); color:#e6eef8;">
+          <label>Channel URL</label>
+          <input type="url" id="channel-url" required
+            style="width:100%; padding:10px;">
         </div>
 
         <div style="margin-bottom:16px;">
-          <label style="display:block; margin-bottom:6px;">Logo Image</label>
-          <input type="file" id="channel-logo-file" accept="image/*"
-            style="width:100%; padding:10px 0; color:#e6eef8;">
-          <div style="margin:8px 0; opacity:0.7;">Or paste an image URL</div>
-          <input type="text" id="channel-logo-url" placeholder="https://..."
-            style="width:100%; padding:10px 12px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); color:#e6eef8;">
+          <label>Poster Path</label>
+          <input type="text" id="channel-poster"
+            placeholder="/posters/youtube/example.jpg"
+            style="width:100%; padding:10px;">
         </div>
 
-        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:24px;">
-          <button type="button" class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
-          <button type="submit" class="btn">Save Channel</button>
+        <div style="display:flex; justify-content:flex-end; gap:12px;">
+          <button type="button" class="btn ghost"
+            onclick="this.closest('.modal').remove()">Cancel</button>
+
+          <button type="submit" class="btn">Save</button>
         </div>
       </form>
     </div>
@@ -1206,31 +1239,25 @@ async function promptAddYoutubeChannel() {
 
   document.body.appendChild(modal);
 
-  document.getElementById('add-youtube-channel-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
+  document
+    .getElementById('add-youtube-channel-form')
+    .addEventListener('submit', async (e) => {
 
-    const name = document.getElementById('channel-name').value.trim();
-    const url = document.getElementById('channel-url').value.trim();
-    const fileInput = document.getElementById('channel-logo-file');
-    const logoUrl = document.getElementById('channel-logo-url').value.trim();
+      e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('title', name);
-    formData.append('url', url);
-    formData.append('type', 'channel');
+      const name = document.getElementById('channel-name').value.trim();
+      const url = document.getElementById('channel-url').value.trim();
+      const poster = document.getElementById('channel-poster').value.trim();
 
-    if (fileInput.files && fileInput.files[0]) {
-      formData.append('logo', fileInput.files[0]);
-    } else if (logoUrl) {
-      formData.append('poster', logoUrl);
-    } else {
-      formData.append('poster', '/placeholders/no.png');
-    }
+      await api.addYoutubeChannel({
+        name,
+        url,
+        poster
+      });
 
-    await api.addYoutubeChannel(formData);
-    modal.remove();
-    initYoutubePage();
-  });
+      modal.remove();
+      initYoutubePage();
+    });
 }
 
 
@@ -1268,6 +1295,7 @@ window.pages = {
   searchYoutube,
   promptAddYoutubeChannel,
   deleteYoutube,
+  deleteYoutubeChannel,
 };
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -2640,6 +2640,21 @@
       "name": "Mark Rober",
       "url": "https://www.youtube.com/@MarkRober/videos",
       "poster": "/posters/channels/markrober.jpg"
+    },{
+      "id": 21,
+      "name": "Trash Taste",
+      "url": "https://www.youtube.com/@TrashTaste/videos",
+      "poster": "/posters/channels/trashtaste.jpg"
+    },{
+      "id": 22,
+      "name": "Gigguk",
+      "url": "https://www.youtube.com/@gigguk/videos",
+      "poster": "/posters/channels/gigguk.jpg"
+    },{
+      "id": 23,
+      "name": "JaidenAnimations",
+      "url": "https://www.youtube.com/@jaidenanimations",
+      "poster": "/posters/channels/jaiden.jpg"
     }
   ]
 }

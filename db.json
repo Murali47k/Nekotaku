@@ -2636,7 +2636,7 @@
       "poster": "/posters/channels/ludwig.jpg"
     },{
       "id": 17,
-      "name": "MrBeast",
+      "name": "MrBeast - till 2024",
       "url": "https://www.youtube.com/@MrBeast",
       "poster": "/posters/channels/mrbeast.jpg"
     },{
@@ -2729,6 +2729,16 @@
       "name": "Dude Perfect",
       "url": "https://www.youtube.com/@dudeperfect/videos",
       "poster": "/posters/channels/dp.jpg"
+    },{
+      "id": 36,
+      "name": "Mohak Mangal",
+      "url": "https://www.youtube.com/@mohak_mangal/videos",
+      "poster": "/posters/channels/soch.jpg"
+    },{
+      "id": 37,
+      "name": "Search Party",
+      "url": "https://www.youtube.com/@SearchParty/videos",
+      "poster": "/posters/channels/sp.jpg"
     }
   ]
 }

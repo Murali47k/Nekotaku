@@ -2551,15 +2551,95 @@
   "channels": [
     {
       "id": 1,
-      "name": "Sidemen",
-      "url": "https://www.youtube.com/user/SDMN/videos",
-      "poster": "/posters/youtube/bear.jpg"
-    },
-    {
-      "id": 1775995635826,
       "name": "Jelly",
       "url": "https://www.youtube.com/@Jelly/videos",
-      "poster": "/placeholders/no.png"
+      "poster": "/posters/channels/jelly.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Sidemen",
+      "url": "https://www.youtube.com/@Sidemen/videos",
+      "poster": "/posters/channels/sidemen.jpg"
+    },{
+      "id": 4,
+      "name": "MxR Plays",
+      "url": "https://www.youtube.com/@MxRDoesntPlay/videos",
+      "poster": "/posters/channels/mxr.jpg"
+    },{
+      "id": 5,
+      "name": "PewDiePie",
+      "url": "https://www.youtube.com/@PewDiePie/videos",
+      "poster": "/posters/channels/pewdie.jpg"
+    },{
+      "id": 6,
+      "name": "Veritasium",
+      "url": "https://www.youtube.com/@veritasium/videos",
+      "poster": "/posters/channels/ver.jpg"
+    },{
+      "id": 7,
+      "name": "Mandjtv",
+      "url": "https://www.youtube.com/@MandJTV/videos",
+      "poster": "/posters/channels/mandjtv.jpg"
+    },{
+      "id": 8,
+      "name": "More Parz",
+      "url": "https://www.youtube.com/@moreparz/videos",
+      "poster": "/posters/channels/moreparz.jpg"
+    },{
+      "id": 9,
+      "name": "Talk Football HD",
+      "url": "https://www.youtube.com/@talkfootballhd",
+      "poster": "/posters/channels/tfhd.jpg"
+    },{
+      "id": 10,
+      "name": "Football Iconic",
+      "url": "https://www.youtube.com/@FootballIconic",
+      "poster": "/posters/channels/ficon.jpg"
+    },{
+      "id": 12,
+      "name": "Original151",
+      "url": "https://www.youtube.com/@Original151",
+      "poster": "/posters/channels/o151.jpg"
+    },{
+      "id": 13,
+      "name": "UnitedGamer",
+      "url": "https://www.youtube.com/@UnitedGamer",
+      "poster": "/posters/channels/unig.jpg"
+    },{
+      "id": 14,
+      "name": "Offline TV",
+      "url": "https://www.youtube.com/@OfflineTV/videos",
+      "poster": "/posters/channels/oftv.jpg"
+    },{
+      "id": 15,
+      "name": "Michael Reeves",
+      "url": "https://www.youtube.com/@MichaelReeves",
+      "poster": "/posters/channels/michealreeves.jpg"
+    },{
+      "id": 16,
+      "name": "Ludwig",
+      "url": "https://www.youtube.com/@ludwig/videos",
+      "poster": "/posters/channels/ludwig.jpg"
+    },{
+      "id": 17,
+      "name": "MrBeast",
+      "url": "https://www.youtube.com/@MrBeast",
+      "poster": "/posters/channels/mrbeast.jpg"
+    },{
+      "id": 18,
+      "name": "nigahiga",
+      "url": "https://www.youtube.com/@ryanhiga/videos",
+      "poster": "/posters/channels/nigahiga.jpg"
+    },{
+      "id": 19,
+      "name": "Cricket Raaz English",
+      "url": "https://www.youtube.com/@cricketraazenglish",
+      "poster": "/posters/channels/cre.jpg"
+    },{
+      "id": 20,
+      "name": "Mark Rober",
+      "url": "https://www.youtube.com/@MarkRober/videos",
+      "poster": "/posters/channels/markrober.jpg"
     }
   ]
 }

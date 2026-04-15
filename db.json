@@ -2260,6 +2260,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-04-07T15:48:33.729Z"
+    },
+    {
+      "id": "1776228314531",
+      "title": "Levius",
+      "originalTitle": "Levius",
+      "cover": "/posters/manga/levius.jpeg",
+      "chapters_read": 4,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-04-15T04:45:14.531Z"
     }
   ],
   "topAnime": [
@@ -2546,14 +2557,16 @@
       "type": "video",
       "poster": "/posters/youtube/bear.jpg",
       "url": "https://www.youtube.com/shorts/YGiBq0h8f8Q"
-    },{
+    },
+    {
       "id": 22,
       "title": "I Attempted my First Pokemon Nuzlocke",
       "year": "2019",
       "type": "video",
       "poster": "/posters/youtube/jai-ruby.jpg",
       "url": "https://www.youtube.com/watch?v=plSyrHqUh78"
-    },{
+    },
+    {
       "id": 23,
       "title": "Minecraft Manhunt : Dream",
       "year": "2020-26",
@@ -2574,167 +2587,200 @@
       "name": "Sidemen",
       "url": "https://www.youtube.com/@Sidemen/videos",
       "poster": "/posters/channels/sidemen.jpg"
-    },{
+    },
+    {
       "id": 4,
       "name": "MxR Plays",
       "url": "https://www.youtube.com/@MxRDoesntPlay/videos",
       "poster": "/posters/channels/mxr.jpg"
-    },{
+    },
+    {
       "id": 5,
       "name": "PewDiePie",
       "url": "https://www.youtube.com/@PewDiePie/videos",
       "poster": "/posters/channels/pewdie.jpg"
-    },{
+    },
+    {
       "id": 6,
       "name": "Veritasium",
       "url": "https://www.youtube.com/@veritasium/videos",
       "poster": "/posters/channels/ver.jpg"
-    },{
+    },
+    {
       "id": 7,
       "name": "Mandjtv",
       "url": "https://www.youtube.com/@MandJTV/videos",
       "poster": "/posters/channels/mandjtv.jpg"
-    },{
+    },
+    {
       "id": 8,
       "name": "More Parz",
       "url": "https://www.youtube.com/@moreparz/videos",
       "poster": "/posters/channels/moreparz.jpg"
-    },{
+    },
+    {
       "id": 9,
       "name": "Talk Football HD",
       "url": "https://www.youtube.com/@talkfootballhd",
       "poster": "/posters/channels/tfhd.jpg"
-    },{
+    },
+    {
       "id": 10,
       "name": "Football Iconic",
       "url": "https://www.youtube.com/@FootballIconic",
       "poster": "/posters/channels/ficon.jpg"
-    },{
+    },
+    {
       "id": 12,
       "name": "Original151",
       "url": "https://www.youtube.com/@Original151",
       "poster": "/posters/channels/o151.jpg"
-    },{
+    },
+    {
       "id": 13,
       "name": "UnitedGamer",
       "url": "https://www.youtube.com/@UnitedGamer",
       "poster": "/posters/channels/unig.jpg"
-    },{
+    },
+    {
       "id": 14,
       "name": "Offline TV",
       "url": "https://www.youtube.com/@OfflineTV/videos",
       "poster": "/posters/channels/oftv.jpg"
-    },{
+    },
+    {
       "id": 15,
       "name": "Michael Reeves",
       "url": "https://www.youtube.com/@MichaelReeves",
       "poster": "/posters/channels/michealreeves.jpg"
-    },{
+    },
+    {
       "id": 16,
       "name": "Ludwig",
       "url": "https://www.youtube.com/@ludwig/videos",
       "poster": "/posters/channels/ludwig.jpg"
-    },{
+    },
+    {
       "id": 17,
       "name": "MrBeast - till 2024",
       "url": "https://www.youtube.com/@MrBeast",
       "poster": "/posters/channels/mrbeast.jpg"
-    },{
+    },
+    {
       "id": 18,
       "name": "nigahiga",
       "url": "https://www.youtube.com/@ryanhiga/videos",
       "poster": "/posters/channels/nigahiga.jpg"
-    },{
+    },
+    {
       "id": 19,
       "name": "Cricket Raaz English",
       "url": "https://www.youtube.com/@cricketraazenglish",
       "poster": "/posters/channels/cre.jpg"
-    },{
+    },
+    {
       "id": 20,
       "name": "Mark Rober",
       "url": "https://www.youtube.com/@MarkRober/videos",
       "poster": "/posters/channels/markrober.jpg"
-    },{
+    },
+    {
       "id": 21,
       "name": "Trash Taste",
       "url": "https://www.youtube.com/@TrashTaste/videos",
       "poster": "/posters/channels/trashtaste.jpg"
-    },{
+    },
+    {
       "id": 22,
       "name": "Gigguk",
       "url": "https://www.youtube.com/@gigguk/videos",
       "poster": "/posters/channels/gigguk.jpg"
-    },{
+    },
+    {
       "id": 23,
       "name": "JaidenAnimations",
       "url": "https://www.youtube.com/@jaidenanimations",
       "poster": "/posters/channels/jaiden.jpg"
-    },{
+    },
+    {
       "id": 24,
       "name": "TheAMaazing",
       "url": "https://www.youtube.com/@TheAMaazing/videos",
       "poster": "/posters/channels/theamaazing.jpg"
-    },{
+    },
+    {
       "id": 25,
       "name": "TheOdd1sOut",
       "url": "https://www.youtube.com/@theodd1sout/videos",
       "poster": "/posters/channels/odd1.jpg"
-    },{
+    },
+    {
       "id": 26,
       "name": "Emirichu",
       "url": "https://www.youtube.com/@Emirichu/videos",
       "poster": "/posters/channels/emi.jpg"
-    },{
+    },
+    {
       "id": 27,
       "name": "Daidus",
       "url": "https://www.youtube.com/@Daidus/videos",
       "poster": "/posters/channels/daidus.jpg"
-    },{
+    },
+    {
       "id": 28,
       "name": "SmallAnt",
       "url": "https://www.youtube.com/@Smallant/videos",
       "poster": "/posters/channels/smant.jpg"
-    },{
+    },
+    {
       "id": 29,
       "name": "Mumbo Jumbo",
       "url": "https://www.youtube.com/@ThatMumboJumbo/videos",
       "poster": "/posters/channels/mumbo.jpg"
-    },{
+    },
+    {
       "id": 30,
       "name": "Grian",
       "url": "https://www.youtube.com/@Grian/videos",
       "poster": "/posters/channels/grian.jpg"
-    },{
+    },
+    {
       "id": 31,
       "name": "GoodTimesWithScar",
       "url": "https://www.youtube.com/@GoodTimesWithScar/videos",
       "poster": "/posters/channels/scar.jpg"
-    },{
+    },
+    {
       "id": 32,
       "name": "Rick'sF1Addiction",
       "url": "https://www.youtube.com/@RicksF1Addiction/videos",
       "poster": "/posters/channels/rick.jpg"
-    },{
+    },
+    {
       "id": 33,
       "name": "DMac",
       "url": "https://www.youtube.com/@DMac__/videos",
       "poster": "/posters/channels/dmac.jpg"
-    },{
+    },
+    {
       "id": 34,
       "name": "Sticks",
       "url": "https://www.youtube.com/@Sticks/videos",
       "poster": "/posters/channels/sticks.jpg"
-    },{
+    },
+    {
       "id": 35,
       "name": "Dude Perfect",
       "url": "https://www.youtube.com/@dudeperfect/videos",
       "poster": "/posters/channels/dp.jpg"
-    },{
+    },
+    {
       "id": 36,
       "name": "Mohak Mangal",
       "url": "https://www.youtube.com/@mohak_mangal/videos",
       "poster": "/posters/channels/soch.jpg"
-    },{
+    },
+    {
       "id": 37,
       "name": "Search Party",
       "url": "https://www.youtube.com/@SearchParty/videos",

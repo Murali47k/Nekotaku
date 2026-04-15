@@ -69,6 +69,74 @@ const api = {
   }).then(r => r.json()),
 };
 
+/*Pokemon*/
+const POKE_KEY = 'my_pokemon_team';
+
+function getPokemonTeam() {
+  return JSON.parse(localStorage.getItem(POKE_KEY) || '[]');
+}
+
+function savePokemonTeam(team) {
+  localStorage.setItem(POKE_KEY, JSON.stringify(team));
+}
+
+function renderPokemonTeam() {
+  const container = document.getElementById('pokemon-team');
+  if (!container) return;
+
+  const team = getPokemonTeam();
+  container.innerHTML = '';
+
+  team.forEach((poke, idx) => {
+    const div = document.createElement('div');
+    div.className = 'poke-card';
+
+    const sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${poke.id}.gif`;
+
+    div.innerHTML = `
+      <button class="remove-btn" onclick="pages.removePokemon(${idx})">x</button>
+      <img src="${sprite}" alt="${poke.name}">
+      <div class="poke-name">${poke.name}</div>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+async function addPokemonPrompt() {
+  const name = prompt("Enter Pokémon name (e.g. pikachu):");
+  if (!name) return;
+
+  const lower = name.toLowerCase();
+
+  try {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${lower}`);
+    if (!res.ok) throw new Error();
+
+    const data = await res.json();
+
+    const team = getPokemonTeam();
+
+    team.push({
+      name: data.name,
+      id: data.id
+    });
+
+    savePokemonTeam(team);
+    renderPokemonTeam();
+
+  } catch {
+    console.error("Invalid Pokémon name");
+  }
+}
+
+function removePokemon(idx) {
+  const team = getPokemonTeam();
+  team.splice(idx, 1);
+  savePokemonTeam(team);
+  renderPokemonTeam();
+}
+
 /* ---------- HOME ---------- */
 async function initHome() {
   const res = await api.getHome();
@@ -134,6 +202,7 @@ async function initHome() {
       mangaRoot.appendChild(div);
     });
   }
+  renderPokemonTeam();
 }
 
 async function promptAddHomeNote() {
@@ -1296,6 +1365,8 @@ window.pages = {
   promptAddYoutubeChannel,
   deleteYoutube,
   deleteYoutubeChannel,
+  addPokemonPrompt,
+  removePokemon,
 };
 
 document.addEventListener('DOMContentLoaded', () => {

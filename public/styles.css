@@ -86,6 +86,45 @@ header { display:flex; gap:16px; align-items:center; padding:16px 24px; backgrou
   font-family: inherit;
 }
 
+.poke-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.poke-card {
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  position: relative;
+}
+
+.poke-card img {
+  width: 128px;
+  height: 128px;
+}
+
+.poke-name {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 12px;
+  background: #e74c3c;
+  border: none;
+  border-radius: 6px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+
 /* small responsive */
 @media (max-width:700px) {
   .nav { display:block; }

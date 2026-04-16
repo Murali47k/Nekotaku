@@ -2266,11 +2266,22 @@
       "title": "Levius",
       "originalTitle": "Levius",
       "cover": "/posters/manga/levius.jpeg",
-      "chapters_read": 4,
-      "finished": false,
+      "chapters_read": 18,
+      "finished": true,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-04-15T04:45:14.531Z"
+    },
+    {
+      "id": "1776355946812",
+      "title": "Levius/est",
+      "originalTitle": "Levius/est",
+      "cover": "/posters/manga/levius_est.jpg",
+      "chapters_read": 1,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-04-16T16:12:26.812Z"
     }
   ],
   "topAnime": [

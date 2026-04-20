@@ -2796,6 +2796,16 @@
       "name": "Search Party",
       "url": "https://www.youtube.com/@SearchParty/videos",
       "poster": "/posters/channels/sp.jpg"
+    },{
+      "id": 38,
+      "name": "Max Fosh",
+      "url": "https://www.youtube.com/@MaxFosh/videos",
+      "poster": "/posters/channels/maxfosh.jpg"
+    },{
+      "id": 39,
+      "name": "Jimmy Carr",
+      "url": "https://www.youtube.com/@jimmycarr/videos",
+      "poster": "/posters/channels/jimmy_carr.jpg"
     }
   ]
 }

@@ -1409,7 +1409,7 @@
       "poster": "/posters/anime/puparia.jpeg",
       "episodes_watched": 1,
       "total_episodes": 1,
-      "finished": false,
+      "finished": true,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-04-21T04:33:36.902Z"
@@ -1422,7 +1422,7 @@
       "poster": "/posters/anime/baan.jpeg",
       "episodes_watched": 1,
       "total_episodes": 1,
-      "finished": false,
+      "finished": true,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-04-21T04:33:50.957Z"

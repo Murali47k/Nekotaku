@@ -1400,6 +1400,32 @@
       "year": "2024",
       "yearSection": "2024",
       "addedAt": "2026-02-23T15:20:52.946Z"
+    },
+    {
+      "id": "1776746016902",
+      "title": "puparia",
+      "originalTitle": "puparia",
+      "mal_id": null,
+      "poster": null,
+      "episodes_watched": 1,
+      "total_episodes": 1,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-04-21T04:33:36.902Z"
+    },
+    {
+      "id": "1776746030957",
+      "title": "baan",
+      "originalTitle": "baan",
+      "mal_id": null,
+      "poster": null,
+      "episodes_watched": 1,
+      "total_episodes": 1,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-04-21T04:33:50.957Z"
     }
   ],
   "manga": [
@@ -2796,12 +2822,14 @@
       "name": "Search Party",
       "url": "https://www.youtube.com/@SearchParty/videos",
       "poster": "/posters/channels/sp.jpg"
-    },{
+    },
+    {
       "id": 38,
       "name": "Max Fosh",
       "url": "https://www.youtube.com/@MaxFosh/videos",
       "poster": "/posters/channels/maxfosh.jpg"
-    },{
+    },
+    {
       "id": 39,
       "name": "Jimmy Carr",
       "url": "https://www.youtube.com/@jimmycarr/videos",

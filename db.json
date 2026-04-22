@@ -2610,6 +2610,20 @@
       "type": "series",
       "poster": "/posters/youtube/dreammh.jpg",
       "url": "https://www.youtube.com/watch?v=6GnC-N7L0Ew&list=PLChiKQUYPsJ9_ZXHeT287Ry2tIX1AiSkq&index=1"
+    },{
+      "id": 24,
+      "title": "Project 1356 is Over",
+      "year": "2025",
+      "type": "video",
+      "poster": "/posters/youtube/p1356.jpg",
+      "url": "https://www.youtube.com/watch?v=HHPuA8j8LzU"
+    },{
+      "id":25,
+      "title": "Power Rangers : Entire Series",
+      "year": "2023-26",
+      "type": "series",
+      "poster": "/posters/youtube/power_rangers.jpg",
+      "url": "https://www.youtube.com/watch?v=EZVVcpDUbRc&list=PLrqssmwh2GttvjjGHVbYCB6ao9Sbuv7OZ"
     }
   ],
   "channels": [
@@ -2834,6 +2848,16 @@
       "name": "Jimmy Carr",
       "url": "https://www.youtube.com/@jimmycarr/videos",
       "poster": "/posters/channels/jimmy_carr.jpg"
+    },{
+      "id" :40,
+      "name": "Knox Hill",
+      "url": "https://www.youtube.com/@KnoxHill/videos",
+      "poster": "/posters/channels/knox.jpg"
+    },{
+      "id" :41,
+      "name": "The Masked Man",
+      "url": "https://www.youtube.com/@TheMaskedMan/videos",
+      "poster": "/posters/channels/masked_man.jpg"
     }
   ]
 }

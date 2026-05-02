@@ -67,6 +67,12 @@ const api = {
   deleteYoutube: (id) => fetch('/api/youtube/' + id, {
     method: 'DELETE'
   }).then(r => r.json()),
+
+  uploadImage: (file) => {
+    const fd = new FormData();
+    fd.append('image', file);
+    return fetch('/api/upload', { method: 'POST', body: fd }).then(r => r.json());
+  },
 };
 
 /*Pokemon*/
@@ -1266,6 +1272,113 @@ async function deleteYoutubeChannel(id) {
   initYoutubePage();
 }
 
+async function promptAddYoutubeVideo() {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+
+  const inputStyle = `width:100%; padding:10px 12px; margin-top:4px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); outline:none; color:#e6eef8;`;
+  const labelStyle = `display:block; font-size:14px; font-weight:500; color:var(--muted);`;
+
+  modal.innerHTML = `
+    <div class="modal-content" style="max-width:480px;">
+      <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+      <h2>Add Video / Series</h2>
+      <form id="add-yt-video-form" style="margin-top:16px;">
+
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Title <span style="color:red;">*</span></label>
+          <input type="text" id="yt-title" required style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Type</label>
+          <select id="yt-type" style="${inputStyle} cursor:pointer;">
+            <option value="video">Video</option>
+            <option value="series">Series</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Link (optional)</label>
+          <input type="url" id="yt-url" placeholder="https://youtube.com/..." style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Year (optional)</label>
+          <input type="text" id="yt-year" placeholder="e.g. 2024" style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <label style="${labelStyle}">Thumbnail (optional)</label>
+          <div style="margin-top:8px; display:flex; align-items:center; gap:12px;">
+            <label style="cursor:pointer; padding:8px 14px; border-radius:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:13px; color:#e6eef8; white-space:nowrap;">
+              📁 Choose file
+              <input type="file" id="yt-thumb-file" accept="image/*" style="display:none;">
+            </label>
+            <span id="yt-thumb-name" style="font-size:12px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No file chosen</span>
+          </div>
+          <div id="yt-thumb-preview" style="margin-top:10px; display:none;">
+            <img id="yt-thumb-preview-img" style="max-height:120px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); object-fit:cover;">
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; padding-top:8px;">
+          <button type="button" class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
+          <button type="submit" class="btn" style="background:var(--accent); color:var(--card); font-weight:700; border:1px solid var(--accent);">Add</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const fileInput = document.getElementById('yt-thumb-file');
+  fileInput.addEventListener('change', () => {
+    const f = fileInput.files[0];
+    document.getElementById('yt-thumb-name').textContent = f ? f.name : 'No file chosen';
+    const preview = document.getElementById('yt-thumb-preview');
+    const previewImg = document.getElementById('yt-thumb-preview-img');
+    if (f) {
+      previewImg.src = URL.createObjectURL(f);
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+  });
+
+  document.getElementById('add-yt-video-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('yt-title').value.trim();
+    if (!title) return;
+    const type = document.getElementById('yt-type').value;
+    const url = document.getElementById('yt-url').value.trim() || null;
+    const year = document.getElementById('yt-year').value.trim() || null;
+
+    let poster = null;
+    const file = fileInput.files[0];
+    if (file) {
+      const submitBtn = e.target.querySelector('[type="submit"]');
+      submitBtn.textContent = 'Uploading…';
+      submitBtn.disabled = true;
+      try {
+        const result = await api.uploadImage(file);
+        if (result.path) poster = result.path;
+      } catch (err) {
+        console.error('Thumbnail upload failed', err);
+      }
+      submitBtn.textContent = 'Add';
+      submitBtn.disabled = false;
+    }
+
+    await api.addYoutube({ title, url, type, year, poster });
+    modal.remove();
+    initYoutubePage();
+  });
+}
+
 async function promptAddYoutubeChannel() {
   const modal = document.createElement('div');
   modal.className = 'modal';
@@ -1362,6 +1475,7 @@ window.pages = {
   deleteBookConfirm,
   initYoutubePage,
   searchYoutube,
+  promptAddYoutubeVideo,
   promptAddYoutubeChannel,
   deleteYoutube,
   deleteYoutubeChannel,

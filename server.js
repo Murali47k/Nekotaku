@@ -6,6 +6,7 @@ const path = require('path');
 const morgan = require('morgan');
 const fetch = require('node-fetch');
 const cors = require('cors');
+const multer = require('multer');
 
 const DB_FILE = path.join(__dirname, 'db.json');
 const POSTERS_DIR = path.join(__dirname, 'public', 'posters');
@@ -22,6 +23,27 @@ app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
 // Ensure poster folder exists
 if (!fs.existsSync(POSTERS_DIR)) fs.mkdirSync(POSTERS_DIR, { recursive: true });
+
+// --- MULTER SETUP ---
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const dir = path.join(POSTERS_DIR, 'uploads');
+    fs.mkdirSync(dir, { recursive: true });
+    cb(null, dir);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname) || '.jpg';
+    cb(null, `${Date.now()}${ext}`);
+  }
+});
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 },
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith('image/')) cb(null, true);
+    else cb(new Error('Only image files allowed'));
+  }
+});
 
 // --- JSON DB Helpers ---
 function readDB() {
@@ -152,6 +174,13 @@ async function fetchPosterForManga(title) {
 }
 
 // --- API ROUTES ---
+
+// Generic image upload endpoint
+app.post('/api/upload', upload.single('image'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  const rel = path.relative(path.join(__dirname, 'public'), req.file.path).split(path.sep).join('/');
+  res.json({ path: `/${rel}` });
+});
 
 app.get('/api/db', (req, res) => {
   res.json(readDB());
@@ -472,6 +501,43 @@ app.post('/api/top/manga', (req, res) => {
 app.get('/api/youtube', (req, res) => {
   const db = readDB();
   res.json(db.youtube || []);
+});
+
+app.post('/api/youtube', (req, res) => {
+  const db = readDB();
+  const { title, url, type = 'video', year = null, poster = null } = req.body;
+  if (!title) return res.status(400).json({ error: 'title required' });
+  const item = {
+    id: Date.now().toString(),
+    title,
+    url: url || null,
+    type,
+    year,
+    poster: poster || null,
+    addedAt: new Date().toISOString()
+  };
+  db.youtube = db.youtube || [];
+  db.youtube.push(item);
+  writeDB(db);
+  res.json(item);
+});
+
+app.delete('/api/youtube/:id', (req, res) => {
+  const db = readDB();
+  const item = db.youtube?.find(v => v.id === req.params.id);
+  if (item) deletePosterFile(item.poster);
+  db.youtube = (db.youtube || []).filter(v => v.id !== req.params.id);
+  writeDB(db);
+  res.json({ ok: true });
+});
+
+app.delete('/api/channels/:id', (req, res) => {
+  const db = readDB();
+  const item = db.channels?.find(c => String(c.id) === String(req.params.id));
+  if (item) deletePosterFile(item.poster);
+  db.channels = (db.channels || []).filter(c => String(c.id) !== String(req.params.id));
+  writeDB(db);
+  res.json({ ok: true });
 });
 
 app.get('/api/channels', (req, res) => {

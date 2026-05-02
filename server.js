@@ -283,7 +283,7 @@ app.get('/api/anime', (req, res) => {
 
 app.post('/api/anime', async (req, res) => {
   try {
-    const { title, episodes_watched = 0, total_episodes = null, year = null, yearSection = null } = req.body;
+    const { title, poster: manualPoster , episodes_watched = 0, total_episodes = null, year = null, yearSection = null } = req.body;
     if (!title) return res.status(400).json({ error: 'title required' });
 
     const db = readDB();
@@ -301,7 +301,7 @@ app.post('/api/anime', async (req, res) => {
       title: fetched.titleFetched,
       originalTitle: title,
       mal_id: fetched.mal_id,
-      poster: posterLocal || fetched.poster,
+      poster: manualPoster || posterLocal || fetched.poster,
       episodes_watched: Number(episodes_watched),
       total_episodes: total_episodes !== null ? Number(total_episodes) : null,
       finished: false,
@@ -347,7 +347,7 @@ app.get('/api/manga', (req, res) => {
 });
 
 app.post('/api/manga', async (req, res) => {
-  const { title, chapters_read = 0, year = null, yearSection = null } = req.body;
+  const { title, chapters_read = 0, year = null, yearSection = null, cover: manualCover} = req.body;
   if (!title) return res.status(400).json({ error: "title required" });
 
   const db = readDB();
@@ -365,7 +365,7 @@ app.post('/api/manga', async (req, res) => {
       id: Date.now().toString(),
       title: fetched.titleFetched,
       originalTitle: title,
-      cover: coverLocal || fetched.poster,
+      cover: manualCover || coverLocal || fetched.poster,
       chapters_read: Number(chapters_read),
       finished: false,
       year,
@@ -413,7 +413,7 @@ app.get('/api/books', (req, res) => {
 
 app.post('/api/books', async (req, res) => {
 
-  const { title, pages_read = 0, year = null, yearSection = null } = req.body;
+  const { title, pages_read = 0, year = null, yearSection = null , cover: manualCover } = req.body;
 
   if (!title) {
     return res.status(400).json({ error: "title required" });
@@ -426,6 +426,7 @@ app.post('/api/books', async (req, res) => {
     title,
     pages_read: Number(pages_read),
     finished: false,
+    cover: manualCover || null,
     year,
     yearSection,
     addedAt: new Date().toISOString()

@@ -523,27 +523,13 @@ function showEntryModal(type, targetYearSection, onSubmit) {
     const isAnime = type === 'anime';
     const mediaType = isAnime ? 'Anime' : 'Manga';
     const unit = isAnime ? 'Episodes' : 'Chapters';
+    const imageFieldLabel = isAnime ? 'Poster' : 'Cover';
 
-    // --- NEW STYLING APPLIED HERE ---
-    const inputStyle = `
-        width: 100%; 
-        padding: 10px 12px; 
-        margin-top: 4px; 
-        border-radius: 8px; 
-        background: var(--glass); 
-        border: 1px solid rgba(255,255,255,0.08); 
-        outline: none; 
-        color: #e6eef8; /* Use root text color */
-    `;
-    const labelStyle = `
-        display: block; 
-        font-size: 14px; 
-        font-weight: 500; 
-        color: var(--muted); /* Use muted color for label */
-    `;
+    const inputStyle = `width:100%; padding:10px 12px; margin-top:4px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); outline:none; color:#e6eef8;`;
+    const labelStyle = `display:block; font-size:14px; font-weight:500; color:var(--muted);`;
 
     modal.innerHTML = `
-        <div class="modal-content" style="max-width:400px;">
+        <div class="modal-content" style="max-width:480px;">
             <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
             <h2>Add New ${mediaType}</h2>
             <form id="add-entry-form" style="margin-top:16px;">
@@ -567,11 +553,24 @@ function showEntryModal(type, targetYearSection, onSubmit) {
                            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
                 </div>
                 ` : ''}
-                <div style="margin-bottom:24px;">
+                <div style="margin-bottom:16px;">
                     <label for="year" style="${labelStyle}">Year Section (e.g. 2025)</label>
                     <input type="text" id="year" name="year" value="${targetYearSection || ''}"
                            style="${inputStyle}"
                            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+                </div>
+                <div style="margin-bottom:24px;">
+                    <label style="${labelStyle}">${imageFieldLabel} (optional)</label>
+                    <div style="margin-top:8px; display:flex; align-items:center; gap:12px;">
+                        <label style="cursor:pointer; padding:8px 14px; border-radius:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:13px; color:#e6eef8; white-space:nowrap;">
+                            📁 Choose file
+                            <input type="file" id="entry-image-file" accept="image/*" style="display:none;">
+                        </label>
+                        <span id="entry-image-name" style="font-size:12px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No file chosen</span>
+                    </div>
+                    <div id="entry-image-preview" style="margin-top:10px; display:none;">
+                        <img id="entry-image-preview-img" style="max-height:120px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); object-fit:cover;">
+                    </div>
                 </div>
                 <div style="display:flex; justify-content:flex-end; gap:12px; padding-top:8px;">
                     <button type="button" class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
@@ -582,6 +581,20 @@ function showEntryModal(type, targetYearSection, onSubmit) {
     `;
 
     document.body.appendChild(modal);
+
+    const fileInput = document.getElementById('entry-image-file');
+    fileInput.addEventListener('change', () => {
+        const f = fileInput.files[0];
+        document.getElementById('entry-image-name').textContent = f ? f.name : 'No file chosen';
+        const preview = document.getElementById('entry-image-preview');
+        const previewImg = document.getElementById('entry-image-preview-img');
+        if (f) {
+            previewImg.src = URL.createObjectURL(f);
+            preview.style.display = 'block';
+        } else {
+            preview.style.display = 'none';
+        }
+    });
 
     document.getElementById('add-entry-form').addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -596,13 +609,26 @@ function showEntryModal(type, targetYearSection, onSubmit) {
             total = totalVal ? Number(totalVal) : null;
         }
 
-        if (title) {
-            await onSubmit(title, watched, total, year);
-            modal.remove();
-        } else {
-            // Replaced alert
-            console.error('Title is required!');
+        if (!title) return console.error('Title is required!');
+
+        let uploadedImagePath = null;
+        const file = fileInput.files[0];
+        if (file) {
+            const submitBtn = e.target.querySelector('[type="submit"]');
+            submitBtn.textContent = 'Uploading…';
+            submitBtn.disabled = true;
+            try {
+                const result = await api.uploadImage(file);
+                if (result.path) uploadedImagePath = result.path;
+            } catch (err) {
+                console.error('Image upload failed', err);
+            }
+            submitBtn.textContent = `Add ${mediaType}`;
+            submitBtn.disabled = false;
         }
+
+        await onSubmit(title, watched, total, year, uploadedImagePath);
+        modal.remove();
     });
 }
 
@@ -758,13 +784,14 @@ async function initAnimePage() {
 
 // FIX 2: Replaced multiple prompt calls with a single form modal
 async function promptAddAnime(targetYearSection = null) {
-    showEntryModal('anime', targetYearSection, async (title, episodes_watched, total_episodes, year) => {
+    showEntryModal('anime', targetYearSection, async (title, episodes_watched, total_episodes, year, uploadedImagePath) => {
         const payload = {
             title,
             episodes_watched,
             total_episodes: total_episodes !== null ? total_episodes : null,
             year: year,
-            yearSection: year || targetYearSection || null
+            yearSection: year || targetYearSection || null,
+            poster: uploadedImagePath || null
         };
         await api.addAnime(payload);
         initAnimePage();
@@ -904,12 +931,13 @@ async function initMangaPage() {
 
 // FIX 2: Replaced multiple prompt calls with a single form modal
 async function promptAddManga(targetYearSection = null) {
-    showEntryModal('manga', targetYearSection, async (title, chapters_read, total_chapters, year) => {
+    showEntryModal('manga', targetYearSection, async (title, chapters_read, total_chapters, year, uploadedImagePath) => {
         const payload = {
             title,
             chapters_read,
             year: year,
-            yearSection: year || targetYearSection || null
+            yearSection: year || targetYearSection || null,
+            cover: uploadedImagePath || null
         };
         // total_chapters is ignored for manga for now as the schema doesn't support it
         await api.addManga(payload);
@@ -1063,23 +1091,106 @@ async function initBooksPage() {
 }
 
 async function promptAddBook(targetYearSection = null) {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
 
-  const title = prompt("Book title:");
-  if (!title) return;
+  const inputStyle = `width:100%; padding:10px 12px; margin-top:4px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); outline:none; color:#e6eef8;`;
+  const labelStyle = `display:block; font-size:14px; font-weight:500; color:var(--muted);`;
 
-  const pages = Number(prompt("Pages read:", "0"));
+  modal.innerHTML = `
+    <div class="modal-content" style="max-width:480px;">
+      <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+      <h2>Add Book</h2>
+      <form id="add-book-form" style="margin-top:16px;">
 
-  const year = prompt("Year section (example 2025):", targetYearSection || "");
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Title <span style="color:red;">*</span></label>
+          <input type="text" id="book-title" required style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        </div>
 
-  const payload = {
-    title,
-    pages_read: pages || 0,
-    yearSection: year || targetYearSection || null
-  };
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Pages Read (optional)</label>
+          <input type="number" id="book-pages" value="0" style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        </div>
 
-  await api.addBook(payload);
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Year Section (e.g. 2025)</label>
+          <input type="text" id="book-year" value="${targetYearSection || ''}" style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        </div>
 
-  initBooksPage();
+        <div style="margin-bottom:24px;">
+          <label style="${labelStyle}">Cover (optional)</label>
+          <div style="margin-top:8px; display:flex; align-items:center; gap:12px;">
+            <label style="cursor:pointer; padding:8px 14px; border-radius:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:13px; color:#e6eef8; white-space:nowrap;">
+              📁 Choose file
+              <input type="file" id="book-image-file" accept="image/*" style="display:none;">
+            </label>
+            <span id="book-image-name" style="font-size:12px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No file chosen</span>
+          </div>
+          <div id="book-image-preview" style="margin-top:10px; display:none;">
+            <img id="book-image-preview-img" style="max-height:120px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); object-fit:cover;">
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; padding-top:8px;">
+          <button type="button" class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
+          <button type="submit" class="btn" style="background:var(--accent); color:var(--card); font-weight:700; border:1px solid var(--accent);">Add Book</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const fileInput = document.getElementById('book-image-file');
+  fileInput.addEventListener('change', () => {
+    const f = fileInput.files[0];
+    document.getElementById('book-image-name').textContent = f ? f.name : 'No file chosen';
+    const preview = document.getElementById('book-image-preview');
+    const previewImg = document.getElementById('book-image-preview-img');
+    if (f) {
+      previewImg.src = URL.createObjectURL(f);
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+  });
+
+  document.getElementById('add-book-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('book-title').value.trim();
+    if (!title) return;
+    const pages = Number(document.getElementById('book-pages').value) || 0;
+    const year = document.getElementById('book-year').value.trim() || null;
+
+    let cover = null;
+    const file = fileInput.files[0];
+    if (file) {
+      const submitBtn = e.target.querySelector('[type="submit"]');
+      submitBtn.textContent = 'Uploading…';
+      submitBtn.disabled = true;
+      try {
+        const result = await api.uploadImage(file);
+        if (result.path) cover = result.path;
+      } catch (err) {
+        console.error('Cover upload failed', err);
+      }
+      submitBtn.textContent = 'Add Book';
+      submitBtn.disabled = false;
+    }
+
+    await api.addBook({
+      title,
+      pages_read: pages,
+      yearSection: year || targetYearSection || null,
+      cover
+    });
+    modal.remove();
+    initBooksPage();
+  });
 }
 
 async function promptUpdateBook(id, current) {
@@ -1383,37 +1494,45 @@ async function promptAddYoutubeChannel() {
   const modal = document.createElement('div');
   modal.className = 'modal';
 
+  const inputStyle = `width:100%; padding:10px 12px; margin-top:4px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); outline:none; color:#e6eef8;`;
+  const labelStyle = `display:block; font-size:14px; font-weight:500; color:var(--muted);`;
+
   modal.innerHTML = `
-    <div class="modal-content" style="max-width:520px;">
+    <div class="modal-content" style="max-width:480px;">
       <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
       <h2>Add YouTube Channel</h2>
 
       <form id="add-youtube-channel-form" style="margin-top:16px;">
 
         <div style="margin-bottom:16px;">
-          <label>Channel Name</label>
-          <input type="text" id="channel-name" required
-            style="width:100%; padding:10px;">
+          <label style="${labelStyle}">Channel Name <span style="color:red;">*</span></label>
+          <input type="text" id="channel-name" required style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
         </div>
 
         <div style="margin-bottom:16px;">
-          <label>Channel URL</label>
-          <input type="url" id="channel-url" required
-            style="width:100%; padding:10px;">
+          <label style="${labelStyle}">Channel URL <span style="color:red;">*</span></label>
+          <input type="url" id="channel-url" required placeholder="https://youtube.com/@..." style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
         </div>
 
-        <div style="margin-bottom:16px;">
-          <label>Poster Path</label>
-          <input type="text" id="channel-poster"
-            placeholder="/posters/youtube/example.jpg"
-            style="width:100%; padding:10px;">
+        <div style="margin-bottom:24px;">
+          <label style="${labelStyle}">Logo / Poster (optional)</label>
+          <div style="margin-top:8px; display:flex; align-items:center; gap:12px;">
+            <label style="cursor:pointer; padding:8px 14px; border-radius:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:13px; color:#e6eef8; white-space:nowrap;">
+              📁 Choose file
+              <input type="file" id="channel-image-file" accept="image/*" style="display:none;">
+            </label>
+            <span id="channel-image-name" style="font-size:12px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No file chosen</span>
+          </div>
+          <div id="channel-image-preview" style="margin-top:10px; display:none;">
+            <img id="channel-image-preview-img" style="max-height:120px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); object-fit:cover;">
+          </div>
         </div>
 
-        <div style="display:flex; justify-content:flex-end; gap:12px;">
-          <button type="button" class="btn ghost"
-            onclick="this.closest('.modal').remove()">Cancel</button>
-
-          <button type="submit" class="btn">Save</button>
+        <div style="display:flex; justify-content:flex-end; gap:12px; padding-top:8px;">
+          <button type="button" class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
+          <button type="submit" class="btn" style="background:var(--accent); color:var(--card); font-weight:700; border:1px solid var(--accent);">Save</button>
         </div>
       </form>
     </div>
@@ -1421,25 +1540,46 @@ async function promptAddYoutubeChannel() {
 
   document.body.appendChild(modal);
 
-  document
-    .getElementById('add-youtube-channel-form')
-    .addEventListener('submit', async (e) => {
+  const fileInput = document.getElementById('channel-image-file');
+  fileInput.addEventListener('change', () => {
+    const f = fileInput.files[0];
+    document.getElementById('channel-image-name').textContent = f ? f.name : 'No file chosen';
+    const preview = document.getElementById('channel-image-preview');
+    const previewImg = document.getElementById('channel-image-preview-img');
+    if (f) {
+      previewImg.src = URL.createObjectURL(f);
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+  });
 
-      e.preventDefault();
+  document.getElementById('add-youtube-channel-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('channel-name').value.trim();
+    const url = document.getElementById('channel-url').value.trim();
+    if (!name || !url) return;
 
-      const name = document.getElementById('channel-name').value.trim();
-      const url = document.getElementById('channel-url').value.trim();
-      const poster = document.getElementById('channel-poster').value.trim();
+    let poster = null;
+    const file = fileInput.files[0];
+    if (file) {
+      const submitBtn = e.target.querySelector('[type="submit"]');
+      submitBtn.textContent = 'Uploading…';
+      submitBtn.disabled = true;
+      try {
+        const result = await api.uploadImage(file);
+        if (result.path) poster = result.path;
+      } catch (err) {
+        console.error('Logo upload failed', err);
+      }
+      submitBtn.textContent = 'Save';
+      submitBtn.disabled = false;
+    }
 
-      await api.addYoutubeChannel({
-        name,
-        url,
-        poster
-      });
-
-      modal.remove();
-      initYoutubePage();
-    });
+    await api.addYoutubeChannel({ name, url, poster });
+    modal.remove();
+    initYoutubePage();
+  });
 }
 
 

@@ -1199,7 +1199,7 @@
       "originalTitle": "Black Clover",
       "mal_id": 34572,
       "poster": "/posters/anime/34572.jpg",
-      "episodes_watched": 156,
+      "episodes_watched": 170,
       "total_episodes": null,
       "finished": false,
       "year": "2026",
@@ -1426,6 +1426,19 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-04-21T04:33:50.957Z"
+    },
+    {
+      "id": "1779188605992",
+      "title": "Hotaru no Haka",
+      "originalTitle": "grave of the fireflies",
+      "mal_id": 578,
+      "poster": "/posters/anime/578.jpg",
+      "episodes_watched": 1,
+      "total_episodes": null,
+      "finished": false,
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
+      "addedAt": "2026-05-19T11:03:25.992Z"
     }
   ],
   "manga": [

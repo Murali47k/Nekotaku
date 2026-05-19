@@ -766,7 +766,7 @@ async function initAnimePage() {
         ${posterHtml}
         <div class="card-info">
           <div class="title">${escapeHtml(item.title)}</div>
-          <div class="small">Episodes: <span id="ep_${item.id}">${epsWatched}</span> / ${epsTotal}</div>
+          <div class="small">Episodes: <span id="ep_${item.id}">${epsWatched}</span></div>
           <div style="margin-top:8px;" class="controls">
             <button class="btn" onclick="pages.editEpisodes('${item.id}', ${epsWatched}, ${item.total_episodes !== null ? item.total_episodes : 'null'})">Update episodes</button>
             <button class="btn ghost" onclick="pages.toggleFinished('${item.id}')">${isFinished ? 'Mark as watching' : 'Mark finished'}</button>

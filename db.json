@@ -980,7 +980,7 @@
       "poster": "/posters/anime/9969.jpg",
       "episodes_watched": 369,
       "total_episodes": 369,
-      "finished": false,
+      "finished": true,
       "year": "2022",
       "yearSection": "2022",
       "addedAt": "2025-11-26T06:20:10.337Z"
@@ -1394,9 +1394,9 @@
       "originalTitle": "Pokemon Horizon",
       "mal_id": 53876,
       "poster": "/posters/anime/53876.jpg",
-      "episodes_watched": 117,
+      "episodes_watched": 135,
       "total_episodes": 130,
-      "finished": false,
+      "finished": true,
       "year": "2024",
       "yearSection": "2024",
       "addedAt": "2026-02-23T15:20:52.946Z"
@@ -2343,6 +2343,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-05-05T17:34:36.325Z"
+    },
+    {
+      "id": "1779199632785",
+      "title": "Veil",
+      "originalTitle": "Veil",
+      "cover": "/posters/manga/132678.jpg",
+      "chapters_read": 77,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-05-19T14:07:12.785Z"
     }
   ],
   "topAnime": [

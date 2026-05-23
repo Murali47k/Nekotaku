@@ -65,7 +65,7 @@
       "title": "Master Race",
       "pages_read": 8,
       "finished": true,
-      "cover": "/posters/uploads/1779521106886.png",
+      "cover": "/posters/books/masterrace.png",
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-05-23T07:25:06.913Z"
@@ -2358,9 +2358,9 @@
     },
     {
       "id": "1778002476325",
-      "title": "Mugen no Juunin",
+      "title": "Blade of the Immortal",
       "originalTitle": "Blade of the Immortal",
-      "cover": "/posters/uploads/1778002470865.jpg",
+      "cover": "/posters/manga/1778002470865.jpg",
       "chapters_read": 38,
       "finished": false,
       "year": "2026",
@@ -2936,7 +2936,7 @@
       "id": 1779521264335,
       "name": "matttt - comic & manga history",
       "url": "https://www.youtube.com/@mattwith4ts/videos",
-      "poster": "/posters/uploads/1779521264323.jpg"
+      "poster": "/posters/channels/matt.jpg"
     }
   ]
 }

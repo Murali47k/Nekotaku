@@ -59,6 +59,16 @@
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-04-11T11:00:19.006Z"
+    },
+    {
+      "id": "1779521106913",
+      "title": "Master Race",
+      "pages_read": 8,
+      "finished": true,
+      "cover": "/posters/uploads/1779521106886.png",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-05-23T07:25:06.913Z"
     }
   ],
   "anime": [
@@ -902,7 +912,7 @@
       "poster": "/posters/anime/10800.jpg",
       "episodes_watched": 75,
       "total_episodes": 75,
-      "finished": true,
+      "finished": false,
       "year": "2025",
       "yearSection": "2025",
       "addedAt": "2025-11-26T06:00:10.667Z"
@@ -1439,6 +1449,19 @@
       "year": "(0-0) Movies",
       "yearSection": "(0-0) Movies",
       "addedAt": "2026-05-19T11:03:25.992Z"
+    },
+    {
+      "id": "1779520997849",
+      "title": "Ginga Eiyuu Densetsu",
+      "originalTitle": "Legend of the Galactic Heroes",
+      "mal_id": 820,
+      "poster": "/posters/anime/820.jpg",
+      "episodes_watched": 48,
+      "total_episodes": null,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-05-23T07:23:17.849Z"
     }
   ],
   "manga": [
@@ -2338,7 +2361,7 @@
       "title": "Mugen no Juunin",
       "originalTitle": "Blade of the Immortal",
       "cover": "/posters/uploads/1778002470865.jpg",
-      "chapters_read": 2,
+      "chapters_read": 38,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
@@ -2908,6 +2931,12 @@
       "name": "The Masked Man",
       "url": "https://www.youtube.com/@TheMaskedMan/videos",
       "poster": "/posters/channels/masked_man.jpg"
+    },
+    {
+      "id": 1779521264335,
+      "name": "matttt - comic & manga history",
+      "url": "https://www.youtube.com/@mattwith4ts/videos",
+      "poster": "/posters/uploads/1779521264323.jpg"
     }
   ]
 }

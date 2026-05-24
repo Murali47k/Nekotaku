@@ -2705,6 +2705,14 @@
       "type": "series",
       "poster": "/posters/youtube/power_rangers.jpg",
       "url": "https://www.youtube.com/watch?v=EZVVcpDUbRc&list=PLrqssmwh2GttvjjGHVbYCB6ao9Sbuv7OZ"
+    },
+    {
+      "id": 26,
+      "title": "Why is Malayalam so Mysterious?",
+      "year": "2025",
+      "type": "video",
+      "poster": "/posters/youtube/malayalam.jpg",
+      "url": "https://www.youtube.com/watch?v=-xWcASE_-mc"
     }
   ],
   "channels": [

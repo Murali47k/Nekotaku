@@ -89,6 +89,26 @@
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-05-25T12:37:25.937Z"
+    },
+    {
+      "id": "1779883992012",
+      "title": "Veerappan : Chasing the Brigand",
+      "pages_read": 274,
+      "finished": true,
+      "cover": "/posters/books/veer.jpg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-05-27T12:13:12.012Z"
+    },
+    {
+      "id": "1779884085841",
+      "title": "All Quiet on the Western Front",
+      "pages_read": 42,
+      "finished": false,
+      "cover": "/posters/books/allquiet.jpg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-05-27T12:14:45.842Z"
     }
   ],
   "anime": [
@@ -2400,7 +2420,7 @@
     },
     {
       "id": "1779797297302",
-      "title": "Before You Grow Up",
+      "title": "Before You Go Extinct",
       "originalTitle": "Before You Go Extinct",
       "cover": "/posters/manga/before_you_go_extinct.jpg",
       "chapters_read": 6,

@@ -2401,7 +2401,7 @@
       "title": "Blade of the Immortal",
       "originalTitle": "Blade of the Immortal",
       "cover": "/posters/manga/1778002470865.jpg",
-      "chapters_read": 114,
+      "chapters_read": 135,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
@@ -2428,6 +2428,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-05-26T12:08:17.303Z"
+    },
+    {
+      "id": "1780128695138",
+      "title": "Deadpool: Samurai",
+      "originalTitle": "Deadpool Samurai",
+      "cover": "/posters/manga/131840.jpg",
+      "chapters_read": 26,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-05-30T08:11:35.138Z"
     }
   ],
   "topAnime": [

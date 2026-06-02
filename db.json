@@ -103,12 +103,22 @@
     {
       "id": "1779884085841",
       "title": "All Quiet on the Western Front",
-      "pages_read": 206,
-      "finished": false,
+      "pages_read": 327,
+      "finished": true,
       "cover": "/posters/books/allquiet.jpg",
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-05-27T12:14:45.842Z"
+    },
+    {
+      "id": "1780404791347",
+      "title": "Who moved my cheese ?",
+      "pages_read": 32,
+      "finished": true,
+      "cover": "/posters/books/cheese.jpg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-06-02T12:53:11.347Z"
     }
   ],
   "anime": [

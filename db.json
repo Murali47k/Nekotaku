@@ -119,6 +119,16 @@
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-06-02T12:53:11.347Z"
+    },
+    {
+      "id": "1780491574080",
+      "title": "Art of War - Sun Tzu",
+      "pages_read": 64,
+      "finished": true,
+      "cover": "/posters/books/artofwar.jpg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-06-03T12:59:34.080Z"
     }
   ],
   "anime": [
@@ -2460,6 +2470,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-06-01T16:32:52.533Z"
+    },
+    {
+      "id": "1780491734168",
+      "title": "Chainsaw man: Part 2",
+      "originalTitle": "Chainsaw man: Part 2",
+      "cover": "/posters/manga/csm2.webp",
+      "chapters_read": 35,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-06-03T13:02:14.168Z"
     }
   ],
   "topAnime": [

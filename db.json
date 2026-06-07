@@ -129,6 +129,16 @@
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-06-03T12:59:34.080Z"
+    },
+    {
+      "id": "1780840918886",
+      "title": "Sun and Steel",
+      "pages_read": 1,
+      "finished": false,
+      "cover": "/posters/books/sun_steel.jpg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-06-07T14:01:58.886Z"
     }
   ],
   "anime": [
@@ -1516,12 +1526,25 @@
       "originalTitle": "Legend of the Galactic Heroes",
       "mal_id": 820,
       "poster": "/posters/anime/820.jpg",
-      "episodes_watched": 80,
+      "episodes_watched": 100,
       "total_episodes": null,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-05-23T07:23:17.849Z"
+    },
+    {
+      "id": "1780840881589",
+      "title": "Chainsaw Man Movie: Reze-hen",
+      "originalTitle": "Chainsaw man : Reze arc",
+      "mal_id": 57555,
+      "poster": "/posters/anime/57555.jpg",
+      "episodes_watched": 1,
+      "total_episodes": null,
+      "finished": true,
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
+      "addedAt": "2026-06-07T14:01:21.589Z"
     }
   ],
   "manga": [

@@ -133,12 +133,22 @@
     {
       "id": "1780840918886",
       "title": "Sun and Steel",
-      "pages_read": 1,
-      "finished": false,
+      "pages_read": 104,
+      "finished": true,
       "cover": "/posters/books/sun_steel.jpg",
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-06-07T14:01:58.886Z"
+    },
+    {
+      "id": "1780924428816",
+      "title": "Wings of Fire",
+      "pages_read": 227,
+      "finished": true,
+      "cover": "/posters/books/Wings_of_Fire.jpg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-06-08T13:13:48.816Z"
     }
   ],
   "anime": [
@@ -1526,7 +1536,7 @@
       "originalTitle": "Legend of the Galactic Heroes",
       "mal_id": 820,
       "poster": "/posters/anime/820.jpg",
-      "episodes_watched": 100,
+      "episodes_watched": 102,
       "total_episodes": null,
       "finished": false,
       "year": "2026",
@@ -2535,16 +2545,16 @@
       "poster": "/posters/anime/16498.jpg"
     },
     {
+      "title": "Ginga Eiyuu Densetsu",
+      "poster": "/posters/anime/820.jpg"
+    },
+    {
       "title": "Chi. Chikyuu no Undou ni Tsuite",
       "poster": "/posters/anime/52215.jpg"
     },
     {
       "title": "Chihayafuru",
       "poster": "/posters/anime/10800.jpg"
-    },
-    {
-      "title": "Ginga Eiyuu Densetsu: Die Neue These - Kaikou",
-      "poster": "/posters/anime/31433.jpg"
     },
     {
       "title": "Shokugeki no Souma",

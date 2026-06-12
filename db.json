@@ -153,7 +153,7 @@
     {
       "id": "1781093376782",
       "title": "Crime and Punishment",
-      "pages_read": 196,
+      "pages_read": 366,
       "finished": false,
       "cover": "/posters/books/crime-and-punishment.jpg",
       "year": null,
@@ -2557,6 +2557,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-06-09T12:55:35.179Z"
+    },
+    {
+      "id": "1781267080906",
+      "title": "Parasyte",
+      "originalTitle": "parasyte",
+      "cover": "/posters/manga/401.jpg",
+      "chapters_read": 11,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-06-12T12:24:40.906Z"
     }
   ],
   "topAnime": [

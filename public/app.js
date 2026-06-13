@@ -97,7 +97,7 @@ function renderPokemonTeam() {
     const div = document.createElement('div');
     div.className = 'poke-card';
 
-    const sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${poke.id}.gif`;
+    const sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.id}.png`;
 
     div.innerHTML = `
       <button class="remove-btn" onclick="pages.removePokemon(${idx})">x</button>

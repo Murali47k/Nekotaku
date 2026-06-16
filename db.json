@@ -153,12 +153,22 @@
     {
       "id": "1781093376782",
       "title": "Crime and Punishment",
-      "pages_read": 535,
+      "pages_read": 720,
       "finished": true,
       "cover": "/posters/books/crime-and-punishment.jpg",
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-06-10T12:09:36.782Z"
+    },
+    {
+      "id": "1781616332954",
+      "title": "The Old man and the sea",
+      "pages_read": 127,
+      "finished": true,
+      "cover": "/posters/books/oldmansea.jpg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-06-16T13:25:32.954Z"
     }
   ],
   "anime": [
@@ -2894,7 +2904,8 @@
       "type": "video",
       "poster": "/posters/youtube/malayalam.jpg",
       "url": "https://www.youtube.com/watch?v=-xWcASE_-mc"
-    },{
+    },
+    {
       "id": 27,
       "title": "The Beauty of Football - Greatest Moments",
       "year": "2021",

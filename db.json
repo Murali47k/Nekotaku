@@ -169,6 +169,26 @@
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-06-16T13:25:32.954Z"
+    },
+    {
+      "id": "1781616474364",
+      "title": "The Fight",
+      "pages_read": 1,
+      "finished": false,
+      "cover": "/posters/books/the_fight.jpeg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-06-16T13:27:54.364Z"
+    },
+    {
+      "id": "1781616560665",
+      "title": "Invisible Man",
+      "pages_read": 1,
+      "finished": false,
+      "cover": "/posters/books/invisible_man.jpg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-06-16T13:29:20.665Z"
     }
   ],
   "anime": [

@@ -874,7 +874,7 @@
       "originalTitle": "Ace of diamond",
       "mal_id": 18689,
       "poster": "/posters/anime/18689.jpg",
-      "episodes_watched": 178,
+      "episodes_watched": 126,
       "total_episodes": 178,
       "finished": false,
       "year": "2023",
@@ -1595,6 +1595,19 @@
       "year": "(0-0) Movies",
       "yearSection": "(0-0) Movies",
       "addedAt": "2026-06-07T14:01:21.589Z"
+    },
+    {
+      "id": "1781667221229",
+      "title": "Diamond no Ace : Act II",
+      "originalTitle": "Diamond no Ace : Act II",
+      "mal_id": null,
+      "poster": "/posters/anime/diaact2.webp",
+      "episodes_watched": 52,
+      "total_episodes": null,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-06-17T03:33:41.229Z"
     }
   ],
   "manga": [

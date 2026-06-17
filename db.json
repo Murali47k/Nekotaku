@@ -183,7 +183,7 @@
     {
       "id": "1781616560665",
       "title": "Invisible Man",
-      "pages_read": 1,
+      "pages_read": 154,
       "finished": false,
       "cover": "/posters/books/invisible_man.jpg",
       "year": null,
@@ -2611,6 +2611,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-06-12T12:24:40.906Z"
+    },
+    {
+      "id": "1781708327967",
+      "title": "Blame!",
+      "originalTitle": "Blame!",
+      "cover": "/posters/manga/149.jpg",
+      "chapters_read": 4,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-06-17T14:58:47.967Z"
     }
   ],
   "topAnime": [

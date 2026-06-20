@@ -183,7 +183,7 @@
     {
       "id": "1781616474364",
       "title": "The Fight",
-      "pages_read": 7,
+      "pages_read": 11,
       "finished": false,
       "cover": "/posters/books/the_fight.jpeg",
       "year": null,
@@ -844,13 +844,13 @@
     },
     {
       "id": "1764135910681",
-      "title": "One Piece Egghead Arc Recap",
+      "title": "One Piece : Egghead Arc",
       "originalTitle": "One Piece egg head",
       "mal_id": 61393,
       "poster": "/posters/anime/61393.jpg",
-      "episodes_watched": 1139,
+      "episodes_watched": 67,
       "total_episodes": null,
-      "finished": false,
+      "finished": true,
       "year": "2023",
       "yearSection": "2023",
       "addedAt": "2025-11-26T05:45:10.681Z"
@@ -876,7 +876,7 @@
       "poster": "/posters/anime/18689.jpg",
       "episodes_watched": 126,
       "total_episodes": 178,
-      "finished": false,
+      "finished": true,
       "year": "2023",
       "yearSection": "2023",
       "addedAt": "2025-11-26T05:47:43.144Z"
@@ -961,7 +961,7 @@
     },
     {
       "id": "1764136562345",
-      "title": "One Piece Fan Letter",
+      "title": "One Piece : Fan Letter",
       "originalTitle": "One piece fan letter",
       "mal_id": 60022,
       "poster": "/posters/anime/60022.jpg",
@@ -1602,12 +1602,51 @@
       "originalTitle": "Diamond no Ace : Act II",
       "mal_id": null,
       "poster": "/posters/anime/diaact2.webp",
-      "episodes_watched": 52,
+      "episodes_watched": 63,
       "total_episodes": null,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-06-17T03:33:41.229Z"
+    },
+    {
+      "id": "1781974289820",
+      "title": "Ping Pong the Animation",
+      "originalTitle": "Ping Pong the animation",
+      "mal_id": 22135,
+      "poster": "/posters/anime/22135.jpg",
+      "episodes_watched": 1,
+      "total_episodes": null,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-06-20T16:51:29.820Z"
+    },
+    {
+      "id": "1781974336508",
+      "title": "Redline",
+      "originalTitle": "Red Line",
+      "mal_id": 6675,
+      "poster": "/posters/anime/6675.jpg",
+      "episodes_watched": 1,
+      "total_episodes": null,
+      "finished": true,
+      "year": "(0-0) Movies",
+      "yearSection": "(0-0) Movies",
+      "addedAt": "2026-06-20T16:52:16.508Z"
+    },
+    {
+      "id": "1781974633186",
+      "title": "One Piece : Elbaf arc",
+      "originalTitle": "One Piece Elbaf arc",
+      "mal_id": 459,
+      "poster": "/posters/anime/oneelf.webp",
+      "episodes_watched": 10,
+      "total_episodes": null,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-06-20T16:57:13.186Z"
     }
   ],
   "manga": [

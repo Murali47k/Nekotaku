@@ -1365,7 +1365,7 @@
     {
       "id": "1771858739468",
       "title": "Bakuten Shoot Beyblade G Revolution",
-      "originalTitle": "Beyblade G revolution",
+      "originalTitle": "Beyblade",
       "mal_id": 1668,
       "poster": "/posters/anime/1668.jpg",
       "episodes_watched": 153,
@@ -1378,7 +1378,7 @@
     {
       "id": "1771858809811",
       "title": "Metal Fight Beyblade",
-      "originalTitle": "Beyblade Metal",
+      "originalTitle": "Beyblade Metal Saga",
       "mal_id": 5962,
       "poster": "/posters/anime/5962.jpg",
       "episodes_watched": 199,
@@ -1615,9 +1615,9 @@
       "originalTitle": "Ping Pong the animation",
       "mal_id": 22135,
       "poster": "/posters/anime/22135.jpg",
-      "episodes_watched": 1,
+      "episodes_watched": 11,
       "total_episodes": null,
-      "finished": false,
+      "finished": true,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-06-20T16:51:29.820Z"
@@ -1647,6 +1647,19 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-06-20T16:57:13.186Z"
+    },
+    {
+      "id": "1782126007032",
+      "title": "Tengen Toppa Gurren Lagann",
+      "originalTitle": "Gurren Laggan",
+      "mal_id": 2001,
+      "poster": "/posters/anime/2001.jpg",
+      "episodes_watched": 4,
+      "total_episodes": null,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-06-22T11:00:07.032Z"
     }
   ],
   "manga": [
@@ -2672,6 +2685,28 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-06-18T12:07:23.112Z"
+    },
+    {
+      "id": "1782126050406",
+      "title": "Gao",
+      "originalTitle": "Gao",
+      "cover": "/posters/manga/gao.jpeg",
+      "chapters_read": 1,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-06-22T11:00:50.406Z"
+    },
+    {
+      "id": "1782126107410",
+      "title": "Hal Formula",
+      "originalTitle": "Hal Formula",
+      "cover": "/posters/manga/194130.jpg",
+      "chapters_read": 1,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-06-22T11:01:47.410Z"
     }
   ],
   "topAnime": [

@@ -189,6 +189,16 @@
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-06-16T13:27:54.364Z"
+    },
+    {
+      "id": "1782388089054",
+      "title": "The Metamorphosis",
+      "pages_read": 77,
+      "finished": true,
+      "cover": "/posters/books/metamorphosis.jpeg",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-06-25T11:48:09.054Z"
     }
   ],
   "anime": [
@@ -1723,7 +1733,7 @@
       "title": "Blue Lock",
       "originalTitle": "Blue Lock",
       "cover": "/posters/manga/114745.jpg",
-      "chapters_read": 326,
+      "chapters_read": 351,
       "finished": false,
       "year": "2020",
       "yearSection": "2020",

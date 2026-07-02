@@ -1622,7 +1622,7 @@
       "originalTitle": "Diamond no Ace : Act II",
       "mal_id": null,
       "poster": "/posters/anime/diaact2.webp",
-      "episodes_watched": 64,
+      "episodes_watched": 65,
       "total_episodes": null,
       "finished": false,
       "year": "2026",
@@ -1661,7 +1661,7 @@
       "originalTitle": "One Piece Elbaf arc",
       "mal_id": 459,
       "poster": "/posters/anime/oneelf.webp",
-      "episodes_watched": 11,
+      "episodes_watched": 12,
       "total_episodes": null,
       "finished": false,
       "year": "2026",
@@ -2786,6 +2786,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-06-29T11:49:36.763Z"
+    },
+    {
+      "id": "1782964209194",
+      "title": "Kaoru Hana wa Rin to Saku",
+      "originalTitle": "The Fragrent flower blooms with dignity",
+      "cover": "/posters/manga/144267.jpg",
+      "chapters_read": 44,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-07-02T03:50:09.194Z"
     }
   ],
   "topAnime": [

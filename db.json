@@ -2799,11 +2799,21 @@
       "addedAt": "2026-07-02T03:50:09.194Z"
     },
     {
+      "id": "1783175836005",
+      "title": "Innocent",
+      "originalTitle": "Innocent",
+      "cover": "/posters/manga/22741.jpeg",
+      "chapters_read": 4,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-07-04T14:37:16.005Z"
+    },{
       "id": "1783050047699",
       "title": "Boruto: Naruto Next Generations",
       "originalTitle": "Boruto : Naruto next Genration",
       "cover": "/posters/manga/95210.jpg",
-      "chapters_read": 1,
+      "chapters_read": 15,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",

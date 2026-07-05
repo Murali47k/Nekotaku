@@ -2808,7 +2808,8 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-07-04T14:37:16.005Z"
-    },{
+    },
+    {
       "id": "1783050047699",
       "title": "Boruto: Naruto Next Generations",
       "originalTitle": "Boruto : Naruto next Genration",
@@ -3152,6 +3153,51 @@
       "type": "video",
       "poster": "/posters/youtube/beauty_football.jpg",
       "url": "https://www.youtube.com/watch?v=A-r9sj7zHJ4&t=2s"
+    },
+    {
+      "id": "1783222249608",
+      "title": "The Most Over-Engineered Video Game Character",
+      "url": "https://www.youtube.com/watch?v=_MW-g7sbUf8",
+      "type": "video",
+      "year": "2026",
+      "poster": "/posters/youtube/sonic.jpg",
+      "addedAt": "2026-07-05T03:30:49.608Z"
+    },
+    {
+      "id": "1783221563727",
+      "title": "The History of Tetris World Records",
+      "url": "https://www.youtube.com/watch?v=mOJlg8g8_yw&t=1s",
+      "type": "video",
+      "year": "2024",
+      "poster": "/posters/youtube/tetris.jpg",
+      "addedAt": "2026-07-05T03:19:23.727Z"
+    },
+    {
+      "id": "1783222541004",
+      "title": "Hermitcraft : Season 7",
+      "url": "https://www.youtube.com/watch?v=cw_tD8iKAoQ&list=PLxHGabMKvJN7R0pN5rc0ig4WF7CCWKQ53",
+      "type": "series",
+      "year": "2020",
+      "poster": "/posters/youtube/hc_s7.jpg",
+      "addedAt": "2026-07-05T03:35:41.004Z"
+    },
+    {
+      "id": "1783222666035",
+      "title": "Hermitcraft : Season 8",
+      "url": "https://www.youtube.com/watch?v=IPyLUU9Dano&list=PLmk_tb9Pu-WK309c6h8E3S2_F3_CAdN3J",
+      "type": "series",
+      "year": "2021",
+      "poster": "/posters/youtube/hc_s8.jpg",
+      "addedAt": "2026-07-05T03:37:46.036Z"
+    },
+    {
+      "id": "1783222833128",
+      "title": "Hermitcraft : Season 11",
+      "url": "https://www.youtube.com/watch?v=LtN_Qf2RKNI&list=PLSMYic6c476DkIsyiXy7H4II5RzFrTcPy",
+      "type": "series",
+      "year": "2026",
+      "poster": "/posters/youtube/hc_s11.jpg",
+      "addedAt": "2026-07-05T03:40:33.128Z"
     }
   ],
   "channels": [

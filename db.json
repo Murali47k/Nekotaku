@@ -2792,7 +2792,7 @@
       "title": "Kaoru Hana wa Rin to Saku",
       "originalTitle": "The Fragrent flower blooms with dignity",
       "cover": "/posters/manga/144267.jpg",
-      "chapters_read": 44,
+      "chapters_read": 51,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
@@ -2814,11 +2814,22 @@
       "title": "Boruto: Naruto Next Generations",
       "originalTitle": "Boruto : Naruto next Genration",
       "cover": "/posters/manga/95210.jpg",
+      "chapters_read": 85,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-07-03T03:40:47.699Z"
+    },
+    {
+      "id": "1783265016928",
+      "title": "Boruto : Two Blue Vortex",
+      "originalTitle": "Boruto : Two Blue Vortex",
+      "cover": "/posters/manga/Btbv.jpg",
       "chapters_read": 15,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
-      "addedAt": "2026-07-03T03:40:47.699Z"
+      "addedAt": "2026-07-05T15:23:36.928Z"
     }
   ],
   "topAnime": [

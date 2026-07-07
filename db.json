@@ -2848,11 +2848,22 @@
       "title": "Boruto : Two Blue Vortex",
       "originalTitle": "Boruto : Two Blue Vortex",
       "cover": "/posters/manga/Btbv.jpg",
-      "chapters_read": 15,
+      "chapters_read": 35,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-07-05T15:23:36.928Z"
+    },
+    {
+      "id": "1783433730817",
+      "title": "Innocent : Rogue",
+      "originalTitle": "Innocent : Rogue",
+      "cover": "/posters/manga/Ir2.jpg",
+      "chapters_read": 2,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-07-07T14:15:30.817Z"
     }
   ],
   "topAnime": [

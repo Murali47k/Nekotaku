@@ -1498,7 +1498,7 @@
       "title": "Doraemon",
       "originalTitle": "Doraemon series",
       "mal_id": 501,
-      "poster": "/posters/anime/501.jpg",
+      "poster": "/posters/anime/doraemon.jpg",
       "episodes_watched": 2000,
       "total_episodes": 2600,
       "finished": true,
@@ -2887,6 +2887,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-07-07T14:15:30.817Z"
+    },
+    {
+      "id": "1784085074511",
+      "title": "My Secret Affection",
+      "originalTitle": "My Secret Affection",
+      "cover": "/posters/manga/ms_affec.jpg",
+      "chapters_read": 10,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-07-15T03:11:14.511Z"
     }
   ],
   "topAnime": [

@@ -3232,6 +3232,13 @@
       "type": "video",
       "poster": "/posters/youtube/beauty_football.jpg",
       "url": "https://www.youtube.com/watch?v=A-r9sj7zHJ4&t=2s"
+    },{
+      "id": 28,
+      "title": "Pokemon Anime Series Review",
+      "year": "2021",
+      "type": "series",
+      "poster": "/posters/youtube/zactoshi.jpg",
+      "url": "https://www.youtube.com/watch?v=pbNGRByWOhc&list=PLCmT_m-ZeEBzGwOi7L-xeyBAu2j3Hk9I2"
     },
     {
       "id": "1783222249608",

@@ -3532,6 +3532,16 @@
       "name": "KWOOWK",
       "url": "https://www.youtube.com/@letsKWOOWK/featured",
       "poster": "/posters/channels/kwoowk.jpg"
+    },{
+      "id": 42,
+      "name": "That's Amazing",
+      "url": "https://www.youtube.com/@ThatsAmazing/videos",
+      "poster": "/posters/channels/TAs.jpg"
+    },{
+      "id": 43,
+      "name": "Rabbit Hole",
+      "url": "https://www.youtube.com/@rabbithole/videos",
+      "poster": "/posters/channels/rabbit_hole.jpg"
     }
   ]
 }

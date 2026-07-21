@@ -3284,6 +3284,14 @@
       "year": "2026",
       "poster": "/posters/youtube/hc_s11.jpg",
       "addedAt": "2026-07-05T03:40:33.128Z"
+    },{
+      "id": "1783222833129",
+      "title": "Pokemon Rejuvenation",
+      "url": "https://www.youtube.com/watch?v=_GZQvxDKBlc&list=PLOd3BATG4ZB8",
+      "type": "series",
+      "year": "2026",
+      "poster": "/posters/youtube/rejuvenation.jpg",
+      "addedAt": "2026-07-05T03:40:33.128Z"
     }
   ],
   "channels": [
@@ -3542,6 +3550,11 @@
       "name": "Rabbit Hole",
       "url": "https://www.youtube.com/@rabbithole/videos",
       "poster": "/posters/channels/rabbit_hole.jpg"
+    },{
+      "id": 44,
+      "name": "Jordindian",
+      "url": "https://www.youtube.com/@Jordindian/videos",
+      "poster": "/posters/channels/jord.jpg"
     }
   ]
 }

@@ -2898,6 +2898,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-07-15T03:11:14.511Z"
+    },
+    {
+      "id": "1785241947355",
+      "title": "My Broken Mariko",
+      "originalTitle": "My Broken Mariko",
+      "cover": "/posters/manga/mariko.webp",
+      "chapters_read": 4,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-07-28T12:32:27.355Z"
     }
   ],
   "topAnime": [
@@ -3232,7 +3243,8 @@
       "type": "video",
       "poster": "/posters/youtube/beauty_football.jpg",
       "url": "https://www.youtube.com/watch?v=A-r9sj7zHJ4&t=2s"
-    },{
+    },
+    {
       "id": 28,
       "title": "Pokemon Anime Series Review",
       "year": "2021",
@@ -3284,7 +3296,8 @@
       "year": "2026",
       "poster": "/posters/youtube/hc_s11.jpg",
       "addedAt": "2026-07-05T03:40:33.128Z"
-    },{
+    },
+    {
       "id": "1783222833129",
       "title": "Pokemon Rejuvenation",
       "url": "https://www.youtube.com/watch?v=_GZQvxDKBlc&list=PLOd3BATG4ZB8",
@@ -3292,7 +3305,8 @@
       "year": "2026",
       "poster": "/posters/youtube/rejuvenation.jpg",
       "addedAt": "2026-07-05T03:40:33.128Z"
-    },{
+    },
+    {
       "id": "1783222833130",
       "title": "Twitch Chat Crashout : Ludwig",
       "url": "https://www.youtube.com/shorts/Lzr9M51N698",
@@ -3300,7 +3314,8 @@
       "year": "2026",
       "poster": "/posters/youtube/ludcrash.jpg",
       "addedAt": "2026-07-05T03:40:33.128Z"
-    },{
+    },
+    {
       "id": "1783222833131",
       "title": "Parotta Act : Nirmal Pillai",
       "url": "https://www.youtube.com/watch?v=lAZxj9MmGVc&list=PL-oSMSYGbtHVKqPSv0RY86SAmWe817GWT",
@@ -3556,17 +3571,20 @@
       "name": "KWOOWK",
       "url": "https://www.youtube.com/@letsKWOOWK/featured",
       "poster": "/posters/channels/kwoowk.jpg"
-    },{
+    },
+    {
       "id": 42,
       "name": "That's Amazing",
       "url": "https://www.youtube.com/@ThatsAmazing/videos",
       "poster": "/posters/channels/TAs.jpg"
-    },{
+    },
+    {
       "id": 43,
       "name": "Rabbit Hole",
       "url": "https://www.youtube.com/@rabbithole/videos",
       "poster": "/posters/channels/rabbit_hole.jpg"
-    },{
+    },
+    {
       "id": 44,
       "name": "Jordindian",
       "url": "https://www.youtube.com/@Jordindian/videos",

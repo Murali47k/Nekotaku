@@ -223,7 +223,7 @@
     {
       "id": "1783607489959",
       "title": "Brave New World",
-      "pages_read": 27,
+      "pages_read": 128,
       "finished": false,
       "cover": "/posters/books/BraveNewWorld.jpg",
       "year": null,
@@ -2909,6 +2909,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-07-28T12:32:27.355Z"
+    },
+    {
+      "id": "1785982222615",
+      "title": "Mosquito Wars",
+      "originalTitle": "Mosquito Wars",
+      "cover": "/posters/manga/mosquito_wars.jpeg",
+      "chapters_read": 49,
+      "finished": true,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-08-06T02:10:22.615Z"
     }
   ],
   "topAnime": [

@@ -46,6 +46,37 @@
       margin-top: 0; 
       margin-bottom: 12px;
     }
+
+    /* Horizontal box for Top 5 Books */
+    .top-books-row {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .top-books-row .book-item {
+      flex: 0 0 180px;
+      text-align: center;
+    }
+    .top-books-row .book-item img {
+      width: 160px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .top-books-row .book-item .book-title {
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .top-books-row .book-empty {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 8px 0;
+    }
   </style>
 </head>
 <body>
@@ -109,6 +140,16 @@
           <div id="top-manga-root" class="top-list"></div>
         </div>
       </div>
+      <div style="margin-top:12px;" class="card">
+        <h3>Top 5 Books</h3>
+
+        <div id="top-books-root" class="top-books-row"></div>
+
+        <div style="margin-top:12px;">
+          <button class="btn ghost" onclick="pages.promptEditTop('books')">Edit Top Books</button>
+        </div>
+      </div>
+
       <div style="margin-top:12px;" class="card">
         <h3>My Pokémon Team</h3>
 

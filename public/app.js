@@ -143,6 +143,40 @@ function removePokemon(idx) {
   renderPokemonTeam();
 }
 
+/* ---------- Top 5 Books (stored locally, horizontal box) ---------- */
+const TOP_BOOKS_KEY = 'top_5_books';
+
+function getTopBooks() {
+  return JSON.parse(localStorage.getItem(TOP_BOOKS_KEY) || '[]');
+}
+
+function saveTopBooks(list) {
+  localStorage.setItem(TOP_BOOKS_KEY, JSON.stringify(list.slice(0, 5)));
+}
+
+function renderTopBooks() {
+  const root = document.getElementById('top-books-root');
+  if (!root) return;
+
+  const list = getTopBooks();
+  root.innerHTML = '';
+
+  if (!list.length) {
+    root.innerHTML = '<div class="book-empty">No favourite books yet — click "Edit Top Books" to add some.</div>';
+    return;
+  }
+
+  list.forEach((it, idx) => {
+    const div = document.createElement('div');
+    div.className = 'book-item';
+    div.innerHTML = `
+      <img src="${it.poster || '/placeholders/no.png'}" alt="${escapeHtml(it.title)}">
+      <div class="book-title">${idx + 1}. ${escapeHtml(it.title)}</div>
+    `;
+    root.appendChild(div);
+  });
+}
+
 /* ---------- HOME ---------- */
 async function initHome() {
   const res = await api.getHome();
@@ -208,6 +242,7 @@ async function initHome() {
       mangaRoot.appendChild(div);
     });
   }
+  renderTopBooks();
   renderPokemonTeam();
 }
 
@@ -220,17 +255,35 @@ async function promptAddHomeNote() {
 }
 
 /* ---------- TOP lists editing ---------- */
+const TOP_LIST_CONFIG = {
+  anime: { label: 'Anime', max: 10 },
+  manga: { label: 'Manga', max: 10 },
+  books: { label: 'Books', max: 5 },
+};
+
 async function promptEditTop(type='anime') {
-  const current = (type === 'anime') ? await api.getTopAnime() : await api.getTopManga();
-  const allItems = (type === 'anime') ? await api.getAnime() : await api.getManga();
-  
+  let current;
+  let allItems;
+  if (type === 'anime') {
+    current = await api.getTopAnime();
+    allItems = await api.getAnime();
+  } else if (type === 'manga') {
+    current = await api.getTopManga();
+    allItems = await api.getManga();
+  } else {
+    current = getTopBooks();
+    allItems = (await api.getBooks()).map(b => ({ title: b.title, cover: b.cover }));
+  }
+
+  const cfg = TOP_LIST_CONFIG[type] || { label: type, max: 10 };
+
   // Create modal
   const modal = document.createElement('div');
   modal.className = 'modal';
   modal.innerHTML = `
     <div class="modal-content" style="max-width:600px;">
       <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
-      <h2>Edit Top 10 ${type === 'anime' ? 'Anime' : 'Manga'}</h2>
+      <h2>Edit Top ${cfg.max} ${cfg.label}</h2>
       <div id="top-list-container" style="margin-top:16px;"></div>
       <div style="margin-top:16px; display:flex; gap:12px;">
         <button class="btn" onclick="pages.addTopItem('${type}')">Add Item</button>
@@ -272,7 +325,7 @@ function renderTopList(container, type) {
             class="searchable-select-input" 
             data-idx="${idx}"
             value="${escapeHtml(item.title)}" 
-            placeholder="Type to search ${type === 'anime' ? 'anime' : 'manga'}..."
+            placeholder="Type to search ${(TOP_LIST_CONFIG[type] || { label: type }).label.toLowerCase()}..."
             autocomplete="off"
             style="width:100%; padding:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:6px; color:#fff;"
           >
@@ -408,8 +461,9 @@ window.handleTopListOutsideClick = function(e) {
 
 async function addTopItem(type) {
   if (!window.currentTopList) window.currentTopList = [];
-  if (window.currentTopList.length >= 10) {
-    console.error('Maximum 10 items allowed in Top 10 list.');
+  const max = (TOP_LIST_CONFIG[type] || { max: 10 }).max;
+  if (window.currentTopList.length >= max) {
+    console.error(`Maximum ${max} items allowed in this Top list.`);
     return;
   }
   window.currentTopList.push({ title: '', poster: null });
@@ -453,7 +507,8 @@ async function saveTopList(type) {
   }
   
   if (type === 'anime') await api.setTopAnime(newList);
-  else await api.setTopManga(newList);
+  else if (type === 'manga') await api.setTopManga(newList);
+  else saveTopBooks(newList);
   
   // Clean up event listener
   document.removeEventListener('click', window.handleTopListOutsideClick);

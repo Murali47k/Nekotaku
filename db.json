@@ -1594,9 +1594,9 @@
       "originalTitle": "Pokemon Horizon",
       "mal_id": 53876,
       "poster": "/posters/anime/53876.jpg",
-      "episodes_watched": 135,
+      "episodes_watched": 146,
       "total_episodes": 130,
-      "finished": true,
+      "finished": false,
       "year": "2024",
       "yearSection": "2024",
       "addedAt": "2026-02-23T15:20:52.946Z"
@@ -1782,6 +1782,58 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-07-13T14:09:14.079Z"
+    },
+    {
+      "id": "1787499553610",
+      "title": "Pokemon Origins",
+      "originalTitle": "Pokemon Origins",
+      "mal_id": null,
+      "poster": "/posters/anime/Pokemon_origins.webp",
+      "episodes_watched": 4,
+      "total_episodes": null,
+      "finished": true,
+      "year": "2019",
+      "yearSection": "2019",
+      "addedAt": "2026-08-23T15:39:13.610Z"
+    },
+    {
+      "id": "1787499573657",
+      "title": "Pokemon Generations",
+      "originalTitle": "Pokemon Generations",
+      "mal_id": null,
+      "poster": "/posters/anime/Pokemon_gen.webp",
+      "episodes_watched": 18,
+      "total_episodes": null,
+      "finished": true,
+      "year": "2019",
+      "yearSection": "2019",
+      "addedAt": "2026-08-23T15:39:33.657Z"
+    },
+    {
+      "id": "1787500345978",
+      "title": "Pokemon Twilight Wings",
+      "originalTitle": "Pokemon Twilight Wings",
+      "mal_id": null,
+      "poster": "/posters/anime/Pokemon_tw.webp",
+      "episodes_watched": 8,
+      "total_episodes": null,
+      "finished": true,
+      "year": "2020",
+      "yearSection": "2020",
+      "addedAt": "2026-08-23T15:52:25.978Z"
+    },
+    {
+      "id": "1787500372984",
+      "title": "Pokemon Evolutions",
+      "originalTitle": "Pokemon Evolutions",
+      "mal_id": null,
+      "poster": "/posters/anime/Pokemon_evo.webp",
+      "episodes_watched": 8,
+      "total_episodes": null,
+      "finished": true,
+      "year": "2021",
+      "yearSection": "2021",
+      "addedAt": "2026-08-23T15:52:52.984Z"
     }
   ],
   "manga": [

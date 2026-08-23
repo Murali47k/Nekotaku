@@ -1,2 +1,2 @@
 # Nekotaku
-A personal anime & manga tracking website built with HTML, CSS, JS, and a backend.
+A personal anime , manga , books and youtube tracking website built with HTML, CSS, JS, 

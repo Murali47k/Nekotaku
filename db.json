@@ -253,8 +253,8 @@
     {
       "id": "1787317658455",
       "title": "2001 : a Space Odyssey",
-      "pages_read": 199,
-      "finished": false,
+      "pages_read": 280,
+      "finished": true,
       "cover": "/posters/books/2001_space.webp",
       "year": null,
       "yearSection": "2026",

@@ -3713,6 +3713,12 @@
       "name": "Jordindian",
       "url": "https://www.youtube.com/@Jordindian/videos",
       "poster": "/posters/channels/jord.jpg"
+    },
+    {
+      "id": 1788192651616,
+      "name": "Not Your Type",
+      "url": "https://www.youtube.com/@NOTYOURTYPE",
+      "poster": "/posters/channels/notyourtype.jpg"
     }
   ]
 }

@@ -259,6 +259,16 @@
       "year": null,
       "yearSection": "2026",
       "addedAt": "2026-08-21T13:07:38.455Z"
+    },
+    {
+      "id": "1788359888609",
+      "title": "Calvin and Hobbes : Collection",
+      "pages_read": 52,
+      "finished": false,
+      "cover": "/posters/books/calvin_and_hobbes.webp",
+      "year": null,
+      "yearSection": "2026",
+      "addedAt": "2026-09-02T14:38:08.609Z"
     }
   ],
   "anime": [
@@ -3113,7 +3123,7 @@
   "homeNotes": [
     {
       "id": 1,
-      "text": "Hi , I am Murali . This is my catalogue of anime , manga and books, I have watched and read though out the years"
+      "text": "Hi , I am Murali . This is my catalogue of anime , manga and books, I have watched and read though out the years. (Made on Mar-2026)"
     }
   ],
   "yearSections": {

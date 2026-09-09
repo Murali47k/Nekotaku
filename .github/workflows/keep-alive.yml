@@ -1,0 +1,14 @@
+name: Keep Nekotaku Alive
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping NekoTaku
+        run: curl -I https://nekotaku-m.onrender.com/

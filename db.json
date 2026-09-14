@@ -2930,7 +2930,7 @@
       "title": "Kaoru Hana wa Rin to Saku",
       "originalTitle": "The Fragrent flower blooms with dignity",
       "cover": "/posters/manga/144267.jpg",
-      "chapters_read": 199,
+      "chapters_read": 200,
       "finished": false,
       "year": "2026",
       "yearSection": "2026",
@@ -3034,6 +3034,17 @@
       "year": "2026",
       "yearSection": "2026",
       "addedAt": "2026-08-25T10:13:02.286Z"
+    },
+    {
+      "id": "1789364493665",
+      "title": "Sweetness & Lightning",
+      "originalTitle": "Sweetness & Lightning",
+      "cover": "/posters/manga/sweetness_and_lightning.webp",
+      "chapters_read": 2,
+      "finished": false,
+      "year": "2026",
+      "yearSection": "2026",
+      "addedAt": "2026-09-14T05:41:33.665Z"
     }
   ],
   "topAnime": [

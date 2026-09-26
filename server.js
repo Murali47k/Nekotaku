@@ -58,6 +58,8 @@ function readDB() {
       topAnime: [],
       topManga: [],
       youtube: [],
+      games: [],
+      gamePhotos: [],
       homeNotes: [],
       yearSections: { anime: [], manga: [] ,books:[] },
     };
@@ -77,6 +79,8 @@ if (!fs.existsSync(DB_FILE)) {
     topAnime: [],
     topManga: [],
     youtube: [],
+    games: [],
+    gamePhotos: [],
     homeNotes: [
       {
         id: 1,
@@ -564,6 +568,86 @@ app.post('/api/channels', (req, res) => {
   writeDB(db);
 
   res.json(newChannel);
+});
+
+// GAMES
+app.get('/api/games', (req, res) => {
+  const db = readDB();
+  res.json(db.games || []);
+});
+
+app.post('/api/games', (req, res) => {
+  const db = readDB();
+  const { title, yearPlayed = null, poster = null } = req.body;
+  if (!title) return res.status(400).json({ error: 'title required' });
+
+  const item = {
+    id: Date.now().toString(),
+    title,
+    yearPlayed,
+    poster: poster || null,
+    addedAt: new Date().toISOString()
+  };
+
+  db.games = db.games || [];
+  db.games.push(item);
+  writeDB(db);
+  res.json(item);
+});
+
+app.patch('/api/games/:id', (req, res) => {
+  const db = readDB();
+  db.games = db.games || [];
+  const idx = db.games.findIndex(g => g.id === req.params.id);
+  if (idx === -1) return res.status(404).json({ error: 'not found' });
+
+  Object.assign(db.games[idx], req.body);
+  writeDB(db);
+  res.json(db.games[idx]);
+});
+
+app.delete('/api/games/:id', (req, res) => {
+  const db = readDB();
+  db.games = db.games || [];
+  const item = db.games.find(g => g.id === req.params.id);
+  if (item) deletePosterFile(item.poster);
+  db.games = db.games.filter(g => g.id !== req.params.id);
+  writeDB(db);
+  res.json({ ok: true });
+});
+
+// GAME PHOTOS (sliding gallery of you playing games)
+app.get('/api/game-photos', (req, res) => {
+  const db = readDB();
+  res.json(db.gamePhotos || []);
+});
+
+app.post('/api/game-photos', (req, res) => {
+  const db = readDB();
+  const { caption = '', photo } = req.body;
+  if (!photo) return res.status(400).json({ error: 'photo required' });
+
+  const item = {
+    id: Date.now().toString(),
+    caption,
+    photo,
+    addedAt: new Date().toISOString()
+  };
+
+  db.gamePhotos = db.gamePhotos || [];
+  db.gamePhotos.push(item);
+  writeDB(db);
+  res.json(item);
+});
+
+app.delete('/api/game-photos/:id', (req, res) => {
+  const db = readDB();
+  db.gamePhotos = db.gamePhotos || [];
+  const item = db.gamePhotos.find(p => p.id === req.params.id);
+  if (item) deletePosterFile(item.photo);
+  db.gamePhotos = db.gamePhotos.filter(p => p.id !== req.params.id);
+  writeDB(db);
+  res.json({ ok: true });
 });
 
 // SEARCH

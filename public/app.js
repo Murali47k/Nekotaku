@@ -68,6 +68,40 @@ const api = {
     method: 'DELETE'
   }).then(r => r.json()),
 
+  /* ---------- Games API ---------- */
+
+  getGames: () => fetch('/api/games').then(r => r.json()),
+
+  addGame: (payload) => fetch('/api/games', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  }).then(r => r.json()),
+
+  patchGame: (id, patch) => fetch('/api/games/' + id, {
+    method: 'PATCH',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(patch)
+  }).then(r => r.json()),
+
+  deleteGame: (id) => fetch('/api/games/' + id, {
+    method: 'DELETE'
+  }).then(r => r.json()),
+
+  /* ---------- Game photos (sliding gallery) API ---------- */
+
+  getGamePhotos: () => fetch('/api/game-photos').then(r => r.json()),
+
+  addGamePhoto: (payload) => fetch('/api/game-photos', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  }).then(r => r.json()),
+
+  deleteGamePhoto: (id) => fetch('/api/game-photos/' + id, {
+    method: 'DELETE'
+  }).then(r => r.json()),
+
   uploadImage: (file) => {
     const fd = new FormData();
     fd.append('image', file);
@@ -1638,6 +1672,305 @@ async function promptAddYoutubeChannel() {
 }
 
 
+/* ---------- Games page ---------- */
+
+async function initGamesPage() {
+  const container = document.getElementById('games-root');
+  if (!container) return;
+
+  const [games] = await Promise.all([api.getGames()]);
+
+  const query = (window.gamesSearch || '').trim().toLowerCase();
+  const filtered = games.filter(g => (g.title || '').toLowerCase().includes(query));
+
+  container.innerHTML = '';
+
+  const grid = document.createElement('div');
+  grid.className = 'grid';
+
+  if (filtered.length === 0) {
+    const empty = document.createElement('div');
+    empty.style.opacity = '0.6';
+    empty.style.padding = '12px';
+    empty.textContent = games.length === 0 ? 'No games added yet — click "Add Game" to start your catalogue.' : 'No games match your search.';
+    grid.appendChild(empty);
+  }
+
+  filtered
+    .sort((a, b) => (b.addedAt || '').localeCompare(a.addedAt || ''))
+    .forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const poster = item.poster || '/placeholders/no.png';
+
+      card.innerHTML = `
+        <div class="card-poster">
+          <img src="${poster}" alt="${escapeHtml(item.title)}">
+        </div>
+        <div class="card-info">
+          <div class="title">${escapeHtml(item.title)}</div>
+          <div class="small game-year">Played in: ${escapeHtml(item.yearPlayed || 'Unknown')}</div>
+          <div style="margin-top:8px;" class="controls">
+            <button class="btn" onclick="pages.editGameYear('${item.id}', '${escapeHtml(item.yearPlayed || '')}')">Edit year</button>
+            <button class="btn ghost" onclick="pages.deleteGameConfirm('${item.id}')">Delete</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+  container.appendChild(grid);
+
+  // Render the gameplay-moments photo slider alongside the catalogue
+  renderGamePhotoSlider();
+}
+
+function searchGames(value) {
+  window.gamesSearch = value || '';
+  initGamesPage();
+}
+
+async function promptAddGame() {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+
+  const inputStyle = `width:100%; padding:10px 12px; margin-top:4px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); outline:none; color:#e6eef8;`;
+  const labelStyle = `display:block; font-size:14px; font-weight:500; color:var(--muted);`;
+
+  modal.innerHTML = `
+    <div class="modal-content" style="max-width:480px;">
+      <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+      <h2>Add Game</h2>
+      <form id="add-game-form" style="margin-top:16px;">
+
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Title <span style="color:red;">*</span></label>
+          <input type="text" id="game-title" required style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Year Played (e.g. 2023)</label>
+          <input type="text" id="game-year" style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <label style="${labelStyle}">Cover Image (optional)</label>
+          <div style="margin-top:8px; display:flex; align-items:center; gap:12px;">
+            <label style="cursor:pointer; padding:8px 14px; border-radius:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:13px; color:#e6eef8; white-space:nowrap;">
+              📁 Choose file
+              <input type="file" id="game-image-file" accept="image/*" style="display:none;">
+            </label>
+            <span id="game-image-name" style="font-size:12px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No file chosen</span>
+          </div>
+          <div id="game-image-preview" style="margin-top:10px; display:none;">
+            <img id="game-image-preview-img" style="max-height:120px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); object-fit:cover;">
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; padding-top:8px;">
+          <button type="button" class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
+          <button type="submit" class="btn" style="background:var(--accent); color:var(--card); font-weight:700; border:1px solid var(--accent);">Add Game</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const fileInput = document.getElementById('game-image-file');
+  fileInput.addEventListener('change', () => {
+    const f = fileInput.files[0];
+    document.getElementById('game-image-name').textContent = f ? f.name : 'No file chosen';
+    const preview = document.getElementById('game-image-preview');
+    const previewImg = document.getElementById('game-image-preview-img');
+    if (f) {
+      previewImg.src = URL.createObjectURL(f);
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+  });
+
+  document.getElementById('add-game-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('game-title').value.trim();
+    if (!title) return;
+    const yearPlayed = document.getElementById('game-year').value.trim() || null;
+
+    let poster = null;
+    const file = fileInput.files[0];
+    if (file) {
+      const submitBtn = e.target.querySelector('[type="submit"]');
+      submitBtn.textContent = 'Uploading…';
+      submitBtn.disabled = true;
+      try {
+        const result = await api.uploadImage(file);
+        if (result.path) poster = result.path;
+      } catch (err) {
+        console.error('Cover upload failed', err);
+      }
+      submitBtn.textContent = 'Add Game';
+      submitBtn.disabled = false;
+    }
+
+    await api.addGame({ title, yearPlayed, poster });
+    modal.remove();
+    initGamesPage();
+  });
+}
+
+async function editGameYear(id, current) {
+  const v = prompt('Enter the year you played this game:', current || '');
+  if (v === null) return;
+  await api.patchGame(id, { yearPlayed: v.trim() || null });
+  initGamesPage();
+}
+
+async function deleteGameConfirm(id) {
+  showConfirmModal(
+    'Confirm Game Deletion',
+    'Are you sure you want to permanently delete this game entry? This action cannot be undone.',
+    async () => {
+      await api.deleteGame(id);
+      initGamesPage();
+    }
+  );
+}
+
+/* ---------- Gameplay moments slider ---------- */
+
+async function renderGamePhotoSlider() {
+  const slider = document.getElementById('game-photos-slider');
+  if (!slider) return;
+
+  const photos = await api.getGamePhotos();
+  slider.innerHTML = '';
+
+  if (!photos || photos.length === 0) {
+    slider.innerHTML = '<div class="game-slider-empty">No photos yet — click "Add Photo" to add a snapshot of you playing.</div>';
+    return;
+  }
+
+  photos.forEach(item => {
+    const slide = document.createElement('div');
+    slide.className = 'game-slide';
+    slide.innerHTML = `
+      <button class="remove-btn" onclick="pages.deleteGamePhotoConfirm('${item.id}')">x</button>
+      <img src="${item.photo}" alt="${escapeHtml(item.caption || 'Gameplay photo')}">
+      ${item.caption ? `<div class="caption">${escapeHtml(item.caption)}</div>` : ''}
+    `;
+    slider.appendChild(slide);
+  });
+}
+
+function slideGamePhotos(direction) {
+  const slider = document.getElementById('game-photos-slider');
+  if (!slider) return;
+  const amount = Math.max(slider.clientWidth * 0.8, 220);
+  slider.scrollBy({ left: direction * amount, behavior: 'smooth' });
+}
+
+async function promptAddGamePhoto() {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+
+  const inputStyle = `width:100%; padding:10px 12px; margin-top:4px; border-radius:8px; background:var(--glass); border:1px solid rgba(255,255,255,0.08); outline:none; color:#e6eef8;`;
+  const labelStyle = `display:block; font-size:14px; font-weight:500; color:var(--muted);`;
+
+  modal.innerHTML = `
+    <div class="modal-content" style="max-width:480px;">
+      <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+      <h2>Add Gameplay Photo</h2>
+      <form id="add-game-photo-form" style="margin-top:16px;">
+
+        <div style="margin-bottom:16px;">
+          <label style="${labelStyle}">Caption (optional)</label>
+          <input type="text" id="game-photo-caption" placeholder="e.g. Finishing Elden Ring, 2024" style="${inputStyle}"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <label style="${labelStyle}">Photo <span style="color:red;">*</span></label>
+          <div style="margin-top:8px; display:flex; align-items:center; gap:12px;">
+            <label style="cursor:pointer; padding:8px 14px; border-radius:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:13px; color:#e6eef8; white-space:nowrap;">
+              📁 Choose file
+              <input type="file" id="game-photo-file" accept="image/*" required style="display:none;">
+            </label>
+            <span id="game-photo-name" style="font-size:12px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No file chosen</span>
+          </div>
+          <div id="game-photo-preview" style="margin-top:10px; display:none;">
+            <img id="game-photo-preview-img" style="max-height:120px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); object-fit:cover;">
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; padding-top:8px;">
+          <button type="button" class="btn ghost" onclick="this.closest('.modal').remove()">Cancel</button>
+          <button type="submit" class="btn" style="background:var(--accent); color:var(--card); font-weight:700; border:1px solid var(--accent);">Add Photo</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const fileInput = document.getElementById('game-photo-file');
+  fileInput.addEventListener('change', () => {
+    const f = fileInput.files[0];
+    document.getElementById('game-photo-name').textContent = f ? f.name : 'No file chosen';
+    const preview = document.getElementById('game-photo-preview');
+    const previewImg = document.getElementById('game-photo-preview-img');
+    if (f) {
+      previewImg.src = URL.createObjectURL(f);
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+  });
+
+  document.getElementById('add-game-photo-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const caption = document.getElementById('game-photo-caption').value.trim();
+    const file = fileInput.files[0];
+    if (!file) return console.error('A photo is required.');
+
+    const submitBtn = e.target.querySelector('[type="submit"]');
+    submitBtn.textContent = 'Uploading…';
+    submitBtn.disabled = true;
+
+    let photoPath = null;
+    try {
+      const result = await api.uploadImage(file);
+      photoPath = result.path;
+    } catch (err) {
+      console.error('Photo upload failed', err);
+    }
+
+    if (!photoPath) {
+      submitBtn.textContent = 'Add Photo';
+      submitBtn.disabled = false;
+      return console.error('Upload failed, please try again.');
+    }
+
+    await api.addGamePhoto({ caption, photo: photoPath });
+    modal.remove();
+    renderGamePhotoSlider();
+  });
+}
+
+async function deleteGamePhotoConfirm(id) {
+  showConfirmModal(
+    'Confirm Photo Deletion',
+    'Remove this gameplay photo? This action cannot be undone.',
+    async () => {
+      await api.deleteGamePhoto(id);
+      renderGamePhotoSlider();
+    }
+  );
+}
+
 /* ---------- Utilities & exports ---------- */
 function escapeHtml(s) {
   if (!s) return '';
@@ -1676,6 +2009,14 @@ window.pages = {
   deleteYoutubeChannel,
   addPokemonPrompt,
   removePokemon,
+  initGamesPage,
+  searchGames,
+  promptAddGame,
+  editGameYear,
+  deleteGameConfirm,
+  promptAddGamePhoto,
+  deleteGamePhotoConfirm,
+  slideGamePhotos,
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1684,4 +2025,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('manga-year-sections')) pages.initMangaPage();
   if (document.getElementById('books-year-sections')) pages.initBooksPage();
   if (document.getElementById('youtube-root')) pages.initYoutubePage();
+  if (document.getElementById('games-root')) pages.initGamesPage();
 });

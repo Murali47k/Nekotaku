@@ -3763,5 +3763,14 @@
       "url": "https://www.youtube.com/@NaturalHabitatShorts/shorts",
       "poster": "/posters/channels/natural_habitat.jpg"
     }
+  ],
+  "games": [
+    {
+      "id": "1790402619734",
+      "title": "Pokemon Ruby",
+      "yearPlayed": "2016",
+      "poster": null,
+      "addedAt": "2026-09-26T06:03:39.734Z"
+    }
   ]
 }

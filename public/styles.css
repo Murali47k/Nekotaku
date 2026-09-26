@@ -127,6 +127,9 @@ header { display:flex; gap:16px; align-items:center; padding:16px 24px; backgrou
 
 /* Games page — game cards reuse .card / .card-poster, year shown below title */
 .game-year { margin-top:4px; }
+.games-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin-top:18px; }
+@media (max-width:900px) { .games-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width:560px) { .games-grid { grid-template-columns: 1fr; } }
 
 /* Gameplay moments — fun sliding photo strip */
 .game-slider-wrap { position:relative; margin-top:14px; }

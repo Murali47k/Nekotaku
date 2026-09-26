@@ -1686,7 +1686,7 @@ async function initGamesPage() {
   container.innerHTML = '';
 
   const grid = document.createElement('div');
-  grid.className = 'grid';
+  grid.className = 'games-grid';
 
   if (filtered.length === 0) {
     const empty = document.createElement('div');

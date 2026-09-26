@@ -3769,91 +3769,91 @@
       "id": "1790402619734",
       "title": "Pokemon Ruby",
       "yearPlayed": "2016",
-      "poster": null,
+      "poster": "/posters/games/ruby.webp",
       "addedAt": "2026-09-26T06:03:39.734Z"
     },
     {
       "id": "1790402731186",
       "title": "Pokemon Fire Red",
       "yearPlayed": "2016",
-      "poster": null,
+      "poster": "/posters/games/fire-red.webp",
       "addedAt": "2026-09-26T06:05:31.186Z"
     },
     {
       "id": "1790402764396",
       "title": "Pokemon Emerald",
       "yearPlayed": "2017",
-      "poster": null,
+      "poster": "/posters/games/emerald.webp",
       "addedAt": "2026-09-26T06:06:04.396Z"
     },
     {
       "id": "1790402786735",
       "title": "Pokemon Heart Gold",
       "yearPlayed": "2017",
-      "poster": null,
+      "poster": "/posters/games/heart-gold.webp",
       "addedAt": "2026-09-26T06:06:26.735Z"
     },
     {
       "id": "1790402803671",
       "title": "Pokemon Gold",
       "yearPlayed": "2017",
-      "poster": null,
+      "poster": "/posters/games/gold.webp",
       "addedAt": "2026-09-26T06:06:43.671Z"
     },
     {
       "id": "1790402825761",
       "title": "Pokemon Platinum",
       "yearPlayed": "2017",
-      "poster": null,
+      "poster": "/posters/games/platinum.webp",
       "addedAt": "2026-09-26T06:07:05.761Z"
     },
     {
       "id": "1790402847312",
       "title": "Pokemon White",
       "yearPlayed": "2018",
-      "poster": null,
+      "poster": "/posters/games/white.webp",
       "addedAt": "2026-09-26T06:07:27.312Z"
     },
     {
       "id": "1790402873419",
       "title": "Pokemon Yellow",
       "yearPlayed": "2017",
-      "poster": null,
+      "poster": "/posters/games/yellow.webp",
       "addedAt": "2026-09-26T06:07:53.419Z"
     },
     {
       "id": "1790402901901",
       "title": "Super Smash Bros (N64)",
       "yearPlayed": "2018",
-      "poster": null,
+      "poster": "/posters/games/smash-bros.png",
       "addedAt": "2026-09-26T06:08:21.901Z"
     },
     {
       "id": "1790402922061",
       "title": "Pokemon Lazarus",
       "yearPlayed": "2026",
-      "poster": null,
+      "poster": "/posters/games/lazarus.webp",
       "addedAt": "2026-09-26T06:08:42.061Z"
     },
     {
       "id": "1790402969085",
       "title": "Sonic Advance",
       "yearPlayed": "2026",
-      "poster": null,
+      "poster": "/posters/games/sonic_advance.webp",
       "addedAt": "2026-09-26T06:09:29.085Z"
     },
     {
       "id": "1790403002840",
       "title": "Bounce Tales Classic",
       "yearPlayed": "2026",
-      "poster": null,
+      "poster": "/posters/games/bounce_tales.webp",
       "addedAt": "2026-09-26T06:10:02.840Z"
     },
     {
       "id": "1790403021170",
       "title": "FC Mobile",
       "yearPlayed": "2024-26",
-      "poster": null,
+      "poster": "/posters/games/fc2426.webp",
       "addedAt": "2026-09-26T06:10:21.170Z"
     }
   ]

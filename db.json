@@ -3855,6 +3855,13 @@
       "yearPlayed": "2024-26",
       "poster": "/posters/games/fc2426.webp",
       "addedAt": "2026-09-26T06:10:21.170Z"
+    },
+    {
+      "id": "1790405322857",
+      "title": "Among Us",
+      "yearPlayed": "2023",
+      "poster": "/posters/games/among_us.webp",
+      "addedAt": "2026-09-26T06:48:42.857Z"
     }
   ]
 }

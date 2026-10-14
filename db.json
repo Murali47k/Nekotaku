@@ -3939,6 +3939,13 @@
       "yearPlayed": "2026",
       "poster": "/posters/games/love_is_in_small_things.jpeg",
       "addedAt": "2026-09-29T10:33:53.916Z"
+    },
+    {
+      "id": "1791995092213",
+      "title": "Metroid (NES)",
+      "yearPlayed": "2026-27",
+      "poster": "/posters/games/metroid_bw.png",
+      "addedAt": "2026-10-14T16:24:52.213Z"
     }
   ]
 }

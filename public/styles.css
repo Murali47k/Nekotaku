@@ -29,7 +29,7 @@ header { display:flex; gap:16px; align-items:center; padding:16px 24px; backgrou
 
 .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:18px; margin-top:18px; }
 
-.card-poster { position:relative; border-radius:10px; overflow:hidden; height:260px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#061826,#03111b); }
+.card-poster { position:relative; border-radius:10px; overflow:hidden; height:240px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#061826,#03111b); }
 .card-poster img { max-width:100%; max-height:100%; width:auto; height:auto; display:block; margin:0 auto; object-fit:contain; transition: filter .2s ease; }
 .card-poster img.bw { filter: grayscale(100%); opacity:0.7; }
 

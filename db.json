@@ -3520,6 +3520,15 @@
       "year": "2026",
       "poster": "/posters/youtube/lilypichu_side_quest.png",
       "addedAt": "2026-08-31T06:58:57.581Z"
+    },
+    {
+      "id": "1793601457043",
+      "title": "so long nerds",
+      "url": "https://www.youtube.com/watch?v=DPMluEVUqS0&t=2s",
+      "type": "video",
+      "year": "2022",
+      "poster": "/posters/youtube/solongnerds.jpg",
+      "addedAt": "2026-11-02T06:37:37.043Z"
     }
   ],
   "channels": [
@@ -3804,6 +3813,12 @@
       "name": "Natural Habitat Shorts",
       "url": "https://www.youtube.com/@NaturalHabitatShorts/shorts",
       "poster": "/posters/channels/natural_habitat.jpg"
+    },
+    {
+      "id": 1793601395805,
+      "name": "HTX Studio",
+      "url": "https://www.youtube.com/@HTXStudio",
+      "poster": "/posters/channels/htx.jpg"
     }
   ],
   "games": [

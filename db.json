@@ -3959,8 +3959,15 @@
       "id": "1791995092213",
       "title": "Metroid (NES)",
       "yearPlayed": "2026-27",
-      "poster": "/posters/games/metroid_bw.png",
+      "poster": "/posters/games/metroid.png",
       "addedAt": "2026-10-14T16:24:52.213Z"
+    },
+    {
+      "id": "1794372404709",
+      "title": "Dragon Village 3",
+      "yearPlayed": "2026-27",
+      "poster": "/posters/games/dragon_village_3.webp",
+      "addedAt": "2026-11-11T04:46:44.709Z"
     }
   ]
 }

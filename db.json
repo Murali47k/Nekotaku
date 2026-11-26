@@ -3986,5 +3986,27 @@
       "poster": "/posters/games/x.webp",
       "addedAt": "2026-11-23T15:56:55.476Z"
     }
-  ]
+  ],
+  "music": {
+    "Tamil": [],
+    "Malayalam": [],
+    "Japanese": [
+      {
+        "title": "Bob Lennon",
+        "artist": "Naoki Urasawa",
+        "yearDiscovered": "2020",
+        "poster": "bob_lennon.jpg"
+      }
+    ],
+    "Chinese": [],
+    "Hindi": [],
+    "Sports": [],
+    "Rap": [],
+    "Pop": [],
+    "EDM": [],
+    "Rock": [],
+    "Indie": [],
+    "Classics": [],
+    "Artist": []
+  }
 }

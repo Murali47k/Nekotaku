@@ -71,6 +71,19 @@ const api = {
   /* ---------- Games API ---------- */
 
   getGames: () => fetch('/api/games').then(r => r.json()),
+  getMusic: () => fetch('/api/music').then(r => r.json()),
+  updateMusicCategory: async (category, songs) => {
+    const r = await fetch(`/api/music/${encodeURIComponent(category)}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ songs })
+    });
+    if (!r.ok) {
+      const text = await r.text();
+      throw new Error(`HTTP ${r.status}: ${text}`);
+    }
+    return r.json();
+  },
 
   addGame: (payload) => fetch('/api/games', {
     method: 'POST',
@@ -1971,6 +1984,170 @@ async function deleteGamePhotoConfirm(id) {
   );
 }
 
+/* ---------- Music page ---------- */
+
+const MUSIC_CATEGORIES = [
+  'Tamil', 'Malayalam', 'Japanese', 'Chinese', 'Hindi',
+  'Sports', 'Rap', 'Pop', 'EDM', 'Rock', 'Indie', 'Classics', 'Artist'
+];
+
+function resolveMusicPoster(poster) {
+  if (!poster) return '/placeholders/no.png';
+  if (poster.startsWith('/') || poster.startsWith('http://') || poster.startsWith('https://')) {
+    return poster;
+  }
+  return `/posters/music/${poster}`;
+}
+
+async function initMusicPage() {
+  const container = document.getElementById('music-root');
+  if (!container) return;
+
+  const musicData = await api.getMusic();
+  const query = (window.musicSearch || '').trim().toLowerCase();
+
+  container.innerHTML = '';
+
+  const categories = [...new Set([...MUSIC_CATEGORIES, ...Object.keys(musicData || {})])];
+
+  categories.forEach(category => {
+    const items = Array.isArray(musicData?.[category]) ? musicData[category] : [];
+    const filtered = items.filter(song => {
+      if (!query) return true;
+      const title = (song.title || '').toLowerCase();
+      const artist = (song.artist || '').toLowerCase();
+      return title.includes(query) || artist.includes(query);
+    }).slice(0, 5);
+
+    if (query && filtered.length === 0) return;
+
+    const section = document.createElement('div');
+    section.className = 'year-section card';
+    section.style.marginTop = '16px';
+
+    const head = document.createElement('div');
+    head.className = 'year-head';
+    head.innerHTML = `
+      <h3>${escapeHtml(category)} <span class="small" style="opacity:0.65;">(Top 5)</span></h3>
+      <button class="btn" onclick="pages.editMusicCategory('${escapeHtml(category)}')">Edit Top 5</button>
+    `;
+    section.appendChild(head);
+
+    const grid = document.createElement('div');
+    grid.className = 'games-grid';
+
+    if (filtered.length === 0) {
+      const empty = document.createElement('div');
+      empty.style.opacity = '0.6';
+      empty.style.padding = '12px';
+      empty.textContent = 'No songs added yet — update db.json to add your top 5.';
+      grid.appendChild(empty);
+    } else {
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card music-card';
+
+        const poster = resolveMusicPoster(item.poster);
+
+        card.innerHTML = `
+          <div class="card-poster">
+            <img src="${escapeHtml(poster)}" alt="${escapeHtml(item.title || 'Song cover')}">
+          </div>
+          <div class="card-info">
+            <div class="title">${escapeHtml(item.title || 'Untitled')}</div>
+            <div class="small">${escapeHtml(item.artist || 'Unknown Artist')}</div>
+            <div class="small" style="opacity:0.75; margin-top:4px;">Discovered: ${escapeHtml(item.yearDiscovered || 'Unknown')}</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    section.appendChild(grid);
+    container.appendChild(section);
+  });
+}
+
+function searchMusic(value) {
+  window.musicSearch = value || '';
+  initMusicPage();
+}
+
+async function editMusicCategory(category) {
+  const musicData = await api.getMusic();
+  const current = Array.isArray(musicData?.[category]) ? musicData[category].slice(0, 5) : [];
+
+  const backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  backdrop.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:1000;padding:16px;';
+
+  const modal = document.createElement('div');
+  modal.className = 'card';
+  modal.style.cssText = 'width:100%;max-width:640px;max-height:85vh;overflow-y:auto;padding:20px;';
+
+  const rowsHtml = Array.from({ length: 5 }, (_, i) => {
+    const s = current[i] || {};
+    return `
+      <div style="border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px;margin-bottom:10px;">
+        <div class="small" style="margin-bottom:6px;opacity:0.75;">#${i + 1}</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <input type="text" class="music-edit-title" placeholder="Song title" value="${escapeHtml(s.title || '')}" style="padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:inherit;">
+          <input type="text" class="music-edit-artist" placeholder="Artist name" value="${escapeHtml(s.artist || '')}" style="padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:inherit;">
+          <input type="text" class="music-edit-year" placeholder="Year discovered" value="${escapeHtml(s.yearDiscovered || '')}" style="padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:inherit;">
+          <input type="text" class="music-edit-poster" placeholder="Poster (e.g. song.jpg)" value="${escapeHtml(s.poster || '')}" style="padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:inherit;">
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  modal.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h3 style="margin:0;">Edit ${escapeHtml(category)} (Top 5)</h3>
+      <button class="btn ghost" id="music-modal-close">Close</button>
+    </div>
+    ${rowsHtml}
+    <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:12px;">
+      <button class="btn ghost" id="music-modal-cancel">Cancel</button>
+      <button class="btn" id="music-modal-save">Save</button>
+    </div>
+  `;
+
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
+
+  const close = () => backdrop.remove();
+  modal.querySelector('#music-modal-close').onclick = close;
+  modal.querySelector('#music-modal-cancel').onclick = close;
+  backdrop.onclick = (e) => { if (e.target === backdrop) close(); };
+
+  modal.querySelector('#music-modal-save').onclick = async () => {
+    const titles = modal.querySelectorAll('.music-edit-title');
+    const artists = modal.querySelectorAll('.music-edit-artist');
+    const years = modal.querySelectorAll('.music-edit-year');
+    const posters = modal.querySelectorAll('.music-edit-poster');
+
+    const songs = [];
+    for (let i = 0; i < 5; i++) {
+      const title = titles[i].value.trim();
+      if (!title) continue;
+      songs.push({
+        title,
+        artist: artists[i].value.trim(),
+        yearDiscovered: years[i].value.trim(),
+        poster: posters[i].value.trim()
+      });
+    }
+
+    try {
+      await api.updateMusicCategory(category, songs);
+      close();
+      initMusicPage();
+    } catch (err) {
+      alert('Failed to save: ' + (err.message || err));
+    }
+  };
+}
+
 /* ---------- Utilities & exports ---------- */
 function escapeHtml(s) {
   if (!s) return '';
@@ -2017,6 +2194,9 @@ window.pages = {
   promptAddGamePhoto,
   deleteGamePhotoConfirm,
   slideGamePhotos,
+  initMusicPage,
+  searchMusic,
+  editMusicCategory,
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -2026,4 +2206,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('books-year-sections')) pages.initBooksPage();
   if (document.getElementById('youtube-root')) pages.initYoutubePage();
   if (document.getElementById('games-root')) pages.initGamesPage();
+  if (document.getElementById('music-root')) pages.initMusicPage();
 });

@@ -616,6 +616,27 @@ app.delete('/api/games/:id', (req, res) => {
   res.json({ ok: true });
 });
 
+// MUSIC
+app.get('/api/music', (req, res) => {
+  const db = readDB();
+  res.json(db.music || {});
+});
+
+app.put('/api/music/:category', (req, res) => {
+  const db = readDB();
+  const category = req.params.category;
+  const songs = Array.isArray(req.body?.songs) ? req.body.songs.slice(0, 5) : [];
+  db.music = db.music || {};
+  db.music[category] = songs.map(s => ({
+    title: String(s.title || '').trim(),
+    artist: String(s.artist || '').trim(),
+    yearDiscovered: s.yearDiscovered ? String(s.yearDiscovered).trim() : '',
+    poster: s.poster ? String(s.poster).trim() : ''
+  })).filter(s => s.title);
+  writeDB(db);
+  res.json(db.music[category]);
+});
+
 // GAME PHOTOS (sliding gallery of you playing games)
 app.get('/api/game-photos', (req, res) => {
   const db = readDB();

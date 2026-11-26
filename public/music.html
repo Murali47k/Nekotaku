@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Nekotaku:Music</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/png" href="placeholders/logo.png">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .logo { display:flex; align-items:center; gap:12px; }
+    .logo-img { width:40px; height:40px; border-radius:8px; object-fit:cover; }
+    .logo-text {
+      font-size:1.5rem; font-weight:700;
+      background:linear-gradient(135deg, var(--accent), #a78bfa);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/placeholders/logo.png" alt="Nekotaku Logo" class="logo-img">
+      <span class="logo-text">Nekotaku</span>
+    </div>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/anime.html">Anime</a>
+      <a href="/manga.html">Manga</a>
+      <a href="/books.html">Books</a>
+      <a href="/youtube.html">YouTube</a>
+      <a href="/games.html">Games</a>
+      <a href="/music.html" class="active">Music</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+      <h2>Favourite Songs</h2>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <input
+          id="music-search"
+          type="text"
+          placeholder="Search songs or artists..."
+          style="padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); color:inherit; min-width:200px;"
+          oninput="pages.searchMusic(this.value)"
+        >
+      </div>
+    </div>
+
+    <div id="music-root" style="margin-top:12px;"></div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

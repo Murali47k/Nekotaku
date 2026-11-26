@@ -1988,7 +1988,7 @@ async function deleteGamePhotoConfirm(id) {
 
 const MUSIC_CATEGORIES = [
   'Tamil', 'Malayalam', 'Japanese', 'Chinese', 'Hindi',
-  'Sports', 'Rap', 'Pop', 'EDM', 'Rock', 'Indie', 'Classics', 'Artist'
+  'Sports', 'Rap', 'Pop', 'EDM', 'Rock', 'Indie', 'Classics', 'Artist', 'Childhood'
 ];
 
 function resolveMusicPoster(poster) {
